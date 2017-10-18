@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Cards {
 
-	public String[] shuffleCards(String[] cards)
+	public static String[] shuffleCards(String[] cards)
 	{
 	    int index;
 		String temp;
@@ -19,8 +19,5 @@ public class Cards {
 	    return shuffledCards;
 	}
 
-	private String[] getCards() {
-		return null;
-	}
 	
 }

@@ -15,7 +15,7 @@ public class SuspectCards extends Cards {
 	public static void main(String[] args) {
 		String[] xyz = new SuspectCards().suspects;
 		xyz = shuffleCards(xyz);
-		for(int i = 0; i < suspects.length(); i++) {
+		for(int i = 0; i < xyz.length; i++) {
 			System.out.println(xyz[i]);
 		}
 	}
