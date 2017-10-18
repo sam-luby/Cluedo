@@ -15,5 +15,4 @@ public class RoomCards extends Cards {
 		return randomRoom;
 	}
 	
-	
 }

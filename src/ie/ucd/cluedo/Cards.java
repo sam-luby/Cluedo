@@ -19,5 +19,4 @@ public class Cards {
 	    return shuffledCards;
 	}
 
-	
 }
