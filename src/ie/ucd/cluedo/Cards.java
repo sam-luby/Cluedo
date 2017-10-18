@@ -3,22 +3,24 @@ import java.util.Random;
 
 public class Cards {
 
-
-	
-	protected static String[] shuffleCards(String[] cards)
+	public String[] shuffleCards(String[] cards)
 	{
 	    int index;
 		String temp;
+		String[] shuffledCards = cards.clone();
 	    Random random = new Random();
-	    for (int i = cards.length - 1; i > 0; i--)
+	    for (int i = shuffledCards.length - 1; i > 0; i--)
 	    {
 	        index = random.nextInt(i + 1);
-	        temp = cards[index];
-	        cards[index] = cards[i];
-	        cards[i] = temp;
+	        temp = shuffledCards[index];
+	        shuffledCards[index] = shuffledCards[i];
+	        shuffledCards[i] = temp;
 	    }
-	    return cards;
+	    return shuffledCards;
 	}
-	
+
+	private String[] getCards() {
+		return null;
+	}
 	
 }
