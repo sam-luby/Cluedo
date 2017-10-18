@@ -1,7 +1,7 @@
 package ie.ucd.cluedo;
 
 public class SuspectCards extends Cards {
-	private String[] suspects = {"Miss Scarlett", "Professor Plum", "Mrs. Peacock", "Reverend Mr Green", "Colonel Mustard", "Mrs White"};
+	private static String[] suspects = {"Miss Scarlett", "Professor Plum", "Mrs. Peacock", "Reverend Mr Green", "Colonel Mustard", "Mrs White"};
 	
 	public SuspectCards() {}
 	
@@ -9,6 +9,10 @@ public class SuspectCards extends Cards {
 		return suspects;
 	}
 	
+	public static String random() {
+		String randomSuspect = suspects[(int)(Math.random() * suspects.length)];
+		return randomSuspect;
+	}
 	
 
 	//code to test shuffling of cards
