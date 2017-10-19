@@ -16,5 +16,4 @@ public class AnswerCards extends Cards {
 				System.out.println(answer[i]);
 			}
 		}
-
 }
