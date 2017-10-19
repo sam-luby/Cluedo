@@ -51,7 +51,13 @@ public class AddPlayersGUI {
 		private JTextField playerField;
 		
 		
-		public void showGui(Players players) {
+		public void getNumberOfPlayersGui(int numberOfPlayers) {
+			
+		}
+		
+		
+		
+		public void getPlayersGui(Players players) {
 			dialog = new CloseableJDialog();
 			dialog.setModal(true);
 			dialog.setBounds(100, 100, windowWidth, windowHeight);
@@ -62,7 +68,6 @@ public class AddPlayersGUI {
 			dialog.setResizable(false);
 			dialog.setTitle("Add Players");
 			Font textFont = new Font("SansSerif", Font.PLAIN, 14);
-			
 			
 			playerLabel = new JLabel("Add Player:");
 			playerLabel.setBounds(col0,row0, fieldWidth, fieldHeight);
@@ -79,7 +84,12 @@ public class AddPlayersGUI {
 			dialog.setVisible(true);
 			
 		}
+		
 
+		public int getNumberOfPlayers() {
+			return (numberOfPlayersField.getText());
+		}
+		
 		public Players getPlayers() {
 			return new Players(playerField.getText());
 		}

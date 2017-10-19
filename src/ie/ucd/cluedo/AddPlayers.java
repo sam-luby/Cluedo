@@ -10,17 +10,33 @@ import ie.ucd.cluedo.gui.AddPlayersGUI.Players;
 
 public class AddPlayers {
 	private static Players x;
+	private static int numberOfPlayers;
 	
 	public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-		String players = launchWindow(x).toString();
+		
+//		int numberOfPlayers = getNumberOfPlayersWindow(numberOfPlayers);
+		String players = getPlayersWindow(x).toString();
+		
 	}
 	
-	private static String launchWindow(Players players) throws InvocationTargetException, InterruptedException {
+	
+	private static int getNumberOfPlayersWindow(int numberOfPlayers) throws InvocationTargetException, InterruptedException {
+		final AddPlayersGUI window = new AddPlayersGUI();
+		SwingUtilities.invokeAndWait(new Runnable() {
+				@Override
+				public void run() {
+					window.getNumberOfPlayersGui(numberOfPlayers);
+				}
+		});
+		return window.getNumberOfPlayers();		
+	}
+	
+	private static String getPlayersWindow(Players players) throws InvocationTargetException, InterruptedException {
     	final AddPlayersGUI window = new AddPlayersGUI();
     	SwingUtilities.invokeAndWait(new Runnable() {
     		@Override
     		public void run() {
-    			window.showGui(players);
+    			window.getPlayersGui(players);
     		}
     	});
     	return window.getPlayers().toString();
