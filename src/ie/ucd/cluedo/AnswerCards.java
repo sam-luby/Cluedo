@@ -8,6 +8,10 @@ public class AnswerCards extends Cards {
 		solution[1] = RoomCards.random();
 		solution[2] = RoomCards.random();
 	}
+	
+	public String[] getSolutionCards() {
+		return solution;
+	}
 		
 	//code to test random picking of cards
 		public static void main(String[] args){
