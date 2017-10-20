@@ -14,32 +14,21 @@ public class AddPlayers {
 	
 	public static void main(String[] args) throws InvocationTargetException, InterruptedException {
 		
-//		int numberOfPlayers = getNumberOfPlayersWindow(numberOfPlayers);
-		String players = getPlayersWindow(x).toString();
+		String[] players = getPlayersWindow();
+		
 		
 	}
 	
-	
-	private static int getNumberOfPlayersWindow(int numberOfPlayers) throws InvocationTargetException, InterruptedException {
-		final AddPlayersGUI window = new AddPlayersGUI();
-		SwingUtilities.invokeAndWait(new Runnable() {
-				@Override
-				public void run() {
-					window.getNumberOfPlayersGui(numberOfPlayers);
-				}
-		});
-		return window.getNumberOfPlayers();		
-	}
-	
-	private static String getPlayersWindow(Players players) throws InvocationTargetException, InterruptedException {
+
+	private static String[] getPlayersWindow() throws InvocationTargetException, InterruptedException {
     	final AddPlayersGUI window = new AddPlayersGUI();
     	SwingUtilities.invokeAndWait(new Runnable() {
     		@Override
     		public void run() {
-    			window.getPlayersGui(players);
+    			window.getPlayersGui();
     		}
     	});
-    	return window.getPlayers().toString();
+    	return window.getPlayers();
     }
 	
 }

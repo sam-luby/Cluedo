@@ -1,96 +1,123 @@
 package ie.ucd.cluedo.gui;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import ie.ucd.cluedo.AddPlayers;
 
 public class AddPlayersGUI {
 	public static class Players {
-		public String players;
+		public String players[];
 		
-		public Players(String players) {
+		public Players(String[] players) {
 			this.players = players;
 		}
 	}
 	
-	//New class CloseableJDialog
-		static class CloseableJDialog extends JDialog {
-			private static final long serialVersionUID = 1L;
-			public CloseableJDialog() {
-				setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-				addWindowListener(new WindowAdapter() {
-					@Override
-					public void windowClosing(WindowEvent e) {
-						System.exit(0);
-					}
-				});
+		private int numberOfPlayers = 3;
+		JTable contentPane;
+		
+		public void getPlayersGui() {
+			JFrame addPlayersWindow = new JFrame("Please add 3-6 players");
+			addPlayersWindow.setSize(new Dimension(400,280));
+			addPlayersWindow.setLocationRelativeTo(null);
+			addPlayersWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		    final String[] columns = new String[]{"Player #", "Player name"};	
+		    String[][] data = new String[][]{new String[] {"Player 1"}, new String[]{"Player 2"},new String[] { "Player 3"}};
+		   	    
+		    contentPane = new JTable();
+		    contentPane.setModel(new DefaultTableModel(data, columns) {
+				private static final long serialVersionUID = 1L;
+				@Override
+		    	public boolean isCellEditable(int row, int column) {
+		    		if(column==1) {
+		    			contentPane.setColumnSelectionAllowed(false);
+		    			return true;
+		    		} else {
+		    			return false;
+		    		}
+		    	}
+		    });
+		    
+		    contentPane.getColumnModel().getColumn(0).setMaxWidth(65);
+		    contentPane.setRowHeight(30);
+		    addPlayersWindow.add(new JScrollPane(contentPane),BorderLayout.CENTER);
+			
+		    JPanel addPlayersPanel = new JPanel();
+		    
+		    JButton addPlayerButton = new JButton("Add another player");
+		    addPlayerButton.addActionListener(new ActionListener()
+		    {
+		        @Override
+		        public void actionPerformed(ActionEvent e)
+		        {
+		        	if(numberOfPlayers==6) {
+		        		System.out.println("Can't add any more players.");
+		        	} else {
+		        		System.out.println("'Add' button pressed.");
+			            numberOfPlayers+=1;
+			            DefaultTableModel model = (DefaultTableModel)contentPane.getModel();
+			            model.addRow(new String[]{"Player "+numberOfPlayers,""});
+		        	} 
+		        }
+		    });
+		
+		    JButton runButton = new JButton("Run");
+		    runButton.addActionListener(new ActionListener()
+		    {
+		        @Override
+		        public void actionPerformed(ActionEvent e)
+		        {  	
+	        		System.out.println("Run button pressed.");
+	        		getPlayers();
+	        		addPlayersWindow.dispose();
+		        }
+		    });
+			  
+		    addPlayersPanel.add(addPlayerButton);
+		    addPlayersPanel.add(runButton);
+		    addPlayersWindow.add(addPlayersPanel,BorderLayout.SOUTH);
+		    addPlayersWindow.setVisible(true);
+		}
+		
+		public String[] getPlayers() {
+			String[] players = new String[numberOfPlayers];
+			List<String> playersList = new ArrayList<String>();
+			
+			for (int i = 0 ; i <= numberOfPlayers ; i++) {
+				
+			
+				playersList.add(contentPane.getValueAt(i, 1).toString());
+				players = new String[numberOfPlayers];
+				players = playersList.toArray(players);
+				
+				
+				//test
+				System.out.println(numberOfPlayers);
+				System.out.println(contentPane.getValueAt(i, 1));
 			}
-		}
-		
-		
-		
-		//dimensions
-		private CloseableJDialog dialog;
-		private final int windowWidth = 600;
-		private final int windowHeight = 200;
-		private final int fieldWidth = 300;
-		private final int fieldHeight = 25;
-		private final int row0 = 10;
-		private final int row1 = 40;
-		private final int row2 = 120;
-		private final int col0 = 10;
-		private final int col1 = 140;
-		private final int col2 = 450;
-		private JLabel playerLabel;
-		private JTextField playerField;
-		
-		
-		public void getNumberOfPlayersGui(int numberOfPlayers) {
 			
-		}
-		
-		
-		
-		public void getPlayersGui(Players players) {
-			dialog = new CloseableJDialog();
-			dialog.setModal(true);
-			dialog.setBounds(100, 100, windowWidth, windowHeight);
-			dialog.setLocationRelativeTo(null);
-			dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			Container contentPane = dialog.getContentPane();
-			contentPane.setLayout(null);
-			dialog.setResizable(false);
-			dialog.setTitle("Add Players");
-			Font textFont = new Font("SansSerif", Font.PLAIN, 14);
-			
-			playerLabel = new JLabel("Add Player:");
-			playerLabel.setBounds(col0,row0, fieldWidth, fieldHeight);
-			playerLabel.setFont(textFont);
-			contentPane.add(playerLabel);
-			
-			playerField = new JTextField();
-			playerField.setBounds(col1, row0, fieldWidth, fieldHeight);
-			playerField.setFont(textFont);
-			contentPane.add(playerField);
-			
-			contentPane.setBackground(Color.LIGHT_GRAY);
-			contentPane.setFont(textFont);
-			dialog.setVisible(true);
-			
-		}
-		
-
-		public int getNumberOfPlayers() {
-			return (numberOfPlayersField.getText());
-		}
-		
-		public Players getPlayers() {
-			return new Players(playerField.getText());
+			return players;
 		}
 }
