@@ -27,15 +27,18 @@ import ie.ucd.cluedo.AddPlayers;
 
 public class AddPlayersGUI {
 	public static class Players {
-		public String players[];
 		
-		public Players(String[] players) {
-			this.players = players;
-		}
+//		List<String> playersList = new ArrayList<String>();
+//		private String[] players;
+
+//		public Players(String[] players) {
+//			this.players = players;
+//		}
 	}
 	
 		private int numberOfPlayers = 3;
 		JTable contentPane;
+		private String[] players;
 		
 		public void getPlayersGui() {
 			JFrame addPlayersWindow = new JFrame("Please add 3-6 players");
@@ -89,8 +92,15 @@ public class AddPlayersGUI {
 		        @Override
 		        public void actionPerformed(ActionEvent e)
 		        {  	
-	        		System.out.println("Run button pressed.");
-	        		getPlayers();
+		    		String[] players = new String[numberOfPlayers];
+					List<String> playersList = new ArrayList<String>();
+		        
+					for (int i = 0 ; i < numberOfPlayers ; i++) {
+						playersList.add(contentPane.getValueAt(i, 1).toString());
+						players = playersList.toArray(players);
+						setPlayers(players);
+					}
+					
 	        		addPlayersWindow.dispose();
 		        }
 		    });
@@ -101,23 +111,12 @@ public class AddPlayersGUI {
 		    addPlayersWindow.setVisible(true);
 		}
 		
+		
+		public void setPlayers(String[] players ) {
+			this.players = players;
+		}
+		
 		public String[] getPlayers() {
-			String[] players = new String[numberOfPlayers];
-			List<String> playersList = new ArrayList<String>();
-			
-			for (int i = 0 ; i <= numberOfPlayers ; i++) {
-				
-			
-				playersList.add(contentPane.getValueAt(i, 1).toString());
-				players = new String[numberOfPlayers];
-				players = playersList.toArray(players);
-				
-				
-				//test
-				System.out.println(numberOfPlayers);
-				System.out.println(contentPane.getValueAt(i, 1));
-			}
-			
 			return players;
 		}
 }

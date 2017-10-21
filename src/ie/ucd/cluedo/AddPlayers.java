@@ -15,8 +15,7 @@ public class AddPlayers {
 	public static void main(String[] args) throws InvocationTargetException, InterruptedException {
 		
 		String[] players = getPlayersWindow();
-		
-		
+
 	}
 	
 
