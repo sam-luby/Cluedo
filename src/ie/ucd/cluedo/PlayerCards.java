@@ -3,21 +3,25 @@ package ie.ucd.cluedo;
 import org.apache.commons.lang3.ArrayUtils;
 
 public class PlayerCards extends Cards {
-	private String[] rooms = new String[9];
-	private String[] weapons = new String[6];
-	private String[] suspects = new String[6];
+	
+	RemainingCards remainingCards = new RemainingCards(); // remaining cards after choosing the solution cards
 	
 	int numPlayers;		
 	
-	public PlayerCards(int numPlayers) {
+	public PlayerCards(int numPlayers, RemainingCards r) {
 		this.numPlayers = numPlayers;
-		rooms = RoomCards.getCards();
-		weapons = WeaponCards.getCards();
-		suspects = SuspectCards.getCards();
-		String[] allCards = (String[]) ArrayUtils.addAll(rooms, weapons, suspects);
+		this.remainingCards = r;
 	}
 	
-	
-	
+	public String[] distribute(String[] answerCards) {
+				
+		// doesnt divide evenly for 4 or 5 players
+		if(numPlayers==4 || numPlayers==5) {
+			
+		}
+		else {
+			
+		}
+	}
 	
 }
