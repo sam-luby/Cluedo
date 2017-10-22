@@ -5,7 +5,7 @@ public class SuspectCards extends Cards {
 	
 	public SuspectCards() {}
 	
-	public String[] getCards() {
+	public static String[] getCards() {
 		return suspects;
 	}
 	

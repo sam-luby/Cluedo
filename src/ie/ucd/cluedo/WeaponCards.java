@@ -6,7 +6,7 @@ public class WeaponCards extends Cards{
 
 	public WeaponCards() {}
 
-	public String[] getCards() {
+	public static String[] getCards() {
 		return weapons;
 	}
 	

@@ -6,7 +6,7 @@ public class RoomCards extends Cards {
 	
 	public RoomCards() {}
 
-	public String[] getCards() {
+	public static String[] getCards() {
 		return rooms;
 	}
 	
