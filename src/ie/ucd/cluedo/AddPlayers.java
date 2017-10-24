@@ -2,8 +2,8 @@ package ie.ucd.cluedo;
 
 import java.util.Scanner; 
 
-public class Players {
-	private int numberOfPlayers;
+public class AddPlayers {
+//	private int numberOfPlayers;
 	private String[] players;
 	
 	public String[] getPlayers() {

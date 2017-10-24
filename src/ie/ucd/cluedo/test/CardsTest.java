@@ -13,9 +13,9 @@ import org.junit.Test;
 
 public class CardsTest extends Cards{
 
-	String[] suspects = new SuspectCards().getCards();
-	String[] rooms = new RoomCards().getCards();
-	String[] weapons = new WeaponCards().getCards();
+	String[] suspects = SuspectCards.getCards();
+	String[] rooms = RoomCards.getCards();
+	String[] weapons = WeaponCards.getCards();
 	
 	
 	@Test

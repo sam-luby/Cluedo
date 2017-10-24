@@ -17,7 +17,8 @@ public class SuspectCards extends Cards {
 
 	//code to test shuffling of cards
 	public static void main(String[] args) {
-		String[] xyz = new SuspectCards().suspects;
+		new SuspectCards();
+		String[] xyz = SuspectCards.suspects;
 		xyz = shuffleCards(xyz);
 		for(int i = 0; i < xyz.length; i++) {
 			System.out.println(xyz[i]);
