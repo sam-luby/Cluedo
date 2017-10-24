@@ -1,5 +1,9 @@
 package ie.ucd.cluedo;
 
+/**
+ * Room cards class
+ * @author Sam
+ */
 public class RoomCards extends Cards {
 	private static String[] rooms = {"Kitchen", "Ballroom", "Conservatory", "Dining Room", "Lounge",
 			"Hall", "Study", "Billiard Room", "Library"};

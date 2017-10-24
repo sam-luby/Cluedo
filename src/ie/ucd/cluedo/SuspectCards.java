@@ -1,5 +1,9 @@
 package ie.ucd.cluedo;
 
+/**
+ * Suspect cards class 
+ * @author Sam
+ */
 public class SuspectCards extends Cards {
 	private static String[] suspects = {"Miss Scarlett", "Professor Plum", "Mrs. Peacock", "Reverend Mr Green", "Colonel Mustard", "Mrs White"};
 	

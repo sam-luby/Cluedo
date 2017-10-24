@@ -2,8 +2,11 @@ package ie.ucd.cluedo;
 
 import java.util.Scanner; 
 
+/**
+ * Functionality to add the players to the game. Currently implemented in the form of a console scanner/user input.
+ * @author Sam
+ */
 public class AddPlayers {
-//	private int numberOfPlayers;
 	private String[] players;
 	
 	public String[] getPlayers() {
@@ -11,7 +14,7 @@ public class AddPlayers {
 	}
 	
 	public static String[] setPlayers() {
-		System.out.println("How many players are going to play?");
+		System.out.println("How many players are going to play? [3-6]");
 		
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
 		int num = numberOfPlayersScanner.nextInt();

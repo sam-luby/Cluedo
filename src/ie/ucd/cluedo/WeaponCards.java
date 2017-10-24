@@ -1,5 +1,8 @@
 package ie.ucd.cluedo;
-
+/**
+ * Weapon cards class
+ * @author Sam
+ */
 public class WeaponCards extends Cards{
 	
 	private static String[] weapons = {"Hammer", "Knife", "Gun", "Baseball Bat", "Suicide Bomber", "Chainsaw"};
