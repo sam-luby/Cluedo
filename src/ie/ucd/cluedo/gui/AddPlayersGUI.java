@@ -1,6 +1,8 @@
 package ie.ucd.cluedo.gui;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -27,21 +29,34 @@ import ie.ucd.cluedo.AddPlayers;
 
 public class AddPlayersGUI {
 	public static class Players {
+		private final String[] players;
 		
-//		List<String> playersList = new ArrayList<String>();
-//		private String[] players;
-
-//		public Players(String[] players) {
-//			this.players = players;
-//		}
+		public Players(String[] players) {
+			this.players = players;
+		}
 	}
 	
 		private int numberOfPlayers = 3;
 		JTable contentPane;
 		private String[] players;
 		
+		
+		static class CloseableJFrame extends JFrame {
+			private static final long serialVersionUID = 1L;
+			public CloseableJFrame() {
+				setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+				addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosing(WindowEvent e) {
+						System.exit(0);
+					}
+				});
+			}
+		}
+		
+		
 		public void getPlayersGui() {
-			JFrame addPlayersWindow = new JFrame("Please add 3-6 players");
+			JFrame addPlayersWindow = new CloseableJFrame();
 			addPlayersWindow.setSize(new Dimension(400,280));
 			addPlayersWindow.setLocationRelativeTo(null);
 			addPlayersWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +65,7 @@ public class AddPlayersGUI {
 		    String[][] data = new String[][]{new String[] {"Player 1"}, new String[]{"Player 2"},new String[] { "Player 3"}};
 		   	    
 		    contentPane = new JTable();
+		 
 		    contentPane.setModel(new DefaultTableModel(data, columns) {
 				private static final long serialVersionUID = 1L;
 				@Override
@@ -65,10 +81,9 @@ public class AddPlayersGUI {
 		    
 		    contentPane.getColumnModel().getColumn(0).setMaxWidth(65);
 		    contentPane.setRowHeight(30);
-		    addPlayersWindow.add(new JScrollPane(contentPane),BorderLayout.CENTER);
-			
+		    addPlayersWindow.add(new JScrollPane(contentPane),BorderLayout.CENTER);		
 		    JPanel addPlayersPanel = new JPanel();
-		    
+	
 		    JButton addPlayerButton = new JButton("Add another player");
 		    addPlayerButton.addActionListener(new ActionListener()
 		    {
@@ -92,14 +107,16 @@ public class AddPlayersGUI {
 		        @Override
 		        public void actionPerformed(ActionEvent e)
 		        {  	
-		    		String[] players = new String[numberOfPlayers];
-					List<String> playersList = new ArrayList<String>();
+		    		
+//		        	String[] players = new String[numberOfPlayers];
+//					List<String> playersList = new ArrayList<String>();
 		        
-					for (int i = 0 ; i < numberOfPlayers ; i++) {
-						playersList.add(contentPane.getValueAt(i, 1).toString());
-						players = playersList.toArray(players);
-						setPlayers(players);
-					}
+//					for (int i = 0 ; i < numberOfPlayers ; i++) {
+//						players[i] = contentPane.getValueAt(i, 1).toString();
+//						playersList.add(contentPane.getValueAt(i, 1).toString());
+//						players = playersList.toArray(players);
+						setPlayers();
+//					}
 					
 	        		addPlayersWindow.dispose();
 		        }
@@ -112,8 +129,15 @@ public class AddPlayersGUI {
 		}
 		
 		
-		public void setPlayers(String[] players ) {
-			this.players = players;
+		public void setPlayers() {
+			Component[] all_comp = contentPane.getComponents();  
+			for(int i = 0; i < all_comp.length; i++) {
+			    if (all_comp[i] instanceof Button) { 
+			        String text = ((Button)all_comp[i]).toString();
+			        System.out.println(text);
+			        // this is the text. Do what you want with it....
+			    }
+			}  
 		}
 		
 		public String[] getPlayers() {

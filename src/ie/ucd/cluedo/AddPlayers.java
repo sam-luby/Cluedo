@@ -13,8 +13,11 @@ public class AddPlayers {
 	private static int numberOfPlayers;
 	
 	public static void main(String[] args) throws InvocationTargetException, InterruptedException {
-		
+
 		String[] players = getPlayersWindow();
+		for(String p : players) {
+			System.out.println(p);
+		}
 
 	}
 	

@@ -12,16 +12,16 @@ public class PlayerCards extends Cards {
 		this.numPlayers = numPlayers;
 		this.remainingCards = r;
 	}
-	
-	public String[] distribute(String[] answerCards) {
-				
-		// doesnt divide evenly for 4 or 5 players
-		if(numPlayers==4 || numPlayers==5) {
-			
-		}
-		else {
-			
-		}
-	}
+//	
+//	public String[] distribute(String[] answerCards) {
+//				
+//		// doesnt divide evenly for 4 or 5 players
+//		if(numPlayers==4 || numPlayers==5) {
+//			
+//		}
+//		else {
+//			
+//		}
+//	}
 	
 }
