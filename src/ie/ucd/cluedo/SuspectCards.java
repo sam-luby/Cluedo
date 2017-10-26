@@ -1,34 +1,27 @@
 package ie.ucd.cluedo;
 
-/**
- * Suspect cards class 
- * @author Sam
- */
-public class SuspectCards extends Cards {
-	private static String[] suspects = {"Miss Scarlett", "Professor Plum", "Mrs. Peacock", "Reverend Mr Green", "Colonel Mustard", "Mrs White"};
-	
-	public SuspectCards() {}
-	
-	public static String[] getCards() {
-		return suspects;
-	}
-	
-	public static String random() {
-		String randomSuspect = suspects[(int)(Math.random() * suspects.length)];
-		return randomSuspect;
-	}
-	
+import java.util.Random;
 
-	//code to test shuffling of cards
-	public static void main(String[] args) {
-		new SuspectCards();
-		String[] xyz = SuspectCards.suspects;
-		xyz = shuffleCards(xyz);
-		for(int i = 0; i < xyz.length; i++) {
-			System.out.println(xyz[i]);
-		}
+public enum SuspectCards {
+	MISSSCARLET("Miss Scarlet"),
+	PROFESSORPLUM("Professor Plum"),
+	MRSPEACOCK("Mrs. Peacock"),
+	REVERENDMRGREEN("Reverend Mr. Green"),
+	COLONOLMUSTARD("Colonel Mustard"),
+	MRSWHITE("Mrs. White");
+	
+	private final String name;
+	
+	SuspectCards(String n){
+		this.name = n;
 	}
-
 	
+	public String getName() {
+		return name;
+	}
 	
+	public static SuspectCards random() {
+		Random random = new Random();
+        return values()[random.nextInt(values().length)];
+	}
 }

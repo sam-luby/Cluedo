@@ -1,22 +1,30 @@
 package ie.ucd.cluedo;
 
-/**
- * Room cards class
- * @author Sam
- */
-public class RoomCards extends Cards {
-	private static String[] rooms = {"Kitchen", "Ballroom", "Conservatory", "Dining Room", "Lounge",
-			"Hall", "Study", "Billiard Room", "Library"};
-	
-	public RoomCards() {}
+import java.util.Random;
 
-	public static String[] getCards() {
-		return rooms;
+public enum RoomCards {
+	BALLROOM("Ballroom"),
+	KITCHEN("Kitchen"),
+	CONSERVATORY("Conservatory"),
+	DININGROOM("Dining room"),
+	LOUNGE("Lounge"),
+	HALL("Hall"),
+	STUDY("Study"),
+	BILLIARDROOM("Billiard room"),
+	LIBRARY("Library");
+	
+	private final String room;
+	
+	RoomCards(String r){
+		this.room = r;
 	}
 	
-	public static String random() {
-		String randomRoom = rooms[(int)(Math.random() * rooms.length)];
-		return randomRoom;
+	public String getRoom() {
+		return room;
 	}
 	
+	public static RoomCards random() {
+		Random random = new Random();
+        return values()[random.nextInt(values().length)];
+	}
 }
