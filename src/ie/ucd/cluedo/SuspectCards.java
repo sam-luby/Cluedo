@@ -16,7 +16,7 @@ public enum SuspectCards {
 		this.name = n;
 	}
 	
-	public String getName() {
+	public String getSuspect() {
 		return name;
 	}
 	
@@ -24,4 +24,6 @@ public enum SuspectCards {
 		Random random = new Random();
         return values()[random.nextInt(values().length)];
 	}
+
+	
 }

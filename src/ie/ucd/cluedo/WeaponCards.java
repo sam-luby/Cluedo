@@ -24,6 +24,7 @@ public enum WeaponCards {
         return values()[random.nextInt(values().length)];
 	}
 	
+	
 	// testing the random return function
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
