@@ -7,7 +7,9 @@ public enum WeaponCards {
 	KNIFE("Knife"),
 	BASEBALLBAT("Baseball bat"),
 	BOMB("Bomb"),
-	CHAINSAW("Chainsaw");
+	CHAINSAW("Chainsaw"),
+	DRUGS("Drugs");
+	
 	
 	private final String weapon;
 	
