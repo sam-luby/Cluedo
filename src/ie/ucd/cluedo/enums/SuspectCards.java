@@ -1,4 +1,4 @@
-package ie.ucd.cluedo;
+package ie.ucd.cluedo.enums;
 
 import java.util.Random;
 

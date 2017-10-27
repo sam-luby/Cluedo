@@ -1,8 +1,13 @@
 package ie.ucd.cluedo;
 
+import ie.ucd.cluedo.enums.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Distribute cards amongst players
+ * @author Darren
+ */
 public class DistributeCards {
 	
 	private ArrayList<String> player1 = new ArrayList<String>();
