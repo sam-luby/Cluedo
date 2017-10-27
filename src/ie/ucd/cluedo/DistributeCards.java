@@ -10,12 +10,12 @@ import java.util.Collections;
  */
 public class DistributeCards {
 	
-	private ArrayList<String> player1 = new ArrayList<String>();
-	private ArrayList<String> player2 = new ArrayList<String>();
-	private ArrayList<String> player3 = new ArrayList<String>();
-	private ArrayList<String> player4 = new ArrayList<String>();
-	private ArrayList<String> player5 = new ArrayList<String>();
-	private ArrayList<String> player6 = new ArrayList<String>();
+	private ArrayList<String> player1Cards = new ArrayList<String>();
+	private ArrayList<String> player2Cards = new ArrayList<String>();
+	private ArrayList<String> player3Cards = new ArrayList<String>();
+	private ArrayList<String> player4Cards = new ArrayList<String>();
+	private ArrayList<String> player5Cards = new ArrayList<String>();
+	private ArrayList<String> player6Cards = new ArrayList<String>();
 	private static ArrayList<String> solution = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
@@ -41,7 +41,7 @@ public class DistributeCards {
 		}
 	};
 	
-	// yet to be implemented, may not be needed
+	//TODO yet to be implemented, may not be needed
 //	public ArrayList<String> allCards(){
 //		return allCards;
 //	}
@@ -60,67 +60,67 @@ public class DistributeCards {
 		Collections.shuffle(remainingCards);
 		if(numPlayers==3) {
 			for(int i=0;i<6;i++) {
-				player1.add(remainingCards.get(i));
-				player2.add(remainingCards.get(i+6));
-				player3.add(remainingCards.get(i+12));
+				player1Cards.add(remainingCards.get(i));
+				player2Cards.add(remainingCards.get(i+6));
+				player3Cards.add(remainingCards.get(i+12));
 			}
 		}
 		if(numPlayers==4) {
 			for(int i=0;i<4;i++) {
-				player1.add(remainingCards.get(i));
-				player2.add(remainingCards.get(i+4));
-				player3.add(remainingCards.get(i+8));
-				player4.add(remainingCards.get(i+12));
+				player1Cards.add(remainingCards.get(i));
+				player2Cards.add(remainingCards.get(i+4));
+				player3Cards.add(remainingCards.get(i+8));
+				player4Cards.add(remainingCards.get(i+12));
 			}
-			player1.add(remainingCards.get(16));
-			player2.add(remainingCards.get(17));
+			player1Cards.add(remainingCards.get(16));
+			player2Cards.add(remainingCards.get(17));
 		}
 		if(numPlayers==5) {
 			for(int i=0;i<3;i++) {
-				player1.add(remainingCards.get(i));
-				player2.add(remainingCards.get(i+3));
-				player3.add(remainingCards.get(i+6));
-				player4.add(remainingCards.get(i+9));
-				player5.add(remainingCards.get(i+12));
+				player1Cards.add(remainingCards.get(i));
+				player2Cards.add(remainingCards.get(i+3));
+				player3Cards.add(remainingCards.get(i+6));
+				player4Cards.add(remainingCards.get(i+9));
+				player5Cards.add(remainingCards.get(i+12));
 			}
-			player1.add(remainingCards.get(15));
-			player2.add(remainingCards.get(16));
-			player3.add(remainingCards.get(17));
+			player1Cards.add(remainingCards.get(15));
+			player2Cards.add(remainingCards.get(16));
+			player3Cards.add(remainingCards.get(17));
 		}
 		if(numPlayers==6) {
 			for(int i=0;i<3;i++) {
-				player1.add(remainingCards.get(i));
-				player2.add(remainingCards.get(i+3));
-				player3.add(remainingCards.get(i+6));
-				player4.add(remainingCards.get(i+9));
-				player5.add(remainingCards.get(i+12));
-				player6.add(remainingCards.get(i+15));
+				player1Cards.add(remainingCards.get(i));
+				player2Cards.add(remainingCards.get(i+3));
+				player3Cards.add(remainingCards.get(i+6));
+				player4Cards.add(remainingCards.get(i+9));
+				player5Cards.add(remainingCards.get(i+12));
+				player6Cards.add(remainingCards.get(i+15));
 			}
 		}
 	}
 	
-	public ArrayList<String> getPlayer1(){
-		return player1;
+	public ArrayList<String> getplayer1Cards(){
+		return player1Cards;
 	}
 	
-	public ArrayList<String> getPlayer2(){
-		return player2;
+	public ArrayList<String> getplayer2Cards(){
+		return player2Cards;
 	}
 	
-	public ArrayList<String> getPlayer3(){
-		return player3;
+	public ArrayList<String> getplayer3Cards(){
+		return player3Cards;
 	}
 	
-	public ArrayList<String> getPlayer4(){
-		return player4;
+	public ArrayList<String> getplayer4Cards(){
+		return player4Cards;
 	}
 	
-	public ArrayList<String> getPlayer5(){
-		return player5;
+	public ArrayList<String> getplayer5Cards(){
+		return player5Cards;
 	}
 	
-	public ArrayList<String> getPlayer6(){
-		return player6;
+	public ArrayList<String> getplayer6Cards(){
+		return player6Cards;
 	}
 	
 	
@@ -141,11 +141,11 @@ public class DistributeCards {
 		int numplayers = 5;
 		d.setCards(numplayers);
 		System.out.println("\nNow displaying distributed cards between "+numplayers+" players: \n");
-		System.out.println("Player1: " + d.getPlayer1());
-		System.out.println("Player2: " + d.getPlayer2());
-		System.out.println("Player3: " + d.getPlayer3());
-		System.out.println("Player4: " + d.getPlayer4());
-		System.out.println("Player5: " + d.getPlayer5());
+		System.out.println("player1Cards: " + d.getplayer1Cards());
+		System.out.println("player2Cards: " + d.getplayer2Cards());
+		System.out.println("player3Cards: " + d.getplayer3Cards());
+		System.out.println("player4Cards: " + d.getplayer4Cards());
+		System.out.println("player5Cards: " + d.getplayer5Cards());
 	}
 	
 }
