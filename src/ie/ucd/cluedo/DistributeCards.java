@@ -10,6 +10,7 @@ import java.util.Collections;
  */
 public class DistributeCards {
 	
+	//TODO Probably a better way to implement some of the replicated code in this class
 	private ArrayList<String> player1Cards = new ArrayList<String>();
 	private ArrayList<String> player2Cards = new ArrayList<String>();
 	private ArrayList<String> player3Cards = new ArrayList<String>();

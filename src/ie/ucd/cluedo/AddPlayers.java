@@ -13,7 +13,7 @@ public class AddPlayers {
 		return players;
 	}
 	
-	public static String[] setPlayers() {
+	public void setPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
 		
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
@@ -30,18 +30,8 @@ public class AddPlayers {
 		
 		numberOfPlayersScanner.close();
 		playersScanner.close();
-		return playerNames;
+	
+		players = playerNames;
 	}
 	
-	public static void main(String[] args) {
-
-		String[] playerList = setPlayers();
-		
-		//temp testcode
-		int i = 1;
-		for(String p : playerList) {
-			System.out.println("Player " + i + ": " + p);
-			i++;
-		}
-	}
 }
