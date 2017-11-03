@@ -80,38 +80,4 @@ public class PlayerSetup {
 		
 	}
 	
-	
-	
-	
-	
-	
-//	public static void main(String[] args){
-//		
-//		PlayerSetup newPlayers = new PlayerSetup();
-//		newPlayers.setPlayers();
-//		String [] players = newPlayers.getPlayers();
-//		
-//		int i = 1; 
-//		for(String p : players ) {
-//			System.out.println("Player " + i + ": " + p);
-//			i++;
-//		}
-//		
-//		Map<String, SuspectCards> playerPawnAssignment = new HashMap<String, SuspectCards>();
-//		for(int j = 0; j < players.length; j++) {
-//			playerPawnAssignment.put(players[j], SuspectCards.values()[j]);
-//		}
-//		
-//		
-//		Set<?> set = playerPawnAssignment.entrySet();
-//		Iterator<?> iter = set.iterator();
-//		
-//		while(iter.hasNext()) {
-//			Map.Entry me = (Map.Entry)iter.next();
-//			System.out.print(me.getKey() + ": ");
-//			System.out.println(me.getValue());
-//		}
-//		
-//	}
-	
 }
