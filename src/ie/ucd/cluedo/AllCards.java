@@ -8,7 +8,7 @@ import java.util.Collections;
  * Distribute cards amongst players
  * @author Darren
  */
-public class DistributeCards {
+public class AllCards {
 	
 	//TODO Probably a better way to implement some of the replicated code in this class
 	private ArrayList<String> player1Cards = new ArrayList<String>();
@@ -20,7 +20,7 @@ public class DistributeCards {
 	private static ArrayList<String> solution = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
-	public DistributeCards() {
+	public AllCards() {
 		solution.add(WeaponCards.random().getWeapon());
 		solution.add(SuspectCards.random().getSuspect());
 		solution.add(RoomCards.random().getRoom());
@@ -127,7 +127,7 @@ public class DistributeCards {
 	
 	// main for testing the methods of this class
 	public static void main(String[] args) {
-		DistributeCards d = new DistributeCards();
+		AllCards d = new AllCards();
 		ArrayList<String> answer = d.answerCards();
 		System.out.print("\nDisplaying the answer cards: \n");
 		for(String a : answer) {
