@@ -34,4 +34,18 @@ public class AddPlayers {
 		players = playerNames;
 	}
 	
+	
+	public static void main(String[] args){
+		AddPlayers newPlayers = new AddPlayers();
+		newPlayers.setPlayers();
+		String [] players = newPlayers.getPlayers();
+		
+		int i = 1; 
+		for(String p : players ) {
+			System.out.println("Player " + i + ": " + p);
+			i++;
+		}
+		
+	}
+	
 }
