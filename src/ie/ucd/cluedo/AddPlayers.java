@@ -1,6 +1,12 @@
 package ie.ucd.cluedo;
 
-import java.util.Scanner; 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import ie.ucd.cluedo.enums.SuspectCards; 
 
 /**
  * Functionality to add the players to the game. Currently implemented in the form of a console scanner/user input.
@@ -19,7 +25,7 @@ public class AddPlayers {
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
 		int num = numberOfPlayersScanner.nextInt();
 		
-		System.out.println("Enter all " + num + " player names here:");
+		System.out.println("Enter all " + num + " player names here: ");
 		String[] playerNames = new String[num];
 
 		Scanner playersScanner = new Scanner(System.in);
@@ -36,6 +42,7 @@ public class AddPlayers {
 	
 	
 	public static void main(String[] args){
+		
 		AddPlayers newPlayers = new AddPlayers();
 		newPlayers.setPlayers();
 		String [] players = newPlayers.getPlayers();
@@ -44,6 +51,20 @@ public class AddPlayers {
 		for(String p : players ) {
 			System.out.println("Player " + i + ": " + p);
 			i++;
+		}
+		
+		Map<String, SuspectCards> playerPawnAssignment = new HashMap<String, SuspectCards>();
+		for(int j = 0; j < players.length; j++) {
+			playerPawnAssignment.put(players[j], SuspectCards.values()[j]);
+		}
+		
+		Set<?> set = playerPawnAssignment.entrySet();
+		Iterator<?> iter = set.iterator();
+		
+		while(iter.hasNext()) {
+			Map.Entry me = (Map.Entry)iter.next();
+			System.out.print(me.getKey() + ": ");
+			System.out.println(me.getValue());
 		}
 		
 	}
