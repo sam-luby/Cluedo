@@ -1,9 +1,11 @@
 package ie.ucd.cluedo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import ie.ucd.cluedo.Player;
 import ie.ucd.cluedo.enums.SuspectCards; 
 
 /**
@@ -12,13 +14,21 @@ import ie.ucd.cluedo.enums.SuspectCards;
  */
 public class PlayerSetup {
 	private String[] players;
+	ArrayList<Player> playerNames;
 	private Map<String, String> pawns;
+	SuspectCards suspects;
+	AllCards cards;
+	
+	public PlayerSetup() {
+		cards = new AllCards();
+		playerNames = new ArrayList<Player>();
+	}
 	
 	public String[] getPlayers() {
 		return players;
 	}
 	
-	public void setPlayers() {
+	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
 		
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
@@ -53,6 +63,21 @@ public class PlayerSetup {
 	
 	public Map<String, String> getPawns() {
 		return pawns;
+	}
+	
+	
+	public ArrayList<Player> setPlayers() {
+		
+		for(int i = 0; i < players.length; i++ ) {
+			//TODO Fix this card assignment (currently null)
+			playerNames.add(new Player(players[i], suspects.random().getSuspect(), cards.getplayer1Cards())); 
+			
+//			System.out.println(p1.getName());
+//			System.out.println(p1.getPawn());
+//			System.out.println(p1.getCards());
+		}
+		return playerNames;
+		
 	}
 	
 	

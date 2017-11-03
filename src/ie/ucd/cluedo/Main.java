@@ -1,9 +1,15 @@
 package ie.ucd.cluedo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import ie.ucd.cluedo.AllCards;
+import ie.ucd.cluedo.PlayerSetup;
+import ie.ucd.cluedo.enums.SuspectCards;
+
+
 
 public class Main {
 	
@@ -11,7 +17,7 @@ public class Main {
 			
 		
 		PlayerSetup setupPlayers = new PlayerSetup();
-		setupPlayers.setPlayers();
+		setupPlayers.addPlayers();
 		String[] names = setupPlayers.getPlayers();
 		
 		setupPlayers.setPawns(names);
@@ -25,6 +31,18 @@ public class Main {
 			System.out.print(me.getKey() + ": ");
 			System.out.println(me.getValue());
 		}
+		
+		SuspectCards suspects;
+		AllCards cards;
+		
+		ArrayList<Player> playerNames = setupPlayers.setPlayers();
+		
+		for(Player p : playerNames) {
+			System.out.println(p.getName());
+			System.out.println(p.getPawn());
+			System.out.println(p.getCards());
+		}
+		
 		
 	}
 }
