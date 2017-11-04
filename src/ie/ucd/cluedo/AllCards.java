@@ -10,15 +10,7 @@ import java.util.Collections;
  */
 public class AllCards {
 	
-	//TODO Probably a better way to implement some of the replicated code in this class
-	//TODO Create arraylist of arrayList
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
-	private ArrayList<String> player1Cards = new ArrayList<String>();
-	private ArrayList<String> player2Cards = new ArrayList<String>();
-	private ArrayList<String> player3Cards = new ArrayList<String>();
-	private ArrayList<String> player4Cards = new ArrayList<String>();
-	private ArrayList<String> player5Cards = new ArrayList<String>();
-	private ArrayList<String> player6Cards = new ArrayList<String>();
 	private static ArrayList<String> solution = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
@@ -43,11 +35,6 @@ public class AllCards {
 			}
 		}
 	};
-	
-	//TODO yet to be implemented, may not be needed
-//	public ArrayList<String> allCards(){
-//		return allCards;
-//	}
 
 	// returns the solution cards to be placed in the middle of the board
 	public ArrayList<String> answerCards() {
@@ -61,78 +48,20 @@ public class AllCards {
 	// yet to be implemented
 	public void setCards(int numPlayers) {
 		Collections.shuffle(remainingCards);
-		if(numPlayers==3) {
-			for(int i=0;i<6;i++) {
-				player1Cards.add(remainingCards.get(i));
-				player2Cards.add(remainingCards.get(i+6));
-				player3Cards.add(remainingCards.get(i+12));
+		int k = numPlayers;
+		for(int i=0;i<numPlayers;i++) {
+			int x = (int) Math.floor(remainingCards.size()/k);
+			playerCards.add(new ArrayList<String>(remainingCards.subList(0, x-1)));
+			for(int j = 0;j<x;j++) {
+				remainingCards.remove(0);
 			}
-		}
-		if(numPlayers==4) {
-			for(int i=0;i<4;i++) {
-				player1Cards.add(remainingCards.get(i));
-				player2Cards.add(remainingCards.get(i+4));
-				player3Cards.add(remainingCards.get(i+8));
-				player4Cards.add(remainingCards.get(i+12));
-			}
-			player1Cards.add(remainingCards.get(16));
-			player2Cards.add(remainingCards.get(17));
-		}
-		if(numPlayers==5) {
-			for(int i=0;i<3;i++) {
-				player1Cards.add(remainingCards.get(i));
-				player2Cards.add(remainingCards.get(i+3));
-				player3Cards.add(remainingCards.get(i+6));
-				player4Cards.add(remainingCards.get(i+9));
-				player5Cards.add(remainingCards.get(i+12));
-			}
-			player1Cards.add(remainingCards.get(15));
-			player2Cards.add(remainingCards.get(16));
-			player3Cards.add(remainingCards.get(17));
-		}
-		if(numPlayers==6) {
-			for(int i=0;i<3;i++) {
-				player1Cards.add(remainingCards.get(i));
-				player2Cards.add(remainingCards.get(i+3));
-				player3Cards.add(remainingCards.get(i+6));
-				player4Cards.add(remainingCards.get(i+9));
-				player5Cards.add(remainingCards.get(i+12));
-				player6Cards.add(remainingCards.get(i+15));
-			}
+			k-=1;
 		}
 	}
 	
-	public ArrayList<String> getplayer1Cards(){
-		return player1Cards;
-	}
-	
-	public ArrayList<String> getplayer2Cards(){
-		return player2Cards;
-	}
-	
-	public ArrayList<String> getplayer3Cards(){
-		return player3Cards;
-	}
-	
-	public ArrayList<String> getplayer4Cards(){
-		return player4Cards;
-	}
-	
-	public ArrayList<String> getplayer5Cards(){
-		return player5Cards;
-	}
-	
-	public ArrayList<String> getplayer6Cards(){
-		return player6Cards;
-	}
+
 	
 	public ArrayList<ArrayList<String>> getPlayerCards(){
-		playerCards.add(player1Cards);
-		playerCards.add(player2Cards);
-		playerCards.add(player3Cards);
-		playerCards.add(player4Cards);
-		playerCards.add(player5Cards);
-		playerCards.add(player6Cards);
 		return playerCards;
 	}
 	
@@ -153,12 +82,11 @@ public class AllCards {
 		int numplayers = 5;
 		d.setCards(numplayers);
 		System.out.println("\nNow displaying distributed cards between "+numplayers+" players: \n");
-		System.out.println("player1Cards: " + d.getplayer1Cards());
-		System.out.println("player2Cards: " + d.getplayer2Cards());
-		System.out.println("player3Cards: " + d.getplayer3Cards());
-		System.out.println("player4Cards: " + d.getplayer4Cards());
-		System.out.println("player5Cards: " + d.getplayer5Cards());
-		System.out.println("playerCards: " + d.getPlayerCards().get(0));
+		
+		for(int i=0;i<numplayers;i++) {
+			System.out.println("playerCards: " + d.getPlayerCards().get(i));
+		}
+		
 	}
 	
 }

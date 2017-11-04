@@ -1,8 +1,9 @@
 package ie.ucd.cluedo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
+//import java.util.HashMap;
+//import java.util.Map;
 import java.util.Scanner;
 
 import ie.ucd.cluedo.Player;
@@ -15,7 +16,7 @@ import ie.ucd.cluedo.enums.SuspectCards;
 public class PlayerSetup {
 	private String[] players;
 	ArrayList<Player> playerNames;
-	private Map<String, String> pawns;
+//	private Map<String, String> pawns;
 	SuspectCards suspects;
 	AllCards cards;
 	
