@@ -10,10 +10,10 @@ public class Player {
 	
 	
 	// TODO might need to change name and pawn to hashmap
-	public Player(String name, String pawn, ArrayList<String> cards) {
+	public Player(String name, String pawn, ArrayList<String> arrayList) {
 		this.name = name;
 		this.pawn = pawn;
-		this.cards = cards;
+		this.cards = arrayList;
 	}
 
 	public ArrayList<String> getCards() {

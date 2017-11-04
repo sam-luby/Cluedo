@@ -32,14 +32,14 @@ public class PlayerSetup {
 		System.out.println("How many players are going to play? [3-6]");
 		
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
-		int num = numberOfPlayersScanner.nextInt();
+		int numPlayers = numberOfPlayersScanner.nextInt();
 		
-		System.out.println("Enter all " + num + " player names here: ");
-		String[] playerNames = new String[num];
+		System.out.println("Enter all " + numPlayers + " player names here: ");
+		String[] playerNames = new String[numPlayers];
 
 		Scanner playersScanner = new Scanner(System.in);
 		
-		for(int i = 0; i < num; i++) {
+		for(int i = 0; i < numPlayers; i++) {
 			playerNames[i] = (playersScanner.next());
 		}
 		
@@ -50,31 +50,27 @@ public class PlayerSetup {
 	}
 	
 	
-	public void setPawns(String[] players) {
-		Map<String, String> playerPawnAssignment = new HashMap<String, String>();
-		
-		for(int j = 0; j < players.length; j++) {
-			playerPawnAssignment.put(players[j], SuspectCards.values()[j].toString());
-		}
-		
-		pawns = playerPawnAssignment;
-	}
-	
-	
-	public Map<String, String> getPawns() {
-		return pawns;
-	}
+//	public void setPawns(String[] players) {
+//		Map<String, String> playerPawnAssignment = new HashMap<String, String>();
+//		
+//		for(int j = 0; j < players.length; j++) {
+//			playerPawnAssignment.put(players[j], SuspectCards.values()[j].toString());
+//		}
+//		
+//		pawns = playerPawnAssignment;
+//	}
+//	
+//	
+//	public Map<String, String> getPawns() {
+//		return pawns;
+//	}
 	
 	
 	public ArrayList<Player> setPlayers() {
-		
+		cards.setCards(players.length);
 		for(int i = 0; i < players.length; i++ ) {
 			//TODO Fix this card assignment (currently null)
-			playerNames.add(new Player(players[i], suspects.random().getSuspect(), cards.getplayer1Cards())); 
-			
-//			System.out.println(p1.getName());
-//			System.out.println(p1.getPawn());
-//			System.out.println(p1.getCards());
+			playerNames.add(new Player(players[i], SuspectCards.random().getSuspect(), cards.getPlayerCards().get(i))); 
 		}
 		return playerNames;
 		

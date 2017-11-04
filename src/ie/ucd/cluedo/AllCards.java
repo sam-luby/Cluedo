@@ -12,6 +12,7 @@ public class AllCards {
 	
 	//TODO Probably a better way to implement some of the replicated code in this class
 	//TODO Create arraylist of arrayList
+	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	private ArrayList<String> player1Cards = new ArrayList<String>();
 	private ArrayList<String> player2Cards = new ArrayList<String>();
 	private ArrayList<String> player3Cards = new ArrayList<String>();
@@ -125,6 +126,15 @@ public class AllCards {
 		return player6Cards;
 	}
 	
+	public ArrayList<ArrayList<String>> getPlayerCards(){
+		playerCards.add(player1Cards);
+		playerCards.add(player2Cards);
+		playerCards.add(player3Cards);
+		playerCards.add(player4Cards);
+		playerCards.add(player5Cards);
+		playerCards.add(player6Cards);
+		return playerCards;
+	}
 	
 	// main for testing the methods of this class
 	public static void main(String[] args) {
@@ -148,6 +158,7 @@ public class AllCards {
 		System.out.println("player3Cards: " + d.getplayer3Cards());
 		System.out.println("player4Cards: " + d.getplayer4Cards());
 		System.out.println("player5Cards: " + d.getplayer5Cards());
+		System.out.println("playerCards: " + d.getPlayerCards().get(0));
 	}
 	
 }
