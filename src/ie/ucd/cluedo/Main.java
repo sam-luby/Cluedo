@@ -1,13 +1,9 @@
 package ie.ucd.cluedo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import ie.ucd.cluedo.AllCards;
+
 import ie.ucd.cluedo.PlayerSetup;
-import ie.ucd.cluedo.enums.SuspectCards;
+
 
 
 

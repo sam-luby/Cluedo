@@ -53,7 +53,7 @@ public class PlayerSetup {
 		cards.setCards(players.length);
 		for(int i = 0; i < players.length; i++ ) {
 			//TODO Fix this card assignment (currently null)
-			playerNames.add(new Player(players[i], SuspectCards.random().getSuspect(), cards.getPlayerCards().get(i))); 
+			playerNames.add(new Player(players[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
 		}
 		return playerNames;
 		
