@@ -16,7 +16,6 @@ import ie.ucd.cluedo.enums.SuspectCards;
 public class PlayerSetup {
 	private String[] players;
 	ArrayList<Player> playerNames;
-//	private Map<String, String> pawns;
 	SuspectCards suspects;
 	AllCards cards;
 	
@@ -49,23 +48,6 @@ public class PlayerSetup {
 	
 		players = playerNames;
 	}
-	
-	
-//	public void setPawns(String[] players) {
-//		Map<String, String> playerPawnAssignment = new HashMap<String, String>();
-//		
-//		for(int j = 0; j < players.length; j++) {
-//			playerPawnAssignment.put(players[j], SuspectCards.values()[j].toString());
-//		}
-//		
-//		pawns = playerPawnAssignment;
-//	}
-//	
-//	
-//	public Map<String, String> getPawns() {
-//		return pawns;
-//	}
-	
 	
 	public ArrayList<Player> setPlayers() {
 		cards.setCards(players.length);

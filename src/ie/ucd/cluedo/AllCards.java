@@ -45,7 +45,6 @@ public class AllCards {
 		return remainingCards;
 	}
 	
-	// yet to be implemented
 	public void setCards(int numPlayers) {
 		ArrayList<String> rc = new ArrayList<String>(remainingCards);
 		Collections.shuffle(rc);
@@ -78,7 +77,7 @@ public class AllCards {
 		for(String r : remaining) {
 			System.out.println(r);
 		}
-		int numplayers = 3;
+		int numplayers = 5;
 		d.setCards(numplayers);
 		System.out.println("\nNow displaying distributed cards between "+numplayers+" players: \n");
 		

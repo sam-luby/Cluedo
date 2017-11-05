@@ -21,6 +21,7 @@ public class Main {
 		String[] names = setupPlayers.getPlayers();
 		ArrayList<Player> players = new ArrayList<Player>();
 		
+		
 //		setupPlayers.setPawns(names);
 //		Map<String, String> playerPawnAssignment = setupPlayers.getPawns();
 //		
@@ -46,8 +47,7 @@ public class Main {
 		
 		players = setupPlayers.setPlayers();
 		for(Player p : players) {
-			System.out.println(p.getName());
-			System.out.println(p.getPawn());
+			System.out.println(p.getName() + " " +  p.getPawn());
 			System.out.println(p.getCards());
 		}
 
