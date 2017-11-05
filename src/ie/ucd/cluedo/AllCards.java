@@ -52,7 +52,8 @@ public class AllCards {
 		int k = numPlayers;
 		for(int i=0;i<numPlayers;i++) {
 			int x = (int) Math.floor(rc.size()/k);
-			playerCards.add(new ArrayList<String>(rc.subList(0, x-1)));
+			System.out.println(x);
+			playerCards.add(new ArrayList<String>(rc.subList(0, x)));
 			for(int j = 0;j<x;j++) {
 				rc.remove(0);
 			}
@@ -80,7 +81,7 @@ public class AllCards {
 		for(String r : remaining) {
 			System.out.println(r);
 		}
-		int numplayers = 5;
+		int numplayers = 3;
 		d.setCards(numplayers);
 		System.out.println("\nNow displaying distributed cards between "+numplayers+" players: \n");
 		
