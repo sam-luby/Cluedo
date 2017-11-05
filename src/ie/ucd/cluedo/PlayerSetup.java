@@ -34,6 +34,11 @@ public class PlayerSetup {
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
 		int numPlayers = numberOfPlayersScanner.nextInt();
 		
+		if(numPlayers < 3) {
+			System.out.println("There must be at least 3 players, enter a number between 3-6: ");
+			numPlayers = numberOfPlayersScanner.nextInt();
+		}
+		
 		System.out.println("Enter all " + numPlayers + " player names here: ");
 		String[] playerNames = new String[numPlayers];
 
@@ -49,14 +54,13 @@ public class PlayerSetup {
 		players = playerNames;
 	}
 	
-	public ArrayList<Player> setPlayers() {
+	public ArrayList<Player> setupPlayers() {
 		cards.setCards(players.length);
 		for(int i = 0; i < players.length; i++ ) {
 			//TODO Fix this card assignment (currently null)
 			playerNames.add(new Player(players[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
 		}
 		return playerNames;
-		
 	}
 	
 }

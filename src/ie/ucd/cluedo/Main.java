@@ -16,7 +16,7 @@ public class Main {
 		ArrayList<Player> players = new ArrayList<Player>();
 
 		
-		players = setupPlayers.setPlayers();
+		players = setupPlayers.setupPlayers();
 		for(Player p : players) {
 			System.out.println("Player: " + p.getName() + ", Pawn: " +  p.getPawn());
 			System.out.println("Cards: " + p.getCards());
