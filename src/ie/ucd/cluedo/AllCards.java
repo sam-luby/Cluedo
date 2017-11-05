@@ -52,7 +52,6 @@ public class AllCards {
 		int k = numPlayers;
 		for(int i=0;i<numPlayers;i++) {
 			int x = (int) Math.floor(rc.size()/k);
-			System.out.println(x);
 			playerCards.add(new ArrayList<String>(rc.subList(0, x)));
 			for(int j = 0;j<x;j++) {
 				rc.remove(0);
@@ -60,8 +59,6 @@ public class AllCards {
 			k-=1;
 		}
 	}
-	
-
 	
 	public ArrayList<ArrayList<String>> getPlayerCards(){
 		return playerCards;
