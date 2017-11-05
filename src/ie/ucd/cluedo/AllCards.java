@@ -47,13 +47,14 @@ public class AllCards {
 	
 	// yet to be implemented
 	public void setCards(int numPlayers) {
-		Collections.shuffle(remainingCards);
+		ArrayList<String> rc = new ArrayList<String>(remainingCards);
+		Collections.shuffle(rc);
 		int k = numPlayers;
 		for(int i=0;i<numPlayers;i++) {
-			int x = (int) Math.floor(remainingCards.size()/k);
-			playerCards.add(new ArrayList<String>(remainingCards.subList(0, x-1)));
+			int x = (int) Math.floor(rc.size()/k);
+			playerCards.add(new ArrayList<String>(rc.subList(0, x-1)));
 			for(int j = 0;j<x;j++) {
-				remainingCards.remove(0);
+				rc.remove(0);
 			}
 			k-=1;
 		}
