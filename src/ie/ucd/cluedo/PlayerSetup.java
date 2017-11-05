@@ -55,12 +55,25 @@ public class PlayerSetup {
 	}
 	
 	public ArrayList<Player> setupPlayers() {
-		cards.setCards(players.length);
+		cards.distributeCards(players.length);
 		for(int i = 0; i < players.length; i++ ) {
 			//TODO Fix this card assignment (currently null)
 			playerNames.add(new Player(players[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
 		}
 		return playerNames;
+	}
+	
+	//Temporary main method to test PlayerSetup class.
+	public static void main(String[] args) {
+		PlayerSetup setupPlayers = new PlayerSetup();
+		setupPlayers.addPlayers();
+		ArrayList<Player> players = new ArrayList<Player>();
+
+		players = setupPlayers.setupPlayers();
+		for(Player p : players) {
+			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
+			System.out.println("Cards: " + p.getCards());
+		}
 	}
 	
 }

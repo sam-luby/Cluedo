@@ -3,6 +3,7 @@ package ie.ucd.cluedo;
 import ie.ucd.cluedo.enums.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 /**
  * Distribute cards amongst players
@@ -11,26 +12,26 @@ import java.util.Collections;
 public class AllCards {
 	
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
-	private static ArrayList<String> solution = new ArrayList<String>();
+	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
 	public AllCards() {
-		solution.add(WeaponCards.random().getWeapon());
-		solution.add(SuspectCards.random().getSuspect());
-		solution.add(RoomCards.random().getRoom());
+		solutionCards.add(WeaponCards.random().getWeapon());
+		solutionCards.add(SuspectCards.random().getSuspect());
+		solutionCards.add(RoomCards.random().getRoom());
 		
 		for(WeaponCards w : WeaponCards.values()) {
-			if(!solution.contains(w.getWeapon())) {
+			if(!solutionCards.contains(w.getWeapon())) {
 				remainingCards.add(w.getWeapon());
 			}
 		}
 		for(SuspectCards s : SuspectCards.values()) {
-			if(!solution.contains(s.getSuspect())) {
+			if(!solutionCards.contains(s.getSuspect())) {
 				remainingCards.add(s.getSuspect());
 			}
 		}
 		for(RoomCards r : RoomCards.values()) {
-			if(!solution.contains(r.getRoom())) {
+			if(!solutionCards.contains(r.getRoom())) {
 				remainingCards.add(r.getRoom());
 			}
 		}
@@ -38,21 +39,22 @@ public class AllCards {
 
 	// returns the solution cards to be placed in the middle of the board
 	public ArrayList<String> answerCards() {
-		return solution;
+		return solutionCards;
 	}
 	
 	public ArrayList<String> remainingCards(){
 		return remainingCards;
 	}
 	
-	public void setCards(int numPlayers) {
+	//Distributed the cards among the players.
+	public void distributeCards(int numPlayers) {
 		ArrayList<String> rc = new ArrayList<String>(remainingCards);
 		Collections.shuffle(rc);
 		int k = numPlayers;
-		for(int i=0;i<numPlayers;i++) {
+		for(int i=0; i<numPlayers; i++) {
 			int x = (int) Math.floor(rc.size()/k);
 			playerCards.add(new ArrayList<String>(rc.subList(0, x)));
-			for(int j = 0;j<x;j++) {
+			for(int j=0; j<x; j++) {
 				rc.remove(0);
 			}
 			k-=1;
@@ -63,26 +65,32 @@ public class AllCards {
 		return playerCards;
 	}
 	
-	// main for testing the methods of this class
+	//Temporary main method for testing AllCards class
 	public static void main(String[] args) {
-		AllCards d = new AllCards();
-		ArrayList<String> answer = d.answerCards();
+		
+		System.out.println("How many players are going to play? [3-6]");
+		Scanner numberOfPlayersScanner = new Scanner(System.in);
+		int numPlayers = numberOfPlayersScanner.nextInt();
+		numberOfPlayersScanner.close();
+		
+		AllCards cards = new AllCards();
+		ArrayList<String> answerCards = cards.answerCards();
 		System.out.print("\nDisplaying the answer cards: \n");
-		for(String a : answer) {
+		for(String a : answerCards) {
 			System.out.println(a);
 		}
 		
 		System.out.print("\nNow displaying the remaining cards: \n");
-		ArrayList<String> remaining = d.remainingCards();
-		for(String r : remaining) {
+		ArrayList<String> remainingCards = cards.remainingCards();
+		for(String r : remainingCards) {
 			System.out.println(r);
 		}
-		int numplayers = 5;
-		d.setCards(numplayers);
-		System.out.println("\nNow displaying distributed cards between "+numplayers+" players: \n");
 		
-		for(int i=0;i<numplayers;i++) {
-			System.out.println("playerCards: " + d.getPlayerCards().get(i));
+		cards.distributeCards(numPlayers);
+		System.out.println("\nNow displaying distributed cards between "+numPlayers+" players: \n");
+		
+		for(int i=0;i<numPlayers;i++) {
+			System.out.println("Player " + (i+1) + " cards: "  + cards.getPlayerCards().get(i));
 		}
 		
 	}
