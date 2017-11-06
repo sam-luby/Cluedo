@@ -5,7 +5,8 @@ Implementation of card classes,
 Functionality to add players,
 Functionality to assign pawns (suspect) to each player,
 Functionality to randomly pick the answer cards (susepect, room, weapon),
-Functionality to distribute the remaining cards randomly amongst the players.
+Functionality to distribute the remaining cards randomly amongst the players,
+Notebook initial implemenatation.
 
 Release 2 - 21 Nov
 Game board initialisation,
@@ -15,7 +16,7 @@ Release 3 - 5 Dec
 Game turns functionality,
 Accusations, 
 Hypothesis,
-Notebook.
+Update notebook to include hypothesis etc.
 
 Final sprint before 21 Dec release
 GUI implementation hopefully,
