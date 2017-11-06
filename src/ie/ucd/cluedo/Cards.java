@@ -11,10 +11,12 @@ import java.util.Scanner;
  */
 public class Cards {
 	
+	// playerCards is an arraylist of string arraylists which consist of each player's cards
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
+	// Constructor calculates the solution cards and the remaining cards 
 	public Cards() {
 		solutionCards.add(WeaponCards.random().getWeapon());
 		solutionCards.add(SuspectCards.random().getSuspect());
@@ -61,7 +63,7 @@ public class Cards {
 		return remainingCards;
 	}
 	
-	//Distributed the cards among the players.
+	// Distributes the cards among the players by storing each arraylist in playerCards arraylist
 	public void distributeCards(int numPlayers) {
 		ArrayList<String> rc = new ArrayList<String>(remainingCards);
 		Collections.shuffle(rc);
