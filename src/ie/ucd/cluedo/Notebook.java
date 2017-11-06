@@ -13,31 +13,35 @@ public class Notebook {
 	private String player;
 	private String pawn;
 	private ArrayList<String> allCards;
+	Cards cards = new Cards();
 	
 	public Notebook(Player p) throws FileNotFoundException {
 		this.playerCards = p.getCards();
 		this.player = p.getName();
 		this.pawn  = p.getPawn();
-		Cards cards = new Cards();
 		allCards = cards.getAllCards();
 		makeNoteBook(playerCards);
 	}
 	
-	//Creates a new notebook for a player and shows which cards they have
+	//TODO Change this to a GUI implementation (JFrame or similar)
+	/**
+	 * Creates a new notebook for a player and shows which cards they have 
+	 * @param cards (the randomly assigned cards the player was assigned)
+	 */
 	public void makeNoteBook(ArrayList<String> cards) throws FileNotFoundException {
-		PrintWriter playerNotebook = new PrintWriter(player + "'s notebook.txt");
-		playerNotebook.println(player + " " + pawn);
+		PrintWriter playerNotebook = new PrintWriter(player + "'s notebook.txt");  		//Creates a new notebook text file for each player
+		playerNotebook.println(player + " " + pawn);								 
 		playerNotebook.println();
 		for(String s : allCards) {
 			int i = 0;
 			for(String c : cards) {
-				if(!c.equalsIgnoreCase(s)) {
+				if(!c.equalsIgnoreCase(s)) {											
 					i++;
 					if(i == cards.size()) {
-						playerNotebook.println(s);
+						playerNotebook.println(s);										//If player doesn't have this card, print as normal
 					}
 				} else if(c.equalsIgnoreCase(s)) {
-					playerNotebook.println(s + " ✓");
+					playerNotebook.println(s + " ✓");									//If player does have this card, add a checkmark
 				} 
 			}
 		}
