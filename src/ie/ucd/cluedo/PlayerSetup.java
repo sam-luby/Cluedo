@@ -17,10 +17,10 @@ public class PlayerSetup {
 	private String[] players;
 	ArrayList<Player> playerNames;
 	SuspectCards suspects;
-	AllCards cards;
+	Cards cards;
 	
 	public PlayerSetup() {
-		cards = new AllCards();
+		cards = new Cards();
 		playerNames = new ArrayList<Player>();
 	}
 	

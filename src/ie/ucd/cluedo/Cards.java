@@ -9,13 +9,13 @@ import java.util.Scanner;
  * Distribute cards amongst players
  * @author Darren
  */
-public class AllCards {
+public class Cards {
 	
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
-	public AllCards() {
+	public Cards() {
 		solutionCards.add(WeaponCards.random().getWeapon());
 		solutionCards.add(SuspectCards.random().getSuspect());
 		solutionCards.add(RoomCards.random().getRoom());
@@ -37,6 +37,21 @@ public class AllCards {
 		}
 	};
 
+	public ArrayList<String> getAllCards(){
+		ArrayList<String> allCards = new ArrayList<String>();
+		
+		for(WeaponCards w : WeaponCards.values()) {
+			allCards.add(w.getWeapon());
+		}
+		for(SuspectCards s : SuspectCards.values()) {
+			allCards.add(s.getSuspect());
+		}
+		for(RoomCards r : RoomCards.values()) {
+			allCards.add(r.getRoom());
+		}
+		return allCards;
+	}
+	
 	// returns the solution cards to be placed in the middle of the board
 	public ArrayList<String> getAnswerCards() {
 		return solutionCards;
