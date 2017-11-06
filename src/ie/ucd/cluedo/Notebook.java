@@ -3,20 +3,18 @@ package ie.ucd.cluedo;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 /**
  * Notebook class for an individual player notebook that contains the known non-answer cards
  * @author Sam
  */
-
 public class Notebook {
 	private ArrayList<String> playerCards;
 	private String player;
 	private String pawn;
 	private ArrayList<String> allCards;
 	
-	
 	public Notebook(Player p) throws FileNotFoundException {
-		
 		this.playerCards = p.getCards();
 		this.player = p.getName();
 		this.pawn  = p.getPawn();
@@ -38,10 +36,8 @@ public class Notebook {
 					if(i == cards.size()) {
 						playerNotebook.println(s);
 					}
-				} 
-				else if(c.equalsIgnoreCase(s)) {
+				} else if(c.equalsIgnoreCase(s)) {
 					playerNotebook.println(s + " ✓");
-					System.out.println(c);
 				} 
 			}
 		}

@@ -1,11 +1,7 @@
 package ie.ucd.cluedo;
 
 import java.util.ArrayList;
-
-//import java.util.HashMap;
-//import java.util.Map;
 import java.util.Scanner;
-
 import ie.ucd.cluedo.Player;
 import ie.ucd.cluedo.enums.SuspectCards; 
 
@@ -30,11 +26,14 @@ public class PlayerSetup {
 	
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
-		
 		Scanner numberOfPlayersScanner = new Scanner(System.in);
-		int numPlayers = numberOfPlayersScanner.nextInt();
+		while(!numberOfPlayersScanner.hasNextInt()) {
+			System.out.println("Please enter a number between 3-6:");
+			numberOfPlayersScanner.next();
+		}
 		
-		if(numPlayers < 3) {
+		int numPlayers = numberOfPlayersScanner.nextInt();
+		while(numPlayers < 3) {
 			System.out.println("There must be at least 3 players, enter a number between 3-6: ");
 			numPlayers = numberOfPlayersScanner.nextInt();
 		}
@@ -43,14 +42,13 @@ public class PlayerSetup {
 		String[] playerNames = new String[numPlayers];
 
 		Scanner playersScanner = new Scanner(System.in);
-		
 		for(int i = 0; i < numPlayers; i++) {
 			playerNames[i] = (playersScanner.next());
 		}
 		
 		numberOfPlayersScanner.close();
 		playersScanner.close();
-	
+		
 		players = playerNames;
 	}
 	

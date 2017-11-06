@@ -2,7 +2,6 @@ package ie.ucd.cluedo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -14,7 +13,6 @@ public class Main {
 		for(Player p : players) {
 			Notebook nb = new Notebook(p);
 		}
-		
 		
 		
 //		Below is temporary test code & will be removed soon.
