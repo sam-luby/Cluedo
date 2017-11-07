@@ -20,6 +20,7 @@ public class PlayerSetup {
 	public PlayerSetup() {
 		cards = new Cards();
 		playerNames = new ArrayList<Player>();
+		addPlayers();
 	}
 	
 	public String[] getPlayers() {

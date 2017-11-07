@@ -2,6 +2,7 @@ package ie.ucd.cluedo;
 
 /*
  * Main class, run this to set up the game. 
+ * @author Sam & Darren
  */
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ public class Main {
 		
 //		Add & setup players
 		PlayerSetup setup = new PlayerSetup();
-		setup.addPlayers();
 		ArrayList<Player> players = setup.setupPlayers();
 		
 //      Create a customised notebook for each player		

@@ -23,7 +23,7 @@ public class Notebook {
 		makeNoteBook(playerCards);
 	}
 	
-	//TODO Change this to a GUI implementation (JFrame or similar)
+	//TODO Change this to a GUI implementation
 	/**
 	 * Creates a new notebook for a player and shows which cards they have 
 	 * @param cards (the randomly assigned cards the player was assigned)
