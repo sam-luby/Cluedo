@@ -5,27 +5,19 @@ package ie.ucd.cluedo;
  * @author Darren
  */
 public class Dice {
-
-	private int faceValue;
-
-	public void roll() {
-		faceValue = 1 + (int) (Math.random() * 6.0);
+	
+	//Returns a random integer between 1-12 to simulate two dice being thrown.
+	public int roll() {
+		return 1 + (int) (Math.random() * 12.0);
 	}
-
-	public int value() {
-		return faceValue;
-	}
-
-	public Dice() {
-		roll();
-	}
+	
 	
 	// Main method to test the above Dice class code
 	public static void main(String[] args) {
 		Dice diceys = new Dice();
-		System.out.println(diceys.value());
-		diceys.roll();
-		System.out.println(diceys.value());
+		for(int i = 0; i < 10; i++) {
+			System.out.println(diceys.roll());
+		}
 	}
 
 }

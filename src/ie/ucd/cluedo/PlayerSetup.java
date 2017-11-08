@@ -71,7 +71,6 @@ public class PlayerSetup {
 	//Temporary main method to test PlayerSetup class.
 //	public static void main(String[] args) {
 //		PlayerSetup setupPlayers = new PlayerSetup();
-//		setupPlayers.addPlayers();
 //		ArrayList<Player> players = new ArrayList<Player>();
 //
 //		players = setupPlayers.setupPlayers();
