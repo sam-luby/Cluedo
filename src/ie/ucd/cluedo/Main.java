@@ -14,7 +14,7 @@ public class Main {
 		PlayerSetup setup = new PlayerSetup();
 		ArrayList<Player> players = setup.setupPlayers();
 		
-//      Create a customised notebook for each player		
+//      Create a customized notebook for each player		
 		for(Player p : players) {
 			Notebook nb = new Notebook(p);
 		}
