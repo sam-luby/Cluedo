@@ -3,7 +3,9 @@ package ie.ucd.cluedo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class CluedoBoard {
 	char[][] inputBoard = new char[boardWidth][boardHeight];
 	char[][] outputBoard = new char[boardWidth][boardHeight];
 
-	File boardTextFile = new File("board.txt");
+	File boardTextFile = new File("boardNew.txt");
 
 	public CluedoBoard() throws FileNotFoundException {
 		Scanner scanner = new Scanner(boardTextFile);
@@ -28,37 +30,10 @@ public class CluedoBoard {
 		scanner.close();
 	}
 
-	public void makeBoardNice() {
-		outputBoard = inputBoard;
-		HashMap<Integer, Integer> locations = new HashMap<Integer, Integer>();
-
-		for (int i = 1; i < boardWidth; i++) {
-			for (int j = 1; j < boardHeight; j++) {
-				// above
-				if ((((outputBoard[i][j] != outputBoard[i - 1][j]   && outputBoard[i-1][j] != '-') || outputBoard[i][j] != outputBoard[i + 1][j]))
-						|| (i == 0) || (i == boardHeight)) {
-					outputBoard[i][j] = '-';
-//					locations.put(i, j);
-				}
-			}
-		}
-		
-//		 /* Display content using Iterator*/
-//	      Set set = locations.entrySet();
-//	      Iterator iterator = set.iterator();
-//	      while(iterator.hasNext()) {
-//	         Map.Entry mentry = (Map.Entry)iterator.next();
-//	         System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-//	         System.out.println(mentry.getValue());
-//	      }
-
-
-	}
-
 	public void printBoard() {
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < outputBoard[i].length; j++) {
-				System.out.print(outputBoard[i][j]);
+				System.out.print(inputBoard[i][j]);
 			}
 			System.out.println();
 		}
@@ -66,7 +41,6 @@ public class CluedoBoard {
 
 	public static void main(String[] args) throws IOException {
 		CluedoBoard myBoard = new CluedoBoard();
-		myBoard.makeBoardNice();
 		myBoard.printBoard();
 	}
 
