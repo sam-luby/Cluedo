@@ -14,12 +14,9 @@ import java.util.Set;
 
 public class CluedoBoard {
 
-	// Board size is 26 x 27
 	final int boardWidth = 24;
 	final int boardHeight = 24;
 	char[][] inputBoard = new char[boardWidth][boardHeight];
-	char[][] outputBoard = new char[boardWidth][boardHeight];
-
 	File boardTextFile = new File("boardNew.txt");
 
 	public CluedoBoard() throws FileNotFoundException {
@@ -30,9 +27,9 @@ public class CluedoBoard {
 		scanner.close();
 	}
 
-	public void printBoard() {
+	private void printBoard() {
 		for (int i = 0; i < boardWidth; i++) {
-			for (int j = 0; j < outputBoard[i].length; j++) {
+			for (int j = 0; j < inputBoard[i].length; j++) {
 				System.out.print(inputBoard[i][j]);
 			}
 			System.out.println();
