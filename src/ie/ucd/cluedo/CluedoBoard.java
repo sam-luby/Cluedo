@@ -14,12 +14,24 @@ import java.util.Set;
 
 public class CluedoBoard {
 
-	final int boardWidth = 24;
-	final int boardHeight = 24;
-	char[][] inputBoard = new char[boardWidth][boardHeight];
+	private int boardWidth;
+	private int boardHeight;
+	private char[][] inputBoard;
 	File boardTextFile = new File("boardNew.txt");
 
 	public CluedoBoard() throws FileNotFoundException {
+		Scanner sc = new Scanner(boardTextFile);
+		boardWidth = sc.nextLine().length()-1;
+		Scanner scan = new Scanner(boardTextFile);
+		while(scan.hasNextLine()) {
+			boardHeight++;
+			scan.nextLine();
+		}
+		
+//		System.out.println(boardHeight);
+//		System.out.println(boardWidth);
+		
+		inputBoard = new char[boardWidth][boardHeight];
 		Scanner scanner = new Scanner(boardTextFile);
 		for (int row = 0; scanner.hasNextLine() && row < boardWidth; row++) {
 			inputBoard[row] = scanner.nextLine().toCharArray();
