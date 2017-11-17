@@ -4,15 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-
-import ie.ucd.cluedo.enums.SuspectCards;
 
 public class CluedoBoard {
 
@@ -24,16 +16,13 @@ public class CluedoBoard {
 
 	public CluedoBoard() throws FileNotFoundException {
 		Scanner sc = new Scanner(boardTextFile);
-		boardWidth = sc.nextLine().length()-1;
+		boardWidth = sc.nextLine().length() - 1;
 		Scanner scan = new Scanner(boardTextFile);
-		while(scan.hasNextLine()) {
+		while (scan.hasNextLine()) {
 			boardHeight++;
 			scan.nextLine();
 		}
-		
-//		System.out.println(boardHeight);
-//		System.out.println(boardWidth);
-		
+
 		inputBoard = new char[boardWidth][boardHeight];
 		initialiseBoard = new char[boardWidth][boardHeight];
 		Scanner scanner = new Scanner(boardTextFile);
@@ -42,20 +31,19 @@ public class CluedoBoard {
 		}
 		scanner.close();
 	}
-	
+
 	private void initialiseBoard(int numPlayers, String[] names) {
 		int x = 0;
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < boardHeight; j++) {
-				if(numPlayers != 0 && inputBoard[i][j] == 'S') {
+				if (numPlayers != 0 && inputBoard[i][j] == 'S') {
 					initialiseBoard[i][j] = Character.toUpperCase(names[x].charAt(0));
 					numPlayers--;
 					x++;
-				}	
-				else if(numPlayers == 0 && inputBoard[i][j] == 'S') {
+				} else if (numPlayers == 0 && (inputBoard[i][j] == 'S'
+						&& (i == 0 || i == boardWidth - 1 || j == 0 || j == boardHeight - 1))) {
 					initialiseBoard[i][j] = ' ';
-				}
-				else {
+				} else {
 					initialiseBoard[i][j] = inputBoard[i][j];
 				}
 			}
@@ -65,7 +53,7 @@ public class CluedoBoard {
 				System.out.print(initialiseBoard[i][j]);
 			}
 			System.out.println();
-		}		
+		}
 	}
 
 	private void printBoard() {
@@ -84,8 +72,8 @@ public class CluedoBoard {
 		
 		CluedoBoard myBoard = new CluedoBoard();
 		myBoard.initialiseBoard(players.size(), setupPlayers.getPlayers());
-		System.out.println();
-		myBoard.printBoard();
+//		 System.out.println();
+//		 myBoard.printBoard();
 	}
 
 }
