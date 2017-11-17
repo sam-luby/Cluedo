@@ -17,13 +17,13 @@ public class CluedoBoard {
 	public CluedoBoard() throws FileNotFoundException {
 		Scanner sc = new Scanner(boardTextFile);
 		boardWidth = sc.nextLine().length() - 1;
-		sc.close();
+		
 		Scanner scan = new Scanner(boardTextFile);
 		while (scan.hasNextLine()) {
 			boardHeight++;
 			scan.nextLine();
 		}
-		scan.close();
+	
 
 		inputBoard = new char[boardWidth][boardHeight];
 		board = new char[boardWidth][boardHeight];
@@ -31,6 +31,8 @@ public class CluedoBoard {
 		for (int row = 0; scanner.hasNextLine() && row < boardWidth; row++) {
 			inputBoard[row] = scanner.nextLine().toCharArray();
 		}
+		sc.close();
+		scan.close();
 		scanner.close();
 	}
 
@@ -41,8 +43,12 @@ public class CluedoBoard {
 			for (int j = 0; j < boardHeight; j++) {
 				if (numPlayers != 0 && inputBoard[i][j] == 'S') {
 					board[i][j] = Character.toUpperCase(players.get(x).getName().charAt(0));
-					System.out.println(i + " " + j);
 					players.get(x).setLocation(i, j);
+					
+					//Test
+					System.out.println(i + " " + j);
+					
+					//Test
 					System.out.println(Arrays.toString(players.get(x).getLocation()));
 					numPlayers--;
 					x++;
@@ -65,13 +71,46 @@ public class CluedoBoard {
 		}
 	}
 	
+	private void movePlayer(Player p) {
+		int[] location = p.getLocation();
+		System.out.println(location[0] +  " " + location[1]);
+		
+		PlayerTurn turn = new PlayerTurn(p, location);
+		int moves = turn.getMoves();
+		System.out.println("MOVES: \n" + moves);
+		Scanner newScan = new Scanner(System.in);
+		
+		while(moves > 0) {
+			String move = null;
+			System.out.println("Give a direction [W,A,S,D]:");
+			move = newScan.nextLine();
+			
+			if(move.equalsIgnoreCase("S")) {
+				//TODO Fix bug here which is erasing the board
+				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+				p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
+				
+				System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
+				
+				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+			}
+			turn.decrememntMoves();	
+			moves = turn.getMoves();
+		}
+	}
+	
+	
+	
+	//Temporary code to test CluedoBoard class
 	public static void main(String[] args) throws IOException {
 		PlayerSetup setup = new PlayerSetup();
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 		CluedoBoard myBoard = new CluedoBoard();
 		myBoard.initialiseBoard(players);
+		myBoard.printBoard();
 		
+		myBoard.movePlayer(players.get(0));
 		myBoard.printBoard();
 	}
 

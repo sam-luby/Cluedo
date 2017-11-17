@@ -12,7 +12,6 @@ public class Player {
 	private String name;
 	private String pawn;
 	private int[] location;
-//	private char[][] location;
 	
 	public Player(String name, String pawn, ArrayList<String> arrayList) {
 		this.name = name;

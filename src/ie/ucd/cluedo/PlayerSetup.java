@@ -1,5 +1,8 @@
 package ie.ucd.cluedo;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import ie.ucd.cluedo.Player;
@@ -35,28 +38,26 @@ public class PlayerSetup {
 //	Adds a number of players via user input in the console
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
-		Scanner numberOfPlayersScanner = new Scanner(System.in);
-		while(!numberOfPlayersScanner.hasNextInt()) {        					//Keep asking for a number
+		Scanner scanner = new Scanner(System.in);
+		while(!scanner.hasNextInt()) {        					//Keep asking for a number
 			System.out.println("Please enter a number between 3-6:");
-			numberOfPlayersScanner.next();
+			scanner.next();
 		}
 		
-		int numPlayers = numberOfPlayersScanner.nextInt();
+		int numPlayers = scanner.nextInt();
 		while(numPlayers < 3) {													//Simple error checking for number of players
 			System.out.println("There must be at least 3 players, enter a number between 3-6: ");
-			numPlayers = numberOfPlayersScanner.nextInt();
+			numPlayers = scanner.nextInt();
 		}
 		
 		System.out.println("Enter all " + numPlayers + " player names here: ");
 		String[] players = new String[numPlayers];
 
-		Scanner playersScanner = new Scanner(System.in);
 		for(int i = 0; i < numPlayers; i++) {									//Add all player names to an array
-			players[i] = (playersScanner.next());
+			players[i] = (scanner.next());
 		}
 		
-		numberOfPlayersScanner.close();											//Close input scanners
-		playersScanner.close();
+//		scanner.close();											//Close input scanner
 		
 		playerNames = players;
 	}	
@@ -72,15 +73,15 @@ public class PlayerSetup {
 	
 	
 	//Temporary main method to test PlayerSetup class.
-//	public static void main(String[] args) {
-//		PlayerSetup setupPlayers = new PlayerSetup();
-//		ArrayList<Player> players = new ArrayList<Player>();
-//
-//		players = setupPlayers.setupPlayers();
-//		for(Player p : players) {
-//			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
-//			System.out.println("Cards: " + p.getCards());
-//		}
-//	}
+	public static void main(String[] args) {
+		PlayerSetup setup = new PlayerSetup();
+		setup.setupPlayers();
+		ArrayList<Player> players = setup.getPlayers();
+		
+		for(Player p : players) {
+			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
+			System.out.println("Cards: " + p.getCards());
+		}
+	}
 	
 }

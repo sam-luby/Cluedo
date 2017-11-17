@@ -3,7 +3,6 @@ package ie.ucd.cluedo;
 import ie.ucd.cluedo.enums.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 /**
  * Distribute cards amongst players
