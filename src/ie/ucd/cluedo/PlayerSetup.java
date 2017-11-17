@@ -11,19 +11,23 @@ import ie.ucd.cluedo.enums.SuspectCards;
  * @author Sam
  */
 public class PlayerSetup {
-	private String[] players;
-	ArrayList<Player> playerNames;
+	private String[] playerNames;
+	ArrayList<Player> players;
 	SuspectCards suspects;
 	Cards cards;
 	
 //	When we create a new PlayerSetup object, we create a new list of cards and an array list of players.
 	public PlayerSetup() {
 		cards = new Cards();
-		playerNames = new ArrayList<Player>();
+		players = new ArrayList<Player>();
 		addPlayers();
 	}
 	
-	public String[] getPlayers() {
+	public String[] getPlayerNames() {
+		return playerNames;
+	}
+	
+	public ArrayList<Player> getPlayers() {
 		return players;
 	}
 	
@@ -44,27 +48,26 @@ public class PlayerSetup {
 		}
 		
 		System.out.println("Enter all " + numPlayers + " player names here: ");
-		String[] playerNames = new String[numPlayers];
+		String[] players = new String[numPlayers];
 
 		Scanner playersScanner = new Scanner(System.in);
 		for(int i = 0; i < numPlayers; i++) {									//Add all player names to an array
-			playerNames[i] = (playersScanner.next());
+			players[i] = (playersScanner.next());
 		}
 		
 		numberOfPlayersScanner.close();											//Close input scanners
 		playersScanner.close();
 		
-		players = playerNames;
+		playerNames = players;
 	}	
 	
 //	Randomly assigns each player with cards, gives each player a pawn card name.
-	public ArrayList<Player> setupPlayers() {
-		cards.distributeCards(players.length);
-		for(int i = 0; i < players.length; i++ ) {
+	public void setupPlayers() {
+		cards.distributeCards(playerNames.length);
+		for(int i = 0; i < playerNames.length; i++ ) {
 			//TODO Maybe change this to a random pawn instead
-			playerNames.add(new Player(players[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
+			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
 		}
-		return playerNames;
 	}
 	
 	
