@@ -86,7 +86,6 @@ public class CluedoBoard {
 			System.out.println("Give a direction [W,A,S,D]:");
 			move = newScan.nextLine();
 			
-			
 			switch(move) {
 				case "S" :
 					//TODO Fix this bug
@@ -125,7 +124,6 @@ public class CluedoBoard {
 			turn.decrememntMoves();	
 			moves = turn.getMoves();
 		}
-		newScan.close();
 		System.out.println("TURN OVER\n\n");
 	}
 	
