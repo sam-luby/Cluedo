@@ -21,12 +21,22 @@ public class Main {
 			Notebook nb = new Notebook(p);
 		}
 		
-		
 //		Below is temporary test code & will be removed soon.
 		for(Player p : players) {
 			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
 			System.out.println("Cards: " + p.getCards());
 		}
+		
+//		Board initialisation
+		CluedoBoard myBoard = new CluedoBoard();
+		myBoard.initialiseBoard(players);
+		myBoard.printBoard();
+
+//		Give each player a turn
+		for(Player p : players) {
+			myBoard.movePlayer(p);
+		}
+		
 		System.exit(0);
 	}
 }

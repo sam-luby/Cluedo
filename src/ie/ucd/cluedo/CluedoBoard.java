@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Read in game board file, handles movement of players, printing board to console.
+ * @author Sam & Darren
+ */
 public class CluedoBoard {
 	private int boardWidth;
 	private int boardHeight;
@@ -16,14 +20,13 @@ public class CluedoBoard {
 
 	public CluedoBoard() throws FileNotFoundException {
 		Scanner sc = new Scanner(boardTextFile);
-		boardWidth = sc.nextLine().length() - 1;
+		boardWidth = sc.nextLine().length();
 		
 		Scanner scan = new Scanner(boardTextFile);
 		while (scan.hasNextLine()) {
 			boardHeight++;
 			scan.nextLine();
 		}
-	
 
 		inputBoard = new char[boardWidth][boardHeight];
 		board = new char[boardWidth][boardHeight];
@@ -36,7 +39,7 @@ public class CluedoBoard {
 		scanner.close();
 	}
 
-	private void initialiseBoard(ArrayList<Player> players) {
+	void initialiseBoard(ArrayList<Player> players) {
 		int x = 0;
 		int numPlayers = players.size();
 		for (int i = 0; i < boardWidth; i++) {
@@ -59,31 +62,34 @@ public class CluedoBoard {
 		}
 	}
 
-	private void printBoard() {
+	void printBoard() {
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < boardHeight; j++) {
 				System.out.print(board[i][j]);
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 	
-	private void movePlayer(Player p) {
+	void movePlayer(Player p) {
 		int[] location = p.getLocation();
-		System.out.println(location[0] +  " " + location[1]);
+		System.out.println(p.getName() +"'s location: "+ location[0] +  " " + location[1]);
 		
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
-		System.out.println("MOVES: \n" + moves);
 		Scanner newScan = new Scanner(System.in);
 		
 		while(moves > 0) {
 			String move = null;
+			System.out.println(moves + " move(s) remaining");
 			System.out.println("Give a direction [W,A,S,D]:");
 			move = newScan.nextLine();
 			
+			
 			switch(move) {
 				case "S" :
+					//TODO Fix this bug
 //					if(board[p.getLocation()[0]+1][p.getLocation()[1]] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
@@ -115,10 +121,14 @@ public class CluedoBoard {
 					System.out.println("Enter a valid character [W,A,S,D]:");
 			}
 
-			System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
+			printBoard();
+			
+			//Debug code
+//			System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
 			turn.decrememntMoves();	
 			moves = turn.getMoves();
 		}
+		System.out.println("TURN OVER\n\n");
 	}
 	
 	
