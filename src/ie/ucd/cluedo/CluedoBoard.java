@@ -86,19 +86,30 @@ public class CluedoBoard {
 			move = newScan.nextLine();
 			
 			if(move.equalsIgnoreCase("S")) {
-				//TODO Fix bug here which is erasing the board
+//				TODO Fix bug here which is erasing the board
 				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 				p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
-				
-				System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
-				
+				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+			} else if(move.equalsIgnoreCase("D")) {
+				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+				p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
+				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+			} else if(move.equalsIgnoreCase("A")) {
+				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+				p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
+				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+			} else if(move.equalsIgnoreCase("W")) {
+				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+				p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
 				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 			}
+			
+			
+			System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
 			turn.decrememntMoves();	
 			moves = turn.getMoves();
 		}
 	}
-	
 	
 	
 	//Temporary code to test CluedoBoard class
@@ -110,7 +121,7 @@ public class CluedoBoard {
 		myBoard.initialiseBoard(players);
 		myBoard.printBoard();
 		
-		myBoard.movePlayer(players.get(0));
+		myBoard.movePlayer(players.get(2));
 		myBoard.printBoard();
 	}
 
