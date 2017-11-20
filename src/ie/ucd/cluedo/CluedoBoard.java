@@ -46,9 +46,6 @@ public class CluedoBoard {
 					players.get(x).setLocation(i, j);
 					
 					//Test
-					System.out.println(i + " " + j);
-					
-					//Test
 					System.out.println(Arrays.toString(players.get(x).getLocation()));
 					numPlayers--;
 					x++;
@@ -85,26 +82,39 @@ public class CluedoBoard {
 			System.out.println("Give a direction [W,A,S,D]:");
 			move = newScan.nextLine();
 			
-			if(move.equalsIgnoreCase("S")) {
-//				TODO Fix bug here which is erasing the board
-				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-				p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
-				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			} else if(move.equalsIgnoreCase("D")) {
-				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-				p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
-				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			} else if(move.equalsIgnoreCase("A")) {
-				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-				p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
-				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			} else if(move.equalsIgnoreCase("W")) {
-				board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-				p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
-				board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+			switch(move) {
+				case "S" :
+//					if(board[p.getLocation()[0]+1][p.getLocation()[1]] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+//					}
+					break;
+				case "D" :
+					if(board[p.getLocation()[0]][p.getLocation()[1]+1] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+					}
+					break;
+				case "A" :
+					if(board[p.getLocation()[0]][p.getLocation()[1]-1] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+					}
+					break;
+				case "W" :
+					if(board[p.getLocation()[0]-1][p.getLocation()[1]] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+					}
+					break;
+				default :
+					System.out.println("Enter a valid character [W,A,S,D]:");
 			}
-			
-			
+
 			System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
 			turn.decrememntMoves();	
 			moves = turn.getMoves();
@@ -121,7 +131,7 @@ public class CluedoBoard {
 		myBoard.initialiseBoard(players);
 		myBoard.printBoard();
 		
-		myBoard.movePlayer(players.get(2));
+		myBoard.movePlayer(players.get(0));
 		myBoard.printBoard();
 	}
 
