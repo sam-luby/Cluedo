@@ -78,6 +78,7 @@ public class CluedoBoard {
 		
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
+		
 		Scanner newScan = new Scanner(System.in);
 		
 		while(moves > 0) {
