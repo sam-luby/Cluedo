@@ -8,7 +8,7 @@ public class Dice {
 	
 	//Returns a random integer between 1-12 to simulate two dice being thrown.
 	public int roll() {
-		return 1 + (int) (Math.random() * 12.0);
+		return 12;
 	}
 	
 	

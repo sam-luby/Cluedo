@@ -81,52 +81,91 @@ public class CluedoBoard {
 		Scanner newScan = new Scanner(System.in);
 		
 		while(moves > 0) {
-			String move = null;
+			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
 			System.out.println("Give a direction [W,A,S,D]:");
-			move = newScan.nextLine();
+			direction = newScan.nextLine().toUpperCase();
 			
-			switch(move) {
+			switch(direction) {
 				case "S" :
 					//TODO Fix this bug
 //					if(board[p.getLocation()[0]+1][p.getLocation()[1]] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();	
 //					}
 					break;
 				case "D" :
-					if(board[p.getLocation()[0]][p.getLocation()[1]+1] == ' ') {
+					if(canMove(p, direction)) {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();	
 					}
 					break;
 				case "A" :
-					if(board[p.getLocation()[0]][p.getLocation()[1]-1] == ' ') {
+					if(canMove(p, direction)) {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();	
 					}
 					break;
 				case "W" :
-					if(board[p.getLocation()[0]-1][p.getLocation()[1]] == ' ') {
+					if(canMove(p, direction)) {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();	
 					}
 					break;
 				default :
-					System.out.println("Enter a valid character [W,A,S,D]:");
+					System.out.println("WARNNG: Enter a valid character [W,A,S,D]:");
 			}
 
 			printBoard();
-			turn.decrememntMoves();	
 			moves = turn.getMoves();
 		}
 		System.out.println("TURN OVER\n\n");
 	}
 	
+	
+	boolean canMove(Player p, String direction) {
+		switch(direction) {
+			//TODO Fix this indexing bug
+			case "S":
+				if(board[p.getLocation()[0]+1][p.getLocation()[1]] == ' ') {
+					return true;
+				} else { 
+					System.out.println("Cant move through walls");
+					return false;
+				}
+			case "D" :
+				if(board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' ') {
+					return true;
+				} else { 
+					System.out.println("Cant move through walls");
+					return false;
+				}
+			case "A" :
+				if(board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' ') {
+					return true;
+				} else { 
+					System.out.println("Cant move through walls");
+					return false;
+				}
+			case "W" :
+				if(board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ') {
+					return true;
+				} else { 
+					System.out.println("Cant move through walls");
+					return false;
+				}
+			default:
+				return false;
+		}
+	}
 	
 	//Temporary code to test CluedoBoard class
 	public static void main(String[] args) throws IOException {
