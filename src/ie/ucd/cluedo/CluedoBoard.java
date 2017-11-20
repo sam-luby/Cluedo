@@ -16,11 +16,11 @@ public class CluedoBoard {
 	private int boardHeight;
 	private char[][] inputBoard;
 	private char[][] board;
-	File boardTextFile = new File("boardNew.txt");
+	File boardTextFile = new File("board.txt");
 
 	public CluedoBoard() throws FileNotFoundException {
 		Scanner sc = new Scanner(boardTextFile);
-		boardWidth = sc.nextLine().length();
+		boardWidth = sc.nextLine().length() -1;
 		
 		Scanner scan = new Scanner(boardTextFile);
 		while (scan.hasNextLine()) {
@@ -74,7 +74,7 @@ public class CluedoBoard {
 	
 	void movePlayer(Player p) {
 		int[] location = p.getLocation();
-		System.out.println(p.getName() +"'s location: "+ location[0] +  " " + location[1]);
+		System.out.println(p.getName() +"'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
 		
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
@@ -82,7 +82,7 @@ public class CluedoBoard {
 		
 		while(moves > 0) {
 			String move = null;
-			System.out.println(moves + " move(s) remaining");
+			System.out.println(moves + " move(s) remaining...");
 			System.out.println("Give a direction [W,A,S,D]:");
 			move = newScan.nextLine();
 			
@@ -122,12 +122,10 @@ public class CluedoBoard {
 			}
 
 			printBoard();
-			
-			//Debug code
-//			System.out.println(p.getLocation()[0] + " " + p.getLocation()[1]);
 			turn.decrememntMoves();	
 			moves = turn.getMoves();
 		}
+		newScan.close();
 		System.out.println("TURN OVER\n\n");
 	}
 	
