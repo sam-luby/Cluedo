@@ -68,7 +68,6 @@ public class CluedoBoard {
 	}
 
 	void printBoard() {
-		System.out.println(board[0][0]);
 		for (int i = 0; i < boardWidth; i++) {
 			System.out.print(board[i]);
 			System.out.println();
@@ -90,38 +89,69 @@ public class CluedoBoard {
 			System.out.println(moves + " move(s) remaining...");
 			System.out.println("Give a direction [W,A,S,D]:");
 			direction = newScan.nextLine().toUpperCase();
-
 			switch (direction) {
 			case "S":
-				if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
-					board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-					p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
-					board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-					turn.decrememntMoves();
-				}
+				if (canMove(p, direction)) {
+					if(board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
+					else if(board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}	
+				}				
 				break;
 			case "D":
 				if (canMove(p, direction)) {
-					board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-					p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
-					board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-					turn.decrememntMoves();
+					if(board[p.getLocation()[0]][p.getLocation()[1]+1] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
+					else if(board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
 				}
 				break;
 			case "A":
 				if (canMove(p, direction)) {
-					board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-					p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
-					board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-					turn.decrememntMoves();
+					if(board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
+					else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
 				}
 				break;
 			case "W":
 				if (canMove(p, direction)) {
-					board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-					p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
-					board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-					turn.decrememntMoves();
+					if(board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
+					else if(board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
+						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+						p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
+						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						turn.decrememntMoves();
+					}
 				}
 				break;
 			default:
@@ -137,28 +167,28 @@ public class CluedoBoard {
 	boolean canMove(Player p, String direction) {
 		switch (direction) {
 		case "S":
-			if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
+			if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ' || board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "D":
-			if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' ') {
+			if (board[p.getLocation()[0]][p.getLocation()[1]+ 1] == ' ' || board[p.getLocation()[0] ][p.getLocation()[1]+ 1] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "A":
-			if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' ') {
+			if (board[p.getLocation()[0]][p.getLocation()[1] -1] == ' ' || board[p.getLocation()[0]][p.getLocation()[1]-1] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "W":
-			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ') {
+			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ' || board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
