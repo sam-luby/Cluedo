@@ -229,7 +229,6 @@ public class CluedoBoard {
 		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
 			return "Billiard room";
 		}
-
 		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
 			return "Library";
 		}
