@@ -20,10 +20,12 @@ public class CluedoBoard {
 	File boardTextFile = new File("board.txt");
 
 	public CluedoBoard() {
+
+		// TODO Find a nicer way to do this
 		board[0] = "+----+ S+------+S +----+".toCharArray();
 		board[1] = "|Kit |  |      |  |Con |".toCharArray();
-		board[2] = "|    |  | Ball |  |    |".toCharArray();
-		board[3] = "|    |  |      |  E----+".toCharArray();
+		board[2] = "|    |  | Ball |  E    |".toCharArray();
+		board[3] = "|    |  |      |  +----+".toCharArray();
 		board[4] = "|    |  E      E       S".toCharArray();
 		board[5] = "+---E+  |      |        ".toCharArray();
 		board[6] = "        +E----E+        ".toCharArray();
@@ -38,10 +40,10 @@ public class CluedoBoard {
 		board[15] = "          +---+  E     |".toCharArray();
 		board[16] = "S                | Lib |".toCharArray();
 		board[17] = "        +-EE-+   +-----+".toCharArray();
-		board[18] = "+----E  |    |         S".toCharArray();
-		board[19] = "|    |  |    E          ".toCharArray();
-		board[20] = "|Loun|  |    |   E-----+".toCharArray();
-		board[21] = "|    |  |Hall|   |     |".toCharArray();
+		board[18] = "+----+  |    |         S".toCharArray();
+		board[19] = "|    E  |    E          ".toCharArray();
+		board[20] = "|Loun|  |    |   +-----+".toCharArray();
+		board[21] = "|    |  |Hall|   E     |".toCharArray();
 		board[22] = "|    |  |    |   |Study|".toCharArray();
 		board[23] = "+----+S +----+   +-----+".toCharArray();
 	}
@@ -81,7 +83,7 @@ public class CluedoBoard {
 
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
-		
+
 		Scanner newScan = new Scanner(System.in);
 
 		while (moves > 0) {
@@ -90,31 +92,31 @@ public class CluedoBoard {
 			System.out.println("Give a direction [W,A,S,D]:");
 			direction = newScan.nextLine().toUpperCase();
 			switch (direction) {
+
+			// TODO Refactor code here for code reusability
 			case "S":
 				if (canMove(p, direction)) {
-					if(board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
+					if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					}
-					else if(board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
+					} else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					}	
-				}				
+					}
+				}
 				break;
 			case "D":
 				if (canMove(p, direction)) {
-					if(board[p.getLocation()[0]][p.getLocation()[1]+1] == ' ') {
+					if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					}
-					else if(board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
+					} else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
@@ -124,13 +126,12 @@ public class CluedoBoard {
 				break;
 			case "A":
 				if (canMove(p, direction)) {
-					if(board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' ') {
+					if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					}
-					else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
+					} else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
@@ -140,13 +141,12 @@ public class CluedoBoard {
 				break;
 			case "W":
 				if (canMove(p, direction)) {
-					if(board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ') {
+					if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					}
-					else if(board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
+					} else if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
 						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 						p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
@@ -159,6 +159,7 @@ public class CluedoBoard {
 			}
 
 			printBoard();
+			System.out.println(playerRoomLocation(p));
 			moves = turn.getMoves();
 		}
 		System.out.println("TURN OVER\n\n");
@@ -167,28 +168,32 @@ public class CluedoBoard {
 	boolean canMove(Player p, String direction) {
 		switch (direction) {
 		case "S":
-			if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ' || board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
+			if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' '
+					|| board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "D":
-			if (board[p.getLocation()[0]][p.getLocation()[1]+ 1] == ' ' || board[p.getLocation()[0] ][p.getLocation()[1]+ 1] == 'E') {
+			if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' '
+					|| board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "A":
-			if (board[p.getLocation()[0]][p.getLocation()[1] -1] == ' ' || board[p.getLocation()[0]][p.getLocation()[1]-1] == 'E') {
+			if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' '
+					|| board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
 				return false;
 			}
 		case "W":
-			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' ' || board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
+			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' '
+					|| board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
@@ -196,6 +201,51 @@ public class CluedoBoard {
 			}
 		default:
 			return false;
+		}
+	}
+
+	String playerRoomLocation(Player p) {
+		int[] loc = p.getLocation();
+
+		System.out.println(Arrays.toString(p.getLocation()));
+		//TODO Fix these indexes
+		
+		if ((loc[1] > 0 && loc[1] < 5) && (loc[0] > 0 && loc[0] < 7)) {
+			return "Kitchen";
+		}
+
+		else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
+			return "Ballroom";
+		}
+
+		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
+			return "Conservatory";
+		}
+
+		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
+			return "Dining room";
+		}
+
+		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
+			return "Billiard room";
+		}
+
+		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
+			return "Library";
+		}
+
+		else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
+			return "Lounge";
+		}
+
+		else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
+			return "Hall";
+		}
+
+		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
+			return "Study";
+		} else {
+			return "not a room";
 		}
 	}
 
@@ -209,6 +259,8 @@ public class CluedoBoard {
 		myBoard.printBoard();
 
 		myBoard.movePlayer(players.get(0));
+
+		// System.out.println(myBoard.playerRoomLocation(players.get(0)));
 		myBoard.printBoard();
 	}
 
