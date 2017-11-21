@@ -39,6 +39,7 @@ public class Main {
 			myBoard.movePlayer(p);
 		}
 		
+		System.out.println("Game demo over...");
 		System.exit(0);
 	}
 }

@@ -218,39 +218,24 @@ public class CluedoBoard {
 		
 		if ((loc[1] > 0 && loc[1] < 5) && (loc[0] > 0 && loc[0] < 7)) {
 			return "Kitchen";
-		}
-
-		else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
+		} else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Ballroom";
-		}
-
-		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
+		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
 			return "Conservatory";
-		}
-
-		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
+		} else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Dining room";
-		}
-
-		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
+		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
 			return "Billiard room";
-		}
-		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
+		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
 			return "Library";
-		}
-
-		else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
+		} else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
 			return "Lounge";
-		}
-
-		else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
+		} else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
 			return "Hall";
-		}
-
-		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
+		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
 			return "Study";
 		} else {
-			return "not a room";
+			return "In the hallway";
 		}
 	}
 
@@ -264,8 +249,6 @@ public class CluedoBoard {
 		myBoard.printBoard();
 
 		myBoard.movePlayer(players.get(0));
-
-		// System.out.println(myBoard.playerRoomLocation(players.get(0)));
 		myBoard.printBoard();
 	}
 
