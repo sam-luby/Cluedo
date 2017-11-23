@@ -25,4 +25,5 @@ public class PlayerTurn {
 	public void decrememntMoves() {
 		moves--;
 	}
+	
 }
