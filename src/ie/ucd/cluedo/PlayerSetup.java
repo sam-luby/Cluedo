@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import ie.ucd.cluedo.Player;
 import ie.ucd.cluedo.enums.SuspectCards; 
@@ -17,13 +18,14 @@ public class PlayerSetup {
 	private String[] playerNames;
 	ArrayList<Player> players;
 	SuspectCards suspects;
-	Cards cards;
+	private ArrayList<String> remainingCards = new ArrayList<String>();
+	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	
 //	When we create a new PlayerSetup object, we create a new list of cards and an array list of players.
-	public PlayerSetup() {
-		cards = new Cards();
+	public PlayerSetup(ArrayList<String> remainingCards) {
 		players = new ArrayList<Player>();
 		addPlayers();
+		this.remainingCards = remainingCards;
 	}
 	
 	public String[] getPlayerNames() {
@@ -32,6 +34,14 @@ public class PlayerSetup {
 	
 	public ArrayList<Player> getPlayers() {
 		return players;
+	}
+	
+	public void setPlayers(ArrayList<Player> newPlayers) {
+		players = newPlayers;
+	}
+	
+	public ArrayList<ArrayList<String>> getPlayerCards(){
+		return playerCards;
 	}
 	
 //	TODO Move this to a GUI implementation
@@ -57,31 +67,44 @@ public class PlayerSetup {
 			players[i] = (scanner.next());
 		}
 		
-//		scanner.close();											//Close input scanner
-		
 		playerNames = players;
-	}	
+	}
+	
+	// Distributes the cards among the players by storing each arraylist in playerCards arraylist
+	public void distributeCards(int numPlayers) {
+		Collections.shuffle(remainingCards);
+		int k = numPlayers;
+		for(int i=0; i<numPlayers; i++) {
+			int x = (int) Math.floor(remainingCards.size()/k);
+			playerCards.add(new ArrayList<String>(remainingCards.subList(0, x)));
+			for(int j=0; j<x; j++) {
+				remainingCards.remove(0);
+			}
+			k-=1;
+		}
+	}
 	
 //	Randomly assigns each player with cards, gives each player a pawn card name.
 	public void setupPlayers() {
-		cards.distributeCards(playerNames.length);
+		this.distributeCards(playerNames.length);
 		for(int i = 0; i < playerNames.length; i++ ) {
 			//TODO Maybe change this to a random pawn instead
-			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), cards.getPlayerCards().get(i))); 
+			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), this.getPlayerCards().get(i))); 
 		}
 	}
 	
 	
 	//Temporary main method to test PlayerSetup class.
-	public static void main(String[] args) {
-		PlayerSetup setup = new PlayerSetup();
-		setup.setupPlayers();
-		ArrayList<Player> players = setup.getPlayers();
-		
-		for(Player p : players) {
-			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
-			System.out.println("Cards: " + p.getCards());
-		}
-	}
+//	public static void main(String[] args) {
+//		
+//		PlayerSetup setup = new PlayerSetup();
+//		setup.setupPlayers();
+//		ArrayList<Player> players = setup.getPlayers();
+//		
+//		for(Player p : players) {
+//			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
+//			System.out.println("Cards: " + p.getCards());
+//		}
+//	}
 	
 }

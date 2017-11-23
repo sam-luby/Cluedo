@@ -315,15 +315,15 @@ public class CluedoBoard {
 	
 	
 	// Temporary code to test CluedoBoard class
-	public static void main(String[] args) throws IOException {
-		PlayerSetup setup = new PlayerSetup();
-		setup.setupPlayers();
-		ArrayList<Player> players = setup.getPlayers();
-		CluedoBoard myBoard = new CluedoBoard();
-		myBoard.initialiseBoard(players);
-		myBoard.printBoard();
-		myBoard.playerMove(players.get(0));
-		myBoard.printBoard();
-	}
+//	public static void main(String[] args) throws IOException {
+//		PlayerSetup setup = new PlayerSetup();
+//		setup.setupPlayers();
+//		ArrayList<Player> players = setup.getPlayers();
+//		CluedoBoard myBoard = new CluedoBoard();
+//		myBoard.initialiseBoard(players);
+//		myBoard.printBoard();
+//		myBoard.playerMove(players.get(0));
+//		myBoard.printBoard();
+//	}
 
 }

@@ -11,7 +11,6 @@ import java.util.Collections;
 public class Cards {
 	
 	// playerCards is an arraylist of string arraylists which consist of each player's cards
-	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
@@ -84,25 +83,6 @@ public class Cards {
 	
 	public ArrayList<String> getRemainingCards(){
 		return remainingCards;
-	}
-	
-	// Distributes the cards among the players by storing each arraylist in playerCards arraylist
-	public void distributeCards(int numPlayers) {
-		ArrayList<String> rc = new ArrayList<String>(remainingCards);
-		Collections.shuffle(rc);
-		int k = numPlayers;
-		for(int i=0; i<numPlayers; i++) {
-			int x = (int) Math.floor(rc.size()/k);
-			playerCards.add(new ArrayList<String>(rc.subList(0, x)));
-			for(int j=0; j<x; j++) {
-				rc.remove(0);
-			}
-			k-=1;
-		}
-	}
-	
-	public ArrayList<ArrayList<String>> getPlayerCards(){
-		return playerCards;
 	}
 	
 	//Temporary main method for testing AllCards class

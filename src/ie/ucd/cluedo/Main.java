@@ -12,7 +12,8 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		
 //		Add & setup players
-		PlayerSetup setup = new PlayerSetup();
+		Cards deck = new Cards();
+		PlayerSetup setup = new PlayerSetup(deck.getRemainingCards());
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 		
