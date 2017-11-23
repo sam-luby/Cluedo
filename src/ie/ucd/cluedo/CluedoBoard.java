@@ -56,7 +56,7 @@ public class CluedoBoard {
 					players.get(x).setLocation(i, j);
 
 					// Test
-					System.out.println(Arrays.toString(players.get(x).getLocation()));
+					//System.out.println(Arrays.toString(players.get(x).getLocation()));
 					numPlayers--;
 					x++;
 				} else if (numPlayers == 0
@@ -68,6 +68,7 @@ public class CluedoBoard {
 	}
 
 	void printBoard() {
+		System.out.println("\n\n--------------------------------------------------------------");
 		for (int i = 0; i < boardWidth; i++) {
 			System.out.print(board[i]);
 			System.out.println();
@@ -163,6 +164,7 @@ public class CluedoBoard {
 				moves = 0;
 			}
 		}
+<<<<<<< HEAD
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
@@ -173,6 +175,9 @@ public class CluedoBoard {
 			useSecretPassage(p);
 		} 
 		System.out.println("TURN OVER\n\n");
+=======
+		System.out.println("--------------------------TURN OVER---------------------------\n\n");
+>>>>>>> 5c4a5a3d1feee2c6e40680cf11ffbc755d172517
 	}
 
 	boolean canMove(Player p, String direction) {
