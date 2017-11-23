@@ -164,7 +164,6 @@ public class CluedoBoard {
 				moves = 0;
 			}
 		}
-<<<<<<< HEAD
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
@@ -175,9 +174,7 @@ public class CluedoBoard {
 			useSecretPassage(p);
 		} 
 		System.out.println("TURN OVER\n\n");
-=======
 		System.out.println("--------------------------TURN OVER---------------------------\n\n");
->>>>>>> 5c4a5a3d1feee2c6e40680cf11ffbc755d172517
 	}
 
 	boolean canMove(Player p, String direction) {
