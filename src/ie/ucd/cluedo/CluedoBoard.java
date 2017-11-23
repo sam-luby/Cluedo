@@ -79,7 +79,8 @@ public class CluedoBoard {
 	void playerMove(Player p) {
 		int[] location = p.getLocation();
 		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
-
+		printBoard();
+		
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
 
@@ -173,7 +174,6 @@ public class CluedoBoard {
 		} else if (choice == 3) {
 			useSecretPassage(p);
 		} 
-		System.out.println("TURN OVER\n\n");
 		System.out.println("--------------------------TURN OVER---------------------------\n\n");
 	}
 
@@ -234,11 +234,9 @@ public class CluedoBoard {
 
 	String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
-
-		System.out.println(Arrays.toString(p.getLocation()));
-		//TODO Fix these indexes
 		
-		if ((loc[1] > 0 && loc[1] < 5) && (loc[0] > 0 && loc[0] < 6)) {
+		//TODO Fix these indexes
+		if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Kitchen";
 		}
 
@@ -250,7 +248,7 @@ public class CluedoBoard {
 			return "Conservatory";
 		}
 
-		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
+		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 8 && loc[0] < 14)) {
 			return "Dining room";
 		}
 
@@ -322,10 +320,11 @@ public class CluedoBoard {
 			System.out.println("Do nothing [0]: ");
 			System.out.println("Make accusation [1]: ");
 		}
+		
 		Scanner newScan = new Scanner(System.in);
 		while(!newScan.hasNextInt()) {
 			System.out.println("Make a decision: ");
-			newScan.nextInt();
+			newScan.next();
 		}
 		int choice = newScan.nextInt();
 		return choice;
