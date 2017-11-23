@@ -48,7 +48,6 @@ public class CluedoBoard {
 		board[23] = "+----+S +----+   +-----+".toCharArray();
 	}
 
-//	Changes the starting positions (marked S on board) to the first letter of the player name
 	void initialiseBoard(ArrayList<Player> players) {
 		int x = 0;
 		int numPlayers = players.size();
@@ -58,11 +57,10 @@ public class CluedoBoard {
 					board[i][j] = (char) Character.toUpperCase(players.get(x).getName().charAt(0));
 					players.get(x).setLocation(i, j);
 
-					//Test code to show player's starting location
+					// Test
 					System.out.println(Arrays.toString(players.get(x).getLocation()));
 					numPlayers--;
 					x++;
-//					Remove unused starting positions (if < 6 players)
 				} else if (numPlayers == 0
 						&& (board[i][j] == 'S' && (i == 0 || i == boardWidth - 1 || j == 0 || j == boardHeight - 1))) {
 					board[i][j] = ' ';
@@ -71,7 +69,6 @@ public class CluedoBoard {
 		}
 	}
 
-//	Prints the board row by row
 	void printBoard() {
 		for (int i = 0; i < boardWidth; i++) {
 			System.out.print(board[i]);
@@ -80,15 +77,15 @@ public class CluedoBoard {
 		System.out.println();
 	}
 
-//	Functionality to move the player. Takes in desired direction for each available move, checks if move is possible, moves
 	void movePlayer(Player p) {
 		int[] location = p.getLocation();
-		System.out.println(p.getName() + "'s location: [" + location[0] + "," + location[1] + "]");
+		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
+
 		PlayerTurn turn = new PlayerTurn(p, location);
 		int moves = turn.getMoves();
+
 		Scanner newScan = new Scanner(System.in);
-		
-//		Keep allowing the player to move while they have moves left in their turn
+
 		while (moves > 0) {
 			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
@@ -97,9 +94,6 @@ public class CluedoBoard {
 			switch (direction) {
 
 			// TODO Refactor code here for code reusability
-//			Player can enter W,A,S,D for UP,LEFT,DOWN,RIGHT respectively
-//			First, checks if they can move (if no wall etc)
-//			Then, allows them to move directionally based on input, or into a room if a door (denoted E) blocks their path
 			case "S":
 				if (canMove(p, direction)) {
 					if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
@@ -163,6 +157,7 @@ public class CluedoBoard {
 			default:
 				System.out.println("WARNNG: Enter a valid character [W,A,S,D]:");
 			}
+
 			printBoard();
 			System.out.println(playerRoomLocation(p));
 			moves = turn.getMoves();
@@ -170,12 +165,14 @@ public class CluedoBoard {
 		System.out.println("TURN OVER\n\n");
 	}
 
-//	Checks if the player can move in their desired direction
-//	The player can move into a valid space (denoted with a space character) or can move OVER and E (entrance to room)
 	boolean canMove(Player p, String direction) {
 		switch (direction) {
 		case "S":
-			if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' '
+			if (p.getLocation()[0]==23) {
+				System.out.println("Cant move off the board");
+				return false;
+			}
+			else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' '
 					|| board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
 				return true;
 			} else {
@@ -183,7 +180,11 @@ public class CluedoBoard {
 				return false;
 			}
 		case "D":
-			if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' '
+			if (p.getLocation()[1]==23) {
+				System.out.println("Cant move off the board");
+				return false;
+			}
+			else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' '
 					|| board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
 				return true;
 			} else {
@@ -191,7 +192,11 @@ public class CluedoBoard {
 				return false;
 			}
 		case "A":
-			if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' '
+			if (p.getLocation()[1]==0) {
+				System.out.println("Cant move off the board");
+				return false;
+			}
+			else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' '
 					|| board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
 				return true;
 			} else {
@@ -199,6 +204,10 @@ public class CluedoBoard {
 				return false;
 			}
 		case "W":
+			if (p.getLocation()[0]==0) {
+				System.out.println("Cant move off the board");
+				return false;
+			}
 			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' '
 					|| board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
 				return true;
@@ -211,31 +220,47 @@ public class CluedoBoard {
 		}
 	}
 
-//	Returns the room the player is in, based on their location in the 2D char array (basically a map)
 	String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
+
+		System.out.println(Arrays.toString(p.getLocation()));
 		//TODO Fix these indexes
 		
 		if ((loc[1] > 0 && loc[1] < 5) && (loc[0] > 0 && loc[0] < 7)) {
 			return "Kitchen";
-		} else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
+		}
+
+		else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Ballroom";
-		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
+		}
+
+		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
 			return "Conservatory";
-		} else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
+		}
+
+		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Dining room";
-		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
+		}
+
+		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
 			return "Billiard room";
-		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
+		}
+		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
 			return "Library";
-		} else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
+		}
+
+		else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
 			return "Lounge";
-		} else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
+		}
+
+		else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
 			return "Hall";
-		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
+		}
+
+		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
 			return "Study";
 		} else {
-			return "In the hallway";
+			return "not a room";
 		}
 	}
 
@@ -249,6 +274,8 @@ public class CluedoBoard {
 		myBoard.printBoard();
 
 		myBoard.movePlayer(players.get(0));
+
+		// System.out.println(myBoard.playerRoomLocation(players.get(0)));
 		myBoard.printBoard();
 	}
 
