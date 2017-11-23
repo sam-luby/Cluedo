@@ -36,7 +36,7 @@ public class Main {
 		//TODO This will have to keep looping until some boolean endGame == 1
 		//TODO After each player moves, they get to do something [Accusation, Hypothesis, SecretPassage, Nothing etc]
 		for(Player p : players) {
-			myBoard.movePlayer(p);
+			myBoard.playerMove(p);
 		}
 		
 		System.out.println("Game demo over...");
