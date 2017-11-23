@@ -37,6 +37,30 @@ public class Cards {
 			}
 		}
 	};
+	
+	public ArrayList<String> getWeaponCards(){
+		ArrayList<String> weaponCards = new ArrayList<String>();
+		for(WeaponCards w : WeaponCards.values()) {
+			weaponCards.add(w.getWeapon());
+		}
+		return weaponCards;
+	}
+	
+	public ArrayList<String> getSuspectCards(){
+		ArrayList<String> suspectCards = new ArrayList<String>();
+		for(SuspectCards w : SuspectCards.values()) {
+			suspectCards.add(w.getSuspect());
+		}
+		return suspectCards;
+	}
+	
+	public ArrayList<String> getRoomCards(){
+		ArrayList<String> roomCards = new ArrayList<String>();
+		for(RoomCards w : RoomCards.values()) {
+			roomCards.add(w.getRoom());
+		}
+		return roomCards;
+	}
 
 	public ArrayList<String> getAllCards(){
 		ArrayList<String> allCards = new ArrayList<String>();
