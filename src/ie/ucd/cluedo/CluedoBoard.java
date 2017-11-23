@@ -3,7 +3,6 @@ package ie.ucd.cluedo;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -14,36 +13,35 @@ public class CluedoBoard {
 	private int boardWidth = 24;
 	private int boardHeight = 24;
 	private char[][] board = new char[boardWidth][boardHeight];
-	// private char[][] board;
 	File boardTextFile = new File("board.txt");
 
 	public CluedoBoard() {
 
 		// TODO Find a nicer way to do this
-		board[0] = "+----+ S+------+S +----+".toCharArray();
+		board[0] = "┌----┐ S┌------┐S ┌----┐".toCharArray();
 		board[1] = "|=   |  |      |  |   =|".toCharArray();
 		board[2] = "|    |  | Ball |  E Con|".toCharArray();
-		board[3] = "|Kit |  |      |  +----+".toCharArray();
+		board[3] = "|Kit |  |      |  └----┘".toCharArray();
 		board[4] = "|    |  E      E       S".toCharArray();
-		board[5] = "+---E+  |      |        ".toCharArray();
-		board[6] = "        +E----E+        ".toCharArray();
-		board[7] = "                  +----+".toCharArray();
-		board[8] = "+------+          E    |".toCharArray();
-		board[9] = "|      |  +---+   |    |".toCharArray();
+		board[5] = "└---E┘  |      |        ".toCharArray();
+		board[6] = "        └E----E┘        ".toCharArray();
+		board[7] = "                  ┌----┐".toCharArray();
+		board[8] = "┌------┐          E    |".toCharArray();
+		board[9] = "|      |  ┌---┐   |    |".toCharArray();
 		board[10] = "|      |  |   |   |Bill|".toCharArray();
-		board[11] = "|      E  |   |   +---E+".toCharArray();
+		board[11] = "|      E  |   |   └---E┘".toCharArray();
 		board[12] = "|Dining|  |   |         ".toCharArray();
-		board[13] = "|      |  |   |  +--E--+".toCharArray();
-		board[14] = "+-----E+  |   |  |     |".toCharArray();
-		board[15] = "          +---+  E     |".toCharArray();
+		board[13] = "|      |  |   |  ┌--E--┐".toCharArray();
+		board[14] = "└-----E┘  |   |  |     |".toCharArray();
+		board[15] = "          └---┘  E     |".toCharArray();
 		board[16] = "S                | Lib |".toCharArray();
-		board[17] = "        +-EE-+   +-----+".toCharArray();
-		board[18] = "+----+  |    |         S".toCharArray();
+		board[17] = "        ┌-EE-┐   └-----┘".toCharArray();
+		board[18] = "┌----┐  |    |         S".toCharArray();
 		board[19] = "|    E  |    E          ".toCharArray();
-		board[20] = "|Loun|  |    |   +-----+".toCharArray();
+		board[20] = "|Loun|  |    |   ┌-----┐".toCharArray();
 		board[21] = "|    |  |Hall|   E  Stu|".toCharArray();
 		board[22] = "|=   |  |    |   |    =|".toCharArray();
-		board[23] = "+----+S +----+   +-----+".toCharArray();
+		board[23] = "└----┘S └----┘   └-----┘".toCharArray();
 	}
 
 	void initialiseBoard(ArrayList<Player> players) {
@@ -238,36 +236,21 @@ public class CluedoBoard {
 		//TODO Fix these indexes
 		if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Kitchen";
-		}
-
-		else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
+		} else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Ballroom";
-		}
-
-		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
+		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 0 && loc[0] < 4)) {
 			return "Conservatory";
-		}
-
-		else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 8 && loc[0] < 14)) {
+		} else if ((loc[1] > 0 && loc[1] < 7) && (loc[0] > 8 && loc[0] < 14)) {
 			return "Dining room";
-		}
-
-		else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
+		} else if ((loc[1] > 18 && loc[1] < 24) && (loc[0] > 7 && loc[0] < 11)) {
 			return "Billiard room";
-		}
-		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
+		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
 			return "Library";
-		}
-
-		else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
+		} else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
 			return "Lounge";
-		}
-
-		else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
+		} else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
 			return "Hall";
-		}
-
-		else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
+		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
 			return "Study";
 		} else {
 			return "Corridor";
