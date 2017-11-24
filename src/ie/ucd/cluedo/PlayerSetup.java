@@ -45,7 +45,6 @@ public class PlayerSetup {
 		return playerCards;
 	}
 	
-//	TODO Move this to a GUI implementation
 //	Adds a number of players via user input in the console
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
@@ -92,22 +91,6 @@ public class PlayerSetup {
 			//TODO Maybe change this to a random pawn instead
 			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), this.getPlayerCards().get(i))); 
 		}
-//      Create a customized notebook for each player		
-		
 	}
-	
-	
-	//Temporary main method to test PlayerSetup class.
-//	public static void main(String[] args) {
-//		
-//		PlayerSetup setup = new PlayerSetup();
-//		setup.setupPlayers();
-//		ArrayList<Player> players = setup.getPlayers();
-//		
-//		for(Player p : players) {
-//			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
-//			System.out.println("Cards: " + p.getCards());
-//		}
-//	}
 	
 }

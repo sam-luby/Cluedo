@@ -50,7 +50,7 @@ public class Accusation {
 		} else {
 			//Loser
 			//TODO Kick from game
-			System.out.println("Loser.");
+			System.out.println("Loser, you are removed from the game.");
 		}
 	}
 	
