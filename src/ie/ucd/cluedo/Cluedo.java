@@ -1,12 +1,13 @@
 package ie.ucd.cluedo;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Cluedo {
 
 	
-	public Cluedo() throws FileNotFoundException {
+	public Cluedo() throws IOException {
 //		Add & setup players
 		Cards deck = Cards.getInstance();
 		PlayerSetup setup = new PlayerSetup(deck.getRemainingCards());
@@ -24,8 +25,8 @@ public class Cluedo {
 		
 		
 //		Board initialisation
-		CluedoBoard myBoard = new CluedoBoard();
-		myBoard.initialiseBoard(players);
+		CluedoBoard myBoard = new CluedoBoard(players);
+		myBoard.initialiseBoard();
 		myBoard.printBoard();
 
 //		Give each player a turn

@@ -12,11 +12,14 @@ import java.util.Scanner;
 public class CluedoBoard {
 	private int boardWidth = 24;
 	private int boardHeight = 24;
+	private ArrayList<Player> players;
 	private char[][] board = new char[boardWidth][boardHeight];
 	File boardTextFile = new File("board.txt");
 
-	public CluedoBoard() {
+	public CluedoBoard(ArrayList<Player> players) {
 
+		this.players = players;
+		
 		// TODO Find a nicer way to do this
 		board[0]  = "┌----┐ S┌------┐S ┌----┐".toCharArray();
 		board[1]  = "|=   |  |      |  |   =|".toCharArray();
@@ -44,7 +47,7 @@ public class CluedoBoard {
 		board[23] = "└----┘S └----┘   └-----┘".toCharArray();
 	}
 
-	void initialiseBoard(ArrayList<Player> players) {
+	void initialiseBoard() {
 		int x = 0;
 		int numPlayers = players.size();
 		for (int i = 0; i < boardWidth; i++) {
@@ -72,7 +75,7 @@ public class CluedoBoard {
 		System.out.println();
 	}
 
-	void playerMove(Player p) {
+	void playerMove(Player p) throws IOException {
 		int[] location = p.getLocation();
 		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
 		printBoard();
@@ -164,10 +167,9 @@ public class CluedoBoard {
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
-			//TODO Code for accusation
 			Accusation acc = new Accusation(p, playerRoomLocation(p));
 		} else if (choice == 2) {
-			//TODO Code for hypothesis
+			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {
 			useSecretPassage(p);
 		} 
