@@ -93,9 +93,7 @@ public class PlayerSetup {
 			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), this.getPlayerCards().get(i))); 
 		}
 //      Create a customized notebook for each player		
-		for(Player p : players) {
-			Notebook nb = new Notebook(p);
-		}
+		
 	}
 	
 	
