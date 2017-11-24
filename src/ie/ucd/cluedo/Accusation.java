@@ -7,13 +7,14 @@ public class Accusation {
 	
 	private Player player;
 //	private ArrayList<Player> players;
-	private static ArrayList<String> answerCards = Cards.getAnswerCards();
+	private static Cards cards = Cards.getInstance();
+	private static ArrayList<String> answerCards = cards.getAnswerCards();
 	private String weaponAccusation;
 	private String suspectAccusation;
 	private String roomAccusation;
 	private boolean accusationCheck;
 	
-	public Accusation(Player pplayer, String room) {
+	public Accusation(Player player, String room) {
 		this.player = player;
 		this.roomAccusation = room;
 		
@@ -54,16 +55,6 @@ public class Accusation {
 			return false;
 		} else {
 			return true;
-		}
-	}
-	
-
-	public static void main(String[] args) {
-		Cards cards = new Cards();
-		ArrayList<String> answerCards = cards.getAnswerCards();
-		
-		for(String s : answerCards) {
-			System.out.println(s);
 		}
 	}
 	

@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Distribute cards amongst players
- * @author Darren
+ * Distribute cards amongst players.
+ * Cards is a singleton class (only one instance can be created!)
+ * @author Darren & Sam
  */
 public class Cards {
 	
@@ -14,8 +15,10 @@ public class Cards {
 	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
+	private static Cards uniqueInstance = null;
+	
 	// Constructor calculates the solution cards and the remaining cards 
-	public Cards() {
+	private Cards() {
 		solutionCards.add(WeaponCards.random().getWeapon());
 		solutionCards.add(SuspectCards.random().getSuspect());
 		solutionCards.add(RoomCards.random().getRoom());
@@ -36,6 +39,13 @@ public class Cards {
 			}
 		}
 	};
+	
+	public static Cards getInstance() {
+		if (uniqueInstance == null) {
+			uniqueInstance = new Cards();
+		} 
+			return uniqueInstance;
+	}
 	
 	public ArrayList<String> getWeaponCards(){
 		ArrayList<String> weaponCards = new ArrayList<String>();
@@ -77,7 +87,7 @@ public class Cards {
 	}
 	
 	// returns the solution cards to be placed in the middle of the board
-	public static ArrayList<String> getAnswerCards() {
+	public ArrayList<String> getAnswerCards() {
 		return solutionCards;
 	}
 	

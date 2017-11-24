@@ -18,7 +18,7 @@ public class Notebook {
 	private String player;
 	private String pawn;
 	private ArrayList<String> allCards;
-	Cards cards = new Cards();
+	Cards cards = Cards.getInstance();
 	
 	public Notebook(Player p) throws FileNotFoundException {
 		this.playerCards = p.getCards();

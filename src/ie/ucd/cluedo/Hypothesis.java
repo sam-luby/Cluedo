@@ -28,7 +28,7 @@ public class Hypothesis {
 		this.room = room;
 		myCards = p.getCards();
 		
-		Cards deck = new Cards();
+		Cards deck = Cards.getInstance();
 		allCards = deck.getAllCards();
 		
 		Scanner newScan = new Scanner(System.in);
