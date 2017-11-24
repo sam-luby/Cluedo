@@ -18,16 +18,16 @@ public class CluedoBoard {
 	public CluedoBoard() {
 
 		// TODO Find a nicer way to do this
-		board[0] = "┌----┐ S┌------┐S ┌----┐".toCharArray();
-		board[1] = "|=   |  |      |  |   =|".toCharArray();
-		board[2] = "|    |  | Ball |  E Con|".toCharArray();
-		board[3] = "|Kit |  |      |  └----┘".toCharArray();
-		board[4] = "|    |  E      E       S".toCharArray();
-		board[5] = "└---E┘  |      |        ".toCharArray();
-		board[6] = "        └E----E┘        ".toCharArray();
-		board[7] = "                  ┌----┐".toCharArray();
-		board[8] = "┌------┐          E    |".toCharArray();
-		board[9] = "|      |  ┌---┐   |    |".toCharArray();
+		board[0]  = "┌----┐ S┌------┐S ┌----┐".toCharArray();
+		board[1]  = "|=   |  |      |  |   =|".toCharArray();
+		board[2]  = "|    |  | Ball |  E Con|".toCharArray();
+		board[3]  = "|Kit |  |      |  └----┘".toCharArray();
+		board[4]  = "|    |  E      E       S".toCharArray();
+		board[5]  = "└---E┘  |      |        ".toCharArray();
+		board[6]  = "        └E----E┘        ".toCharArray();
+		board[7]  = "                  ┌----┐".toCharArray();
+		board[8]  = "┌------┐          E    |".toCharArray();
+		board[9]  = "|      |  ┌---┐   |    |".toCharArray();
 		board[10] = "|      |  |   |   |Bill|".toCharArray();
 		board[11] = "|      E  |   |   └---E┘".toCharArray();
 		board[12] = "|Dining|  |   |         ".toCharArray();
