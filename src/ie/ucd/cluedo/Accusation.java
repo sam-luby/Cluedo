@@ -7,7 +7,7 @@ public class Accusation {
 	
 	private Player player;
 //	private ArrayList<Player> players;
-	private static ArrayList<String> answerCards;
+	private static ArrayList<String> answerCards = Cards.getAnswerCards();
 	private String weaponAccusation;
 	private String suspectAccusation;
 	private String roomAccusation;
@@ -60,7 +60,7 @@ public class Accusation {
 
 	public static void main(String[] args) {
 		Cards cards = new Cards();
-		answerCards = cards.getAnswerCards();
+		ArrayList<String> answerCards = cards.getAnswerCards();
 		
 		for(String s : answerCards) {
 			System.out.println(s);

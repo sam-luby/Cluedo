@@ -10,7 +10,7 @@ import java.util.Collections;
  */
 public class Cards {
 	
-	// playerCards is an arraylist of string arraylists which consist of each player's cards
+	//Remaining cards = all cards - solutionCards
 	private static ArrayList<String> solutionCards = new ArrayList<String>();
 	private static ArrayList<String> remainingCards = new ArrayList<String>();
 	
@@ -77,7 +77,7 @@ public class Cards {
 	}
 	
 	// returns the solution cards to be placed in the middle of the board
-	public ArrayList<String> getAnswerCards() {
+	public static ArrayList<String> getAnswerCards() {
 		return solutionCards;
 	}
 	
