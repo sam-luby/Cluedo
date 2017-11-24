@@ -64,8 +64,9 @@ public class Notebook {
 		}
 		reader.close();
 		
-		String replaceText = oldText.replaceAll(update, update + " ✓");
+		String replaceText = oldText.replaceAll(update, update + " -");
 		writer.write(replaceText);
+		writer.close();
 	}
 	
 	
