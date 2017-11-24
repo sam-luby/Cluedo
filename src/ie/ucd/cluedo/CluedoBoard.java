@@ -53,8 +53,6 @@ public class CluedoBoard {
 					board[i][j] = (char) Character.toUpperCase(players.get(x).getName().charAt(0));
 					players.get(x).setLocation(i, j);
 
-					// Test
-					//System.out.println(Arrays.toString(players.get(x).getLocation()));
 					numPlayers--;
 					x++;
 				} else if (numPlayers == 0
@@ -166,6 +164,7 @@ public class CluedoBoard {
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
+			Accusation acc = new Accusation(p, playerRoomLocation(p));
 			//TODO Code for accusation
 		} else if (choice == 2) {
 			//TODO Code for hypothesis
