@@ -3,8 +3,13 @@ package ie.ucd.cluedo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles a player accusation. Creates a new instance of Accusation and gets the user's guess from console.
+ * If correct, they win.
+ * If incorrect, they are kicked from the game.
+ * @author Sam
+ */
 public class Accusation {
-	
 	private Player player;
 	private static Cards deck = Cards.getInstance();
 	private static ArrayList<String> answerCards = deck.getAnswerCards();
@@ -12,22 +17,15 @@ public class Accusation {
 	private String suspectAccusation;
 	private String roomAccusation;
 	private boolean accusationCheck;
-	private ArrayList<String> myCards;
-	private ArrayList<String> allCards;
-	private ArrayList<String> roomCards;
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
-	
 	
 	public Accusation(Player player, String room) {
 		this.player = player;
 		this.roomAccusation = room;
-		myCards = player.getCards();
-		allCards = deck.getAllCards();
 		suspectCards = deck.getSuspectCards();
 		System.out.println(suspectCards);
 		weaponCards = deck.getWeaponCards();
-		roomCards = deck.getRoomCards();
 		
 		Scanner myScanner = new Scanner(System.in);
 		String input;
@@ -47,7 +45,6 @@ public class Accusation {
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
 		if(accusationCheck) {
 			//Winner
-			//TODO End game
 			System.out.println("Winner.");
 			System.exit(0);
 		} else {
@@ -58,14 +55,14 @@ public class Accusation {
 	}
 	
 //	If any part of the accusation is wrong, the whole accusation is wrong so delete the player
-	public boolean checkAccusation(String w, String s, String r) {
-		System.out.println(w + " " + s + " " + r);
+	public boolean checkAccusation(String weapon, String suspect, String room) {
+		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);
-		if(!w.equals(answerCards.get(0))) {
+		if(!weapon.equals(answerCards.get(0))) {
 			return false;
-		} else if(!s.equals(answerCards.get(1))) {
+		} else if(!suspect.equals(answerCards.get(1))) {
 			return false;
-		} else if(!r.equals(answerCards.get(2))) {
+		} else if(!room.equals(answerCards.get(2))) {
 			return false;
 		} else {
 			return true;
