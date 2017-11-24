@@ -12,9 +12,9 @@ public class Hypothesis {
 	
 	private Player p;
 	private ArrayList<Player> players;
-	private String room;
-	private String murderer;
-	private String weapon;
+	private String roomHypothsis;
+	private String suspectHypothesis;
+	private String weaponHypothesis;
 	private ArrayList<String> cards;
 	private ArrayList<String> myCards;
 	private ArrayList<String> allCards;
@@ -25,27 +25,31 @@ public class Hypothesis {
 	public Hypothesis(Player p, ArrayList<Player> players, String room) {
 		this.p = p;
 		this.players = players;
-		this.room = room;
+		this.roomHypothsis = room;
 		myCards = p.getCards();
 		
 		Cards deck = Cards.getInstance();
 		allCards = deck.getAllCards();
-		
-		Scanner newScan = new Scanner(System.in);
+		suspectCards = deck.getSuspectCards();
+		weaponCards = deck.getWeaponCards();
+		roomCards = deck.getRoomCards();
+
+		Scanner myScanner = new Scanner(System.in);
+		String input;
 				
-		System.out.println("Please enter suspect: ");
-		while(!suspectCards.contains(newScan.next()) || myCards.contains(newScan.next())) {        					//Keep asking for a number
-			System.out.println("Please enter a valid suspect:");
-			newScan.next();
-		}
-		murderer = newScan.next().toLowerCase();
+		System.out.println("Please enter a weapon: ");
+		do {
+			input = myScanner.nextLine().trim();
+		} while(!weaponCards.contains(input)) ;
+		weaponHypothesis = input;
 		
-		System.out.println("Please enter weapon: ");
-		while(!weaponCards.contains(newScan.next()) || myCards.contains(newScan.next())) {        					//Keep asking for a number
-			System.out.println("Please enter a valid suspect:");
-			newScan.next();
-		}
-		weapon = newScan.next().toLowerCase();
+		System.out.println("Please enter a suspect: ");
+		do {
+			input = myScanner.nextLine().trim();
+		} while(!suspectCards.contains(input)) ;
+		suspectHypothesis = input;
+		
+		
 	}
 	
 	public String refute(Player p) throws IOException {
@@ -54,18 +58,18 @@ public class Hypothesis {
 		for(Player player : players) {
 			cards = player.getCards();
 			Notebook nb = player.getNoteBook();
-			if(cards.contains(weapon)) {
-				output = weapon;
+			if(cards.contains(weaponHypothesis)) {
+				output = weaponHypothesis;
 				nb.updateNoteBook(output);
 				break;
 			}
-			else if(cards.contains(murderer)) {
-				output = murderer;
+			else if(cards.contains(suspectHypothesis)) {
+				output = suspectHypothesis;
 				nb.updateNoteBook(output);
 				break;
 			}
-			else if(cards.contains(room)) {
-				output = room;
+			else if(cards.contains(roomHypothsis)) {
+				output = roomHypothsis;
 				nb.updateNoteBook(output);
 				break;
 			}
