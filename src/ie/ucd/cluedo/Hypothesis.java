@@ -48,18 +48,25 @@ public class Hypothesis {
 	}
 	
 	public String refute() {
+		int num = 0;
 		String output = null;
 		for(Player player : players) {
 			cards = player.getCards();
 			if(cards.contains(weapon)) {
 				output = weapon;
+				// TODO need to update the notebook here after refute has happened.
+				break;
 			}
 			else if(cards.contains(murderer)) {
 				output = murderer;
+				break;
 			}
 			else {
-				output = "WINNER!!";
+				num += 1;
 			}
+		}
+		if(num == 18) {
+			output = "WINNER!!";
 		}
 		return output;
 	}

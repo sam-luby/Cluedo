@@ -1,5 +1,6 @@
 package ie.ucd.cluedo;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -85,11 +86,15 @@ public class PlayerSetup {
 	}
 	
 //	Randomly assigns each player with cards, gives each player a pawn card name.
-	public void setupPlayers() {
+	public void setupPlayers() throws FileNotFoundException {
 		this.distributeCards(playerNames.length);
 		for(int i = 0; i < playerNames.length; i++ ) {
 			//TODO Maybe change this to a random pawn instead
 			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), this.getPlayerCards().get(i))); 
+		}
+//      Create a customized notebook for each player		
+		for(Player p : players) {
+			Notebook nb = new Notebook(p);
 		}
 	}
 	

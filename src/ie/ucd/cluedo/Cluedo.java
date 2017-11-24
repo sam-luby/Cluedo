@@ -13,11 +13,6 @@ public class Cluedo {
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 		
-//      Create a customized notebook for each player		
-		for(Player p : players) {
-			Notebook nb = new Notebook(p);
-		}
-		
 //		Below is temporary test code & will be removed soon.
 		for(Player p : players) {
 			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
