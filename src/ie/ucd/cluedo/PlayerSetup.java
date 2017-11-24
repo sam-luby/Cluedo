@@ -50,7 +50,7 @@ public class PlayerSetup {
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
 		Scanner scanner = new Scanner(System.in);
-		while(!scanner.hasNextInt()) {        					//Keep asking for a number
+		while(!scanner.hasNextInt()) {        									//Keep asking for a number
 			System.out.println("Please enter a number between 3-6:");
 			scanner.next();
 		}
