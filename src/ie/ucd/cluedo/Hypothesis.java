@@ -1,5 +1,6 @@
 package ie.ucd.cluedo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -47,18 +48,25 @@ public class Hypothesis {
 		weapon = newScan.next().toLowerCase();
 	}
 	
-	public String refute() {
+	public String refute(Player p) throws IOException {
 		int num = 0;
 		String output = null;
 		for(Player player : players) {
 			cards = player.getCards();
+			Notebook nb = player.getNoteBook();
 			if(cards.contains(weapon)) {
 				output = weapon;
-				// TODO need to update the notebook here after refute has happened.
+				nb.updateNoteBook(output);
 				break;
 			}
 			else if(cards.contains(murderer)) {
 				output = murderer;
+				nb.updateNoteBook(output);
+				break;
+			}
+			else if(cards.contains(room)) {
+				output = room;
+				nb.updateNoteBook(output);
 				break;
 			}
 			else {

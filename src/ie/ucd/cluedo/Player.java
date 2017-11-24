@@ -1,5 +1,6 @@
 package ie.ucd.cluedo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /*
@@ -12,12 +13,16 @@ public class Player {
 	private String name;
 	private String pawn;
 	private int[] location;
+	private Notebook nb; 
 	
-	public Player(String name, String pawn, ArrayList<String> arrayList) {
+	public Player(String name, String pawn, ArrayList<String> arrayList) throws FileNotFoundException {
 		this.name = name;
 		this.pawn = pawn;
 		this.cards = arrayList;
 		this.location = new int[2];
+		
+		// This may not work
+		nb = new Notebook(this);
 	}
 
 	public ArrayList<String> getCards() {
@@ -39,6 +44,10 @@ public class Player {
 	
 	public int[] getLocation() {
 		return location;
+	}
+	
+	public Notebook getNoteBook() {
+		return nb;
 	}
 	
 }

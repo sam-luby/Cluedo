@@ -1,6 +1,11 @@
 package ie.ucd.cluedo;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -47,7 +52,23 @@ public class Notebook {
 		}
 		playerNotebook.close();
 	}
-
+	
+	// updates the notebook one string at a time with a tick
+	public void updateNoteBook(String update) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(player + "'s notebook.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(player + "'s notebook.txt"));
+		
+		String oldText = "";
+		for(String x = reader.readLine(); x != null; x = reader.readLine()) {
+			oldText += x + "\r\n";
+		}
+		reader.close();
+		
+		String replaceText = oldText.replaceAll(update, update + " ✓");
+		writer.write(replaceText);
+	}
+	
+	
 	//Temporary main method for testing Notebook class
 //	public static void main(String[] args) throws FileNotFoundException {
 //		PlayerSetup setup = new PlayerSetup();
