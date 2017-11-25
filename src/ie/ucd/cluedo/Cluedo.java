@@ -11,7 +11,6 @@ public class Cluedo {
 //		Add & setup players
 		Cards deck = Cards.getInstance();
 		PlayerSetup setup = new PlayerSetup(deck.getRemainingCards());
-		System.out.println(deck.getRemainingCards());
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 		
@@ -20,7 +19,7 @@ public class Cluedo {
 			System.out.println("\nPlayer: " + p.getName() + ", Pawn: " +  p.getPawn());
 			System.out.println("Cards: " + p.getCards());
 		}
-		System.out.println("ANSWER CARDS");
+		System.out.println("\nANSWER CARDS");
 		System.out.println(deck.getAnswerCards());
 		
 		

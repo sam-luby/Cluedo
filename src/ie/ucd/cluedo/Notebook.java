@@ -54,19 +54,20 @@ public class Notebook {
 	}
 	
 	// updates the notebook one string at a time with a tick
-	public void updateNoteBook(String update) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(player + "'s notebook.txt"));
+	public void updateNoteBook(String update, String weaponHypothesis, String suspectHypothesis, String roomHypothesis) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(player + "'s notebook.txt"));
 		
 		String oldText = "";
 		String x = "";
+		
 		while((x = reader.readLine()) != null) {
-			System.out.println(x);
 			oldText += x + "\r\n";
 		}
 		reader.close();
 		
-		String replaceText = oldText.replaceAll(update, update + " hello");
+		BufferedWriter writer = new BufferedWriter(new FileWriter(player + "'s notebook.txt"));
+		String replaceText = oldText.replaceAll(update, update + " ✓");
+		replaceText += "\n\n\nHypothesis made: " + weaponHypothesis + ", " + suspectHypothesis + ", " + roomHypothesis;
 		writer.write(replaceText);
 		writer.close();
 	}

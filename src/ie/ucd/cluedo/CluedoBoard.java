@@ -47,7 +47,7 @@ public class CluedoBoard {
 		board[23] = "└----┘S └----┘   └-----┘".toCharArray();
 	}
 
-	void initialiseBoard() {
+	public void initialiseBoard() {
 		int x = 0;
 		int numPlayers = players.size();
 		for (int i = 0; i < boardWidth; i++) {
@@ -66,7 +66,7 @@ public class CluedoBoard {
 		}
 	}
 
-	void printBoard() {
+	public void printBoard() {
 		System.out.println("\n\n--------------------------------------------------------------");
 		for (int i = 0; i < boardWidth; i++) {
 			System.out.print(board[i]);
@@ -75,9 +75,9 @@ public class CluedoBoard {
 		System.out.println();
 	}
 
-	void playerMove(Player p) throws IOException {
+	public void playerMove(Player p) throws IOException {
 		int[] location = p.getLocation();
-		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
+//		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
 		printBoard();
 		
 		PlayerTurn turn = new PlayerTurn(p, location);
@@ -176,7 +176,7 @@ public class CluedoBoard {
 		System.out.println("--------------------------TURN OVER---------------------------\n\n");
 	}
 
-	boolean canMove(Player p, String direction) {
+	public boolean canMove(Player p, String direction) {
 		switch (direction) {
 		case "S":
 			if (p.getLocation()[0]==23) {
@@ -231,7 +231,7 @@ public class CluedoBoard {
 		}
 	}
 
-	String playerRoomLocation(Player p) {
+	public String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
 		
 		//TODO Test these Indexes thoroughly
@@ -258,7 +258,7 @@ public class CluedoBoard {
 		}
 	}
 	
-	void useSecretPassage(Player p) {
+	public void useSecretPassage(Player p) {
 		String room = playerRoomLocation(p);
 		switch(room) {
 		 case "Kitchen" :
@@ -284,30 +284,30 @@ public class CluedoBoard {
 		}
 	}
 	
-	int getPlayerChoice(Player p) {
+	public int getPlayerChoice(Player p) {
 		String playerLocation = playerRoomLocation(p);
 		if(playerLocation.equalsIgnoreCase("Kitchen") || playerLocation.equalsIgnoreCase("Conservatory") || playerLocation.equalsIgnoreCase("Lounge")  || playerLocation.equalsIgnoreCase("Study")) {
-			System.out.println("What do you want to do? :");
+			System.out.println("What do you want to do? \n");
 			System.out.println("Do nothing [0]: ");
 			System.out.println("Make accusation [1]: ");
 			System.out.println("Make hypothesis [2]:");
 			System.out.println("Use secret passage [3]:");
 		}
 		else if(!playerLocation.equalsIgnoreCase("Corridor")) {
-			System.out.println("What do you want to do? :");
+			System.out.println("What do you want to do? \n");
 			System.out.println("Do nothing [0]: ");
 			System.out.println("Make accusation [1]: ");
 			System.out.println("Make hypothesis [2]:");
 			
 		} else {
-			System.out.println("What do you want to do? :");
+			System.out.println("What do you want to do? \n");
 			System.out.println("Do nothing [0]: ");
 			System.out.println("Make accusation [1]: ");
 		}
 		
 		Scanner newScan = new Scanner(System.in);
 		while(!newScan.hasNextInt()) {
-			System.out.println("Make a decision: ");
+			System.out.println("Make a valid decision: ");
 			newScan.next();
 		}
 		int choice = newScan.nextInt();

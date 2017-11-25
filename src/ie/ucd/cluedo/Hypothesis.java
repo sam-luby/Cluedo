@@ -36,26 +36,33 @@ public class Hypothesis {
 		roomCards = deck.getRoomCards();
 
 		Scanner myScanner = new Scanner(System.in);
-		String input;
+		String weapon;
+		String suspect;
 				
+		// TODO need to check if the room is one of the player's cards and tell them they probably don't want to make a hypothesis in this room, give option to change decision or continue
+		
 		System.out.println("Please enter a weapon: ");
-		do {
-			input = myScanner.nextLine().trim();
-		} while(!weaponCards.contains(input)) ;
-		weaponHypothesis = input;
+		weapon = myScanner.nextLine().trim();
+		while(!weaponCards.contains(weapon) || myCards.contains(weapon)) {
+			System.out.println("Enter a valid weapon [can not be one of your own cards]: ");
+			weapon = myScanner.nextLine().trim();
+		}
+		weaponHypothesis = weapon;
 		
 		System.out.println("Please enter a suspect: ");
-		do {
-			input = myScanner.nextLine().trim();
-		} while(!suspectCards.contains(input)) ;
-		suspectHypothesis = input;
+		suspect = myScanner.nextLine().trim();
+		while(!suspectCards.contains(suspect)  || myCards.contains(suspect)) {
+			System.out.println("Enter a valid suspect [can not be one of your own cards]: ");
+			suspect = myScanner.nextLine().trim();
+		} 
+		suspectHypothesis = suspect;
 		
 		this.hypothesisCheck = refute(p);
 		if(hypothesisCheck) {
 			// refuted
-			System.out.println("Refuted");
+			System.out.println("Refuted, Notebook updated");
 		} else {
-			System.out.println("Winner.");
+			System.out.println("Winner!");
 			System.exit(0);
 		}
 		
@@ -64,26 +71,27 @@ public class Hypothesis {
 	public boolean refute(Player p) throws IOException {
 		int num = 0;
 		String output = null;
+		Notebook nb = p.getNoteBook();
 		for(Player player : players) {
 			cards = player.getCards();
 			
-			Notebook nb = player.getNoteBook();
+		
 			if(cards.contains(weaponHypothesis)) {
 				output = weaponHypothesis;
-				System.out.println("refuted weapon: " + output);
-				nb.updateNoteBook(output);
+				System.out.println("\nRefuted weapon: " + output);
+				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
 				return true;
 			}
 			else if(cards.contains(suspectHypothesis)) {
 				output = suspectHypothesis;
-				System.out.println("refuted suspect: " + output);
-				nb.updateNoteBook(output);
+				System.out.println("\nRefuted suspect: " + output);
+				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
 				return true;
 			}
 			else if(cards.contains(roomHypothesis)) {
 				output = roomHypothesis;
-				System.out.println("refuted room: " + output);
-				nb.updateNoteBook(output);
+				System.out.println("\nRefuted room: " + output);
+				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
 				return true;
 			}
 		}
