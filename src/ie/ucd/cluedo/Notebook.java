@@ -59,12 +59,14 @@ public class Notebook {
 		BufferedReader reader = new BufferedReader(new FileReader(player + "'s notebook.txt"));
 		
 		String oldText = "";
-		for(String x = reader.readLine(); x != null; x = reader.readLine()) {
+		String x = "";
+		while((x = reader.readLine()) != null) {
+			System.out.println(x);
 			oldText += x + "\r\n";
 		}
 		reader.close();
 		
-		String replaceText = oldText.replaceAll(update, update + " -");
+		String replaceText = oldText.replaceAll(update, update + " hello");
 		writer.write(replaceText);
 		writer.close();
 	}

@@ -234,7 +234,7 @@ public class CluedoBoard {
 	String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
 		
-		//TODO Fix these indexes
+		//TODO Test these Indexes thoroughly
 		if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Kitchen";
 		} else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
@@ -247,11 +247,11 @@ public class CluedoBoard {
 			return "Billiard room";
 		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 13 && loc[0] < 18)) {
 			return "Library";
-		} else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 19 && loc[0] < 24)) {
+		} else if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 18 && loc[0] < 24)) {
 			return "Lounge";
-		} else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 18 && loc[0] < 24)) {
+		} else if ((loc[1] > 9 && loc[1] < 14) && (loc[0] > 17 && loc[0] < 24)) {
 			return "Hall";
-		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 21 && loc[0] < 24)) {
+		} else if ((loc[1] > 17 && loc[1] < 24) && (loc[0] > 20 && loc[0] < 24)) {
 			return "Study";
 		} else {
 			return "Corridor";
