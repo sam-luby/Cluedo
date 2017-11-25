@@ -67,9 +67,6 @@ public class Hypothesis {
 		for(Player player : players) {
 			cards = player.getCards();
 			
-			// testing
-			System.out.println(cards);
-			
 			Notebook nb = player.getNoteBook();
 			if(cards.contains(weaponHypothesis)) {
 				output = weaponHypothesis;
@@ -89,16 +86,9 @@ public class Hypothesis {
 				nb.updateNoteBook(output);
 				return true;
 			}
-			else {
-				num += 1;
-			}
-		}
-		if(num == 18) {
-			return false;
 		}
 		
-		System.out.println("Fucked up");
-		return true;
+		return false;
 	}
 	
 }

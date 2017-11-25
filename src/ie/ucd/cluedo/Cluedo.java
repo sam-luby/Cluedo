@@ -27,7 +27,7 @@ public class Cluedo {
 //		Board initialisation
 		CluedoBoard myBoard = new CluedoBoard(players);
 		myBoard.initialiseBoard();
-		myBoard.printBoard();
+//		myBoard.printBoard();
 
 //		Give each player a turn
 		//TODO This will have to keep looping until some boolean endGame == 1
