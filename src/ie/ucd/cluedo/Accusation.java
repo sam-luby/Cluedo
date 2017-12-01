@@ -19,13 +19,14 @@ public class Accusation {
 	private boolean accusationCheck;
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
+	private ArrayList<String> roomCards;
 	
-	public Accusation(Player player, String room) {
+	public Accusation(Player player) {
 		this.player = player;
-		this.roomAccusation = room;
 		suspectCards = deck.getSuspectCards();
 		System.out.println(suspectCards);
 		weaponCards = deck.getWeaponCards();
+		roomCards = deck.getRoomCards();
 		
 		Scanner myScanner = new Scanner(System.in);
 		String input;
@@ -42,6 +43,12 @@ public class Accusation {
 		} while(!suspectCards.contains(input)) ;
 		suspectAccusation = input;
 		
+		System.out.println("Please enter a room: ");
+		do {
+			input = myScanner.nextLine().trim();
+		} while(!roomCards.contains(input)) ;
+		roomAccusation = input;
+		
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
 		if(accusationCheck) {
 			//Winner
@@ -50,6 +57,7 @@ public class Accusation {
 		} else {
 			//Loser
 			//TODO Kick from game
+			PlayerSetup.deletePlayer(player);
 			System.out.println("Loser, you are removed from the game.");
 		}
 	}

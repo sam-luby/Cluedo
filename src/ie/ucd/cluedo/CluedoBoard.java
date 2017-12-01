@@ -167,7 +167,7 @@ public class CluedoBoard {
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
-			Accusation acc = new Accusation(p, playerRoomLocation(p));
+			Accusation acc = new Accusation(p);
 		} else if (choice == 2) {
 			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {

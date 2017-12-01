@@ -17,7 +17,7 @@ import ie.ucd.cluedo.enums.SuspectCards;
  */
 public class PlayerSetup {
 	private String[] playerNames;
-	ArrayList<Player> players;
+	static ArrayList<Player> players;
 	SuspectCards suspects;
 	private ArrayList<String> remainingCards = new ArrayList<String>();
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
@@ -35,6 +35,10 @@ public class PlayerSetup {
 	
 	public ArrayList<Player> getPlayers() {
 		return players;
+	}
+	
+	public static void deletePlayer(Player player) {
+		players.remove(player);
 	}
 	
 	public void setPlayers(ArrayList<Player> newPlayers) {
