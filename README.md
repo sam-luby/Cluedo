@@ -22,3 +22,13 @@ Final sprint before 21 Dec release
 GUI implementation hopefully,
 Code refactor,
 JUnit tests
+
+
+KNOWN BUGS/MISSING FEATURES:
+Skipping player turn after unsuccessful accusation,
+Not updating other player's notebooks after hypothesis made,
+Not checking room for hypothesis,
+Player old icon remains on map after using secret passage,
+Accusations not in notebook,
+Fitting 2 players in 1 room,
+Players with same first letter in name need new character

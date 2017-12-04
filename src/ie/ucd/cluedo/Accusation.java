@@ -50,13 +50,14 @@ public class Accusation {
 		roomAccusation = input;
 		
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
+		
+		//TODO Update other player's notebooks about Accusation made.
 		if(accusationCheck) {
 			//Winner
 			System.out.println("Winner.");
 			System.exit(0);
 		} else {
 			//Loser
-			//TODO Kick from game
 			PlayerSetup.deletePlayer(player);
 			System.out.println("Loser, you are removed from the game.");
 		}
