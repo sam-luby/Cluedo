@@ -75,23 +75,34 @@ public class Hypothesis {
 		for(Player player : players) {
 			cards = player.getCards();
 			
-		
 			if(cards.contains(weaponHypothesis)) {
 				output = weaponHypothesis;
 				System.out.println("\nRefuted weapon: " + output);
-				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
+				nb.updateNotebookWithRefute(output);
+				for(Player pl : players) {
+					Notebook note = pl.getNoteBook();
+					note.updateNotebookWithHypothesis(weaponHypothesis, suspectHypothesis, roomHypothesis);
+				}
 				return true;
 			}
 			else if(cards.contains(suspectHypothesis)) {
 				output = suspectHypothesis;
 				System.out.println("\nRefuted suspect: " + output);
-				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
+				nb.updateNotebookWithRefute(output);
+				for(Player pl : players) {
+					Notebook note = pl.getNoteBook();
+					note.updateNotebookWithHypothesis(weaponHypothesis, suspectHypothesis, roomHypothesis);
+				}
 				return true;
 			}
 			else if(cards.contains(roomHypothesis)) {
 				output = roomHypothesis;
 				System.out.println("\nRefuted room: " + output);
-				nb.updateNoteBook(output, weaponHypothesis, suspectHypothesis, roomHypothesis);
+				nb.updateNotebookWithRefute(output);
+				for(Player pl : players) {
+					Notebook note = pl.getNoteBook();
+					note.updateNotebookWithHypothesis(weaponHypothesis, suspectHypothesis, roomHypothesis);
+				}
 				return true;
 			}
 		}

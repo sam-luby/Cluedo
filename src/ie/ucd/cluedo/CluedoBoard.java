@@ -67,7 +67,7 @@ public class CluedoBoard {
 	public void playerMove(Player p) throws IOException {
 //		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
 		printBoard();
-		Turn move = new Turn(p, this, players);
+		Movement move = new Movement(p, this, players);
 	}
 	
 	public char[][] getBoard(){

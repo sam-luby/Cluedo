@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Turn {
+public class Movement {
 	
 	private CluedoBoard cluedoBoard;
 	char[][] board;
 	
-	public Turn(Player p, CluedoBoard cluedoBoard, ArrayList<Player> players) throws IOException {
+	public Movement(Player p, CluedoBoard cluedoBoard, ArrayList<Player> players) throws IOException {
 		this.cluedoBoard = cluedoBoard;
 		board = cluedoBoard.getBoard();
 		
