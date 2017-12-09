@@ -32,3 +32,9 @@ Player old icon remains on map after using secret passage,
 Accusations not in notebook,
 Fitting 2 players in 1 room,
 Players with same first letter in name need new character
+
+THINGS TO FIX/REFACTOR
+Board scanner
+Poor cohesion with movement in the cluedoboard class. Implement movement in a new Movement class.
+Cluedo game should be implemented in a new class called Cluedo
+
