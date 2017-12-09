@@ -1,8 +1,10 @@
 package ie.ucd.cluedo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -13,38 +15,25 @@ public class CluedoBoard {
 	private int boardWidth = 24;
 	private int boardHeight = 24;
 	private ArrayList<Player> players;
-	private char[][] board = new char[boardWidth][boardHeight];
+	private char[][] board = new char[boardHeight][boardWidth];
 	File boardTextFile = new File("board.txt");
 
-	public CluedoBoard(ArrayList<Player> players) {
+	public CluedoBoard(ArrayList<Player> players) throws FileNotFoundException {
 
 		this.players = players;
-		
-		// TODO Find a nicer way to do this
-		board[0]  = "┌----┐ S┌------┐S ┌----┐".toCharArray();
-		board[1]  = "|=   |  |      |  |   =|".toCharArray();
-		board[2]  = "|    |  | Ball |  E Con|".toCharArray();
-		board[3]  = "|Kit |  |      |  └----┘".toCharArray();
-		board[4]  = "|    |  E      E       S".toCharArray();
-		board[5]  = "└---E┘  |      |        ".toCharArray();
-		board[6]  = "        └E----E┘        ".toCharArray();
-		board[7]  = "                  ┌----┐".toCharArray();
-		board[8]  = "┌------┐          E    |".toCharArray();
-		board[9]  = "|      |  ┌---┐   |    |".toCharArray();
-		board[10] = "|      |  |   |   |Bill|".toCharArray();
-		board[11] = "|      E  |   |   └---E┘".toCharArray();
-		board[12] = "|Dining|  |   |         ".toCharArray();
-		board[13] = "|      |  |   |  ┌--E--┐".toCharArray();
-		board[14] = "└-----E┘  |   |  |     |".toCharArray();
-		board[15] = "          └---┘  E     |".toCharArray();
-		board[16] = "S                | Lib |".toCharArray();
-		board[17] = "        ┌-EE-┐   └-----┘".toCharArray();
-		board[18] = "┌----┐  |    |         S".toCharArray();
-		board[19] = "|    E  |    E          ".toCharArray();
-		board[20] = "|Loun|  |    |   ┌-----┐".toCharArray();
-		board[21] = "|    |  |Hall|   E  Stu|".toCharArray();
-		board[22] = "|=   |  |    |   |    =|".toCharArray();
-		board[23] = "└----┘S └----┘   └-----┘".toCharArray();
+		File file = new File("board.txt");
+		Scanner scanner = new Scanner(file);
+		int i = 0;
+		while(scanner.hasNextLine()) {
+			board[i] = scanner.nextLine().toCharArray();
+			i++;
+        }
+        scanner.close();
+        
+        // Fixes error in first line by shifting to the left, works but has extra character in the [0][24] position
+        System.arraycopy(board[0], 1, board[0], 0, 24);  
+        board[0][24] = ' ';
+        
 	}
 
 	public void initialiseBoard() {
