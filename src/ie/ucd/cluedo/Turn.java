@@ -201,21 +201,25 @@ public class Turn {
 		String room = playerRoomLocation(p);
 		switch(room) {
 		 case "Kitchen" :
+			 board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			 p.setLocation(22, 21);
 			 board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 			 System.out.println(p.getName() + " travelled from " + room + " to the Study" );
 			 break;
 		 case "Conservatory" :
+			 board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			 p.setLocation(22, 2);
 			 board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 			 System.out.println(p.getName() + " travelled from " + room + " to the Lounge");
 			 break;
 		 case "Lounge" :
+			 board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			 p.setLocation(1, 21);
 			 board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 			 System.out.println(p.getName() + " travelled from " + room + " to the Conservatory");
 			 break;
 		 case "Study" :
+			 board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			 p.setLocation(1, 2);
 			 board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 			 System.out.println(p.getName() + " travelled from " + room + " to the Kitchen");

@@ -32,6 +32,7 @@ Player old icon remains on map after using secret passage,
 Accusations not in notebook,
 Fitting 2 players in 1 room,
 Players with same first letter in name need new character
+Movement on second turn when player starts there turn inside a room
 
 THINGS TO FIX/REFACTOR
 Board scanner
