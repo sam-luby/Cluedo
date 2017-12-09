@@ -1,5 +1,6 @@
 package ie.ucd.cluedo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,33 +21,42 @@ public class Accusation {
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
 	private ArrayList<String> roomCards;
+	private ArrayList<String> myCards;
+	private ArrayList<Player> players;
 	
-	public Accusation(Player player) {
+	public Accusation(Player player, ArrayList<Player> players) throws IOException {
 		this.player = player;
+		this.players = players;
 		suspectCards = deck.getSuspectCards();
-		System.out.println(suspectCards);
 		weaponCards = deck.getWeaponCards();
 		roomCards = deck.getRoomCards();
+		myCards = player.getCards();
 		
 		Scanner myScanner = new Scanner(System.in);
 		String input;
 		
 		System.out.println("Please enter a weapon: ");
-		do {
+		input = myScanner.nextLine().trim();
+		while(!weaponCards.contains(input) || myCards.contains(input)) {
+			System.out.println("Enter a valid weapon [can not be one of your own cards]: ");
 			input = myScanner.nextLine().trim();
-		} while(!weaponCards.contains(input)) ;
+		} 
 		weaponAccusation = input;
 		
 		System.out.println("Please enter a suspect: ");
-		do {
+		input = myScanner.nextLine().trim();
+		while(!suspectCards.contains(input) || myCards.contains(input)) {
+			System.out.println("Enter a valid suspect [can not be one of your own cards]: ");
 			input = myScanner.nextLine().trim();
-		} while(!suspectCards.contains(input)) ;
+		} 
 		suspectAccusation = input;
 		
 		System.out.println("Please enter a room: ");
-		do {
+		input = myScanner.nextLine().trim();
+		while(!roomCards.contains(input) || myCards.contains(input)) {
+			System.out.println("Enter a valid room [can not be one of your own cards]: ");
 			input = myScanner.nextLine().trim();
-		} while(!roomCards.contains(input)) ;
+		} 
 		roomAccusation = input;
 		
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
@@ -64,14 +74,26 @@ public class Accusation {
 	}
 	
 //	If any part of the accusation is wrong, the whole accusation is wrong so delete the player
-	public boolean checkAccusation(String weapon, String suspect, String room) {
+	public boolean checkAccusation(String weapon, String suspect, String room) throws IOException {
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);
 		if(!weapon.equals(answerCards.get(0))) {
+			for(Player p : players) {
+				Notebook nb = p.getNoteBook();
+				nb.updateNotebookWithAccusation(weapon, suspect, room);
+			}
 			return false;
 		} else if(!suspect.equals(answerCards.get(1))) {
+			for(Player p : players) {
+				Notebook nb = p.getNoteBook();
+				nb.updateNotebookWithAccusation(weapon, suspect, room);
+			}
 			return false;
 		} else if(!room.equals(answerCards.get(2))) {
+			for(Player p : players) {
+				Notebook nb = p.getNoteBook();
+				nb.updateNotebookWithAccusation(weapon, suspect, room);
+			}
 			return false;
 		} else {
 			return true;

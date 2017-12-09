@@ -104,7 +104,7 @@ public class Movement {
 		
 		int choice = getPlayerChoice(p);
 		if(choice == 1) {
-			Accusation acc = new Accusation(p);
+			Accusation acc = new Accusation(p, players);
 		} else if (choice == 2) {
 			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {

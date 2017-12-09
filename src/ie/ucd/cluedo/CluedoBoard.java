@@ -42,6 +42,7 @@ public class CluedoBoard {
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < boardHeight; j++) {
 				if (numPlayers != 0 && board[i][j] == 'S') {
+					//TODO could give players numbers 1, 2, 3, 4, 5, 6 as icons instead of first letter of name 
 					board[i][j] = (char) Character.toUpperCase(players.get(x).getName().charAt(0));
 					players.get(x).setLocation(i, j);
 

@@ -90,6 +90,25 @@ public class Notebook {
 		
 	}
 	
+	public void updateNotebookWithAccusation(String weaponHypothesis, String suspectHypothesis, String roomHypothesis) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(player + "'s notebook.txt"));
+		
+		String oldText = "";
+		String x = "";
+		
+		while((x = reader.readLine()) != null) {
+			oldText += x + "\r\n";
+		}
+		reader.close();
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(player + "'s notebook.txt"));
+		String replaceText = oldText;
+		replaceText += "\n\n\nAccusation made: " + weaponHypothesis + ", " + suspectHypothesis + ", " + roomHypothesis;
+		writer.write(replaceText);
+		writer.close();
+		
+	}
+	
 	
 	//Temporary main method for testing Notebook class
 //	public static void main(String[] args) throws FileNotFoundException {
