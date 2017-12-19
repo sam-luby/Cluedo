@@ -73,4 +73,7 @@ public class CluedoBoard {
 		board = inputboard;
 	}
 	
+	public void updateSquare(int x, int y, char updateChar) {
+		board[x][y] = updateChar;
+	}
 }

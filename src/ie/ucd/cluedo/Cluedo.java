@@ -12,13 +12,13 @@ public class Cluedo {
 	static Player deletePlayerName;
 
 	public Cluedo() throws IOException {
-		// Add & setup players
-
+		// Game setup
 		Cards deck = Cards.getInstance();
 		PlayerSetup setup = new PlayerSetup(deck.getRemainingCards());
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 
+//		Print out sensitive information if in demo mode
 		if (demoMode) {
 			for (Player p : players) {
 				System.out.println("\nPlayer: " + p.getName() + ", Pawn: " + p.getPawn());
@@ -38,7 +38,7 @@ public class Cluedo {
 			for (int i = 0; i < players.size(); i++) {
 				myBoard.playerMove(players.get(i));
 
-//				If we need to delete a player, remove them from the game.
+				// If we need to delete a player, remove them from the game.
 				if (i == players.size()-1 && deletePlayerFlag) {
 					PlayerSetup.deletePlayer(deletePlayerName);
 					Cluedo.deletePlayerFlag = false;
