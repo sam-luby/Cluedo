@@ -40,7 +40,7 @@ public class Movement {
 						p.setLocation(p.getLocation()[0] + 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					} else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
+					} else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == '#') {
 						if(playerRoomLocation(p)=="Corridor") {
 							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 							p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
@@ -62,7 +62,7 @@ public class Movement {
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					} else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
+					} else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == '#') {
 						if(playerRoomLocation(p)=="Corridor") {
 							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 							p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
@@ -84,7 +84,7 @@ public class Movement {
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					} else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') { 
+					} else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == '#') { 
 						if(playerRoomLocation(p)=="Corridor") {
 							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 							p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
@@ -106,7 +106,7 @@ public class Movement {
 						p.setLocation(p.getLocation()[0] - 1, p.getLocation()[1]);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					} else if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
+					} else if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == '#') {
 						if(playerRoomLocation(p)=="Corridor") {
 							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 							p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
@@ -141,9 +141,8 @@ public class Movement {
 			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {
 			useSecretPassage(p);
-		} else {
-			turn.endTurn();
-		}
+		} 
+		turn.endTurn();
 	}
 	
 	public boolean canMove(Player p, String direction) {
@@ -154,7 +153,7 @@ public class Movement {
 				return false;
 			}
 			else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' '
-					|| board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
+					|| board[p.getLocation()[0] + 1][p.getLocation()[1]] == '#') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
@@ -166,7 +165,7 @@ public class Movement {
 				return false;
 			}
 			else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == ' '
-					|| board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
+					|| board[p.getLocation()[0]][p.getLocation()[1] + 1] == '#') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
@@ -178,7 +177,7 @@ public class Movement {
 				return false;
 			}
 			else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == ' '
-					|| board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
+					|| board[p.getLocation()[0]][p.getLocation()[1] - 1] == '#') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
@@ -190,7 +189,7 @@ public class Movement {
 				return false;
 			}
 			if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == ' '
-					|| board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
+					|| board[p.getLocation()[0] - 1][p.getLocation()[1]] == '#') {
 				return true;
 			} else {
 				System.out.println("Cant move through walls");
