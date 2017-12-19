@@ -24,12 +24,9 @@ JUnit tests
 
 
 KNOWN BUGS/MISSING FEATURES:
-Skipping player turn after unsuccessful accusation,
 Not checking room for hypothesis,
-Players with same first letter in name need new character, 
 Board scanner - Currently has workaround,
-Related room problem, room should be treated as one space
- - Fitting 2 players in 1 room (or one space)
+Player icon deleted if two players occupy a single space, then one moves away.
 
 
 

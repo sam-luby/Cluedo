@@ -151,6 +151,7 @@ public class Movement {
 		return false;
 	}
 
+// 	Handles the normal player movement around the board
 	void move(Player player, String direction, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		int vertPos = player.getLocation()[0];
 		int horizPos = player.getLocation()[1];
@@ -182,6 +183,7 @@ public class Movement {
 			break;
 		}
 		
+		//If there is already a player in the desired location
 		for(Player p : players) {
 			char initial = p.getName().charAt(0);
 			if(board[vertMove][horizMove] == initial) {
@@ -193,6 +195,8 @@ public class Movement {
 				turn.decrememntMoves();
 			}
 		}
+		
+		//Moves player in the desired location, though an entrance if necessary
 		if (board[vertMove][horizMove] == ' ') {
 			board[vertPos][horizPos] = ' ';
 			player.setLocation(vertMove, horizMove);
@@ -201,6 +205,7 @@ public class Movement {
 			board[vertMove][horizMove] = Character.toUpperCase(player.getName().charAt(0));
 			turn.decrememntMoves();
 		} else if (board[vertMove][horizMove] == '#') {
+			//Checks if player is coming INTO or OUT OF the room [if coming into room, player must make a choice]
 			if (playerRoomLocation(player) == "Corridor") {
 				board[vertPos][horizPos] = ' ';
 				player.setLocation(vertPos + vertStep, horizPos + horizStep);
@@ -246,6 +251,7 @@ public class Movement {
 		}
 	}
 
+//	Method to handle usage of the secret passages
 	public void useSecretPassage(Player p) {
 		String room = playerRoomLocation(p);
 		switch (room) {
