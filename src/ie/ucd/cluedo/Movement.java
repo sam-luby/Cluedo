@@ -113,34 +113,26 @@ public class Movement {
 	void move(Player p, String direction, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		int vertPos = p.getLocation()[0];
 		int horizPos = p.getLocation()[1];
-		int vertMove = 0;
-		int horizMove = 0;
-		int vertStep = 0;
+		int vertMove = vertPos;
+		int horizMove = horizPos;
+		int vertStep = 0; 
 		int horizStep = 0;
 
 		switch (direction) {
 		case "S":
 			vertMove = vertPos + 1;
-			horizMove = horizPos;
 			vertStep = 2;
-			horizStep = 0;
 			break;
 		case "W":
 			vertMove = vertPos - 1;
-			horizMove = horizPos;
 			vertStep = -2;
-			horizStep = 0;
 			break;
 		case "A":
-			vertMove = vertPos;
 			horizMove = horizPos - 1;
-			vertStep = 0;
 			horizStep = -2;
 			break;
 		case "D":
-			vertMove = vertPos;
 			horizMove = horizPos + 1;
-			vertStep = 0;
 			horizStep = 2;
 			break;
 		default:
@@ -179,7 +171,6 @@ public class Movement {
 	public String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
 
-		// TODO Test these Indexes thoroughly
 		if ((loc[1] > 0 && loc[1] < 6) && (loc[0] > 0 && loc[0] < 6)) {
 			return "Kitchen";
 		} else if ((loc[1] > 8 && loc[1] < 16) && (loc[0] > 0 && loc[0] < 6)) {
