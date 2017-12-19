@@ -8,9 +8,12 @@ import ie.ucd.cluedo.enums.RoomCards;
 import ie.ucd.cluedo.enums.SuspectCards;
 import ie.ucd.cluedo.enums.WeaponCards;
 
+/**
+ * Handles a player hypothesis. Creates a new instance of Accusation and gets the user's guess from console.
+ * @author Sam & Darren
+ */
 public class Hypothesis {
-	
-	private Player p;
+	private Player player;
 	private ArrayList<Player> players;
 	private String roomHypothesis;
 	private String suspectHypothesis;
@@ -23,12 +26,11 @@ public class Hypothesis {
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
 	
-	public Hypothesis(Player p, ArrayList<Player> players, String room) throws IOException {
-		this.p = p;
+	public Hypothesis(Player player, ArrayList<Player> players, String room) throws IOException {
+		this.player = player;
 		this.players = players;
 		this.roomHypothesis = room;
-		myCards = p.getCards();
-		
+		myCards = player.getCards();
 		Cards deck = Cards.getInstance();
 		allCards = deck.getAllCards();
 		suspectCards = deck.getSuspectCards();
@@ -56,7 +58,8 @@ public class Hypothesis {
 			suspect = myScanner.nextLine().trim();
 		} 
 		suspectHypothesis = suspect;
-		this.hypothesisCheck = refute(p);
+		
+		this.hypothesisCheck = checkHypothesis(player);
 		
 		if(hypothesisCheck) {
 		//Refuted
@@ -68,8 +71,8 @@ public class Hypothesis {
 		}
 	}
 	
-	public boolean refute(Player p) throws IOException {
-		int num = 0;
+	//TODO Refactor this
+	public boolean checkHypothesis(Player p) throws IOException {
 		String output = null;
 		Notebook nb = p.getNoteBook();
 		for(Player player : players) {

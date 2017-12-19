@@ -95,34 +95,4 @@ public class Cards {
 		return remainingCards;
 	}
 	
-	//Temporary main method for testing AllCards class
-//	public static void main(String[] args) {
-//		
-//		System.out.println("How many players are going to play? [3-6]");
-//		Scanner numberOfPlayersScanner = new Scanner(System.in);
-//		int numPlayers = numberOfPlayersScanner.nextInt();
-//		numberOfPlayersScanner.close();
-//		
-//		AllCards cards = new AllCards();
-//		ArrayList<String> answerCards = cards.answerCards();
-//		System.out.print("\nDisplaying the answer cards: \n");
-//		for(String a : answerCards) {
-//			System.out.println(a);
-//		}
-//		
-//		System.out.print("\nNow displaying the remaining cards: \n");
-//		ArrayList<String> remainingCards = cards.remainingCards();
-//		for(String r : remainingCards) {
-//			System.out.println(r);
-//		}
-//		
-//		cards.distributeCards(numPlayers);
-//		System.out.println("\nNow displaying distributed cards between "+numPlayers+" players: \n");
-//		
-//		for(int i=0;i<numPlayers;i++) {
-//			System.out.println("Player " + (i+1) + " cards: "  + cards.getPlayerCards().get(i));
-//		}
-//		
-//	}
-	
 }

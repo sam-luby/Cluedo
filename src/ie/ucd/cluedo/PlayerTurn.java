@@ -28,6 +28,7 @@ public class PlayerTurn {
 		moves--;
 	}
 	
+	//Gives player a number of choices based on where they are on the board
 	public static int getPlayerChoice(Player p, String playerLocation) {
 		if (playerLocation.equalsIgnoreCase("Kitchen") || playerLocation.equalsIgnoreCase("Conservatory") || playerLocation.equalsIgnoreCase("Lounge") || playerLocation.equalsIgnoreCase("Study")) {
 			System.out.println("What do you want to do? \n");
@@ -55,7 +56,7 @@ public class PlayerTurn {
 		return choice;
 	}
 	
-//	Simple way to end their turn is just set the turns to 0 
+	// Simple way to end their turn is just set the turns to 0 
 	public void endTurn() {
 		moves = 0;
 	}

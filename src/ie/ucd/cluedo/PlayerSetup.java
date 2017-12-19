@@ -88,7 +88,7 @@ public class PlayerSetup {
 		}
 	}
 	
-//	Randomly assigns each player with cards, gives each player a pawn card name.
+    // Randomly assigns each player with cards, gives each player a pawn card name.
 	public void setupPlayers() throws FileNotFoundException {
 		this.distributeCards(playerNames.length);
 		for(int i = 0; i < playerNames.length; i++ ) {

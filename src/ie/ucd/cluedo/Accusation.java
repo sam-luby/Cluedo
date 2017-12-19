@@ -73,7 +73,7 @@ public class Accusation {
 		}
 	}
 	
-//	If any part of the accusation is wrong, the whole accusation is wrong so delete the player
+    //If any part of the accusation is wrong, the whole accusation is wrong so delete the player
 	public boolean checkAccusation(String weapon, String suspect, String room) throws IOException {
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);

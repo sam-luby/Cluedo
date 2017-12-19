@@ -20,8 +20,6 @@ public class Player {
 		this.pawn = pawn;
 		this.cards = arrayList;
 		this.location = new int[2];
-		
-		// This may not work
 		nb = new Notebook(this);
 	}
 
