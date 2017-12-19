@@ -35,6 +35,7 @@ public class Accusation {
 		Scanner myScanner = new Scanner(System.in);
 		String input;
 		
+		//Get player inputs for weapon/suspect/room
 		System.out.println("Please enter a weapon: ");
 		input = myScanner.nextLine().trim();
 		while(!weaponCards.contains(input) || myCards.contains(input)) {
@@ -61,41 +62,25 @@ public class Accusation {
 		
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
 		
+		//If player gets accusation right, they win the game, else they are kicked from the game.
 		if(accusationCheck) {
-			//Winner
-			System.out.println("Winner.");
+			System.out.println("Accusation correct, you win!");
 			Cluedo.endGame = true;
-			System.exit(0);
 		} else {
-			//Loser
 			Cluedo.deletePlayerName = player;
 			Cluedo.deletePlayerFlag = true;
-//			PlayerSetup.deletePlayer(player);
 			System.out.println("Loser, you are removed from the game.");
 		}
 	}
 	
 //	If any part of the accusation is wrong, the whole accusation is wrong so delete the player
-//	TODO Fix kicking player bug.
 	public boolean checkAccusation(String weapon, String suspect, String room) throws IOException {
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);
-		if(!weapon.equals(answerCards.get(0))) {
-			for(Player p : players) {
-				Notebook nb = p.getNoteBook();
-				nb.updateNotebookWithAccusation(weapon, suspect, room);
-			}
-			return false;
-		} else if(!suspect.equals(answerCards.get(1))) {
-			for(Player p : players) {
-				Notebook nb = p.getNoteBook();
-				nb.updateNotebookWithAccusation(weapon, suspect, room);
-			}
-			return false;
-		} else if(!room.equals(answerCards.get(2))) {
-			for(Player p : players) {
-				Notebook nb = p.getNoteBook();
-				nb.updateNotebookWithAccusation(weapon, suspect, room);
+		if(!weapon.equals(answerCards.get(0)) || !suspect.equals(answerCards.get(1)) || !room.equals(answerCards.get(2))) {
+			for(Player player : players) {
+				Notebook notebook = player.getNoteBook();
+				notebook.updateNotebookWithAccusation(weapon, suspect, room);
 			}
 			return false;
 		} else {
