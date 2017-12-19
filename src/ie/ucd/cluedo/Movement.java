@@ -258,6 +258,7 @@ public class Movement {
 		}
 	}
 	
+//	TODO Move this code to somewhere else (PlayerTurn class probably)
 	public int getPlayerChoice(Player p) {
 		String playerLocation = playerRoomLocation(p);
 		if(playerLocation.equalsIgnoreCase("Kitchen") || playerLocation.equalsIgnoreCase("Conservatory") || playerLocation.equalsIgnoreCase("Lounge")  || playerLocation.equalsIgnoreCase("Study")) {

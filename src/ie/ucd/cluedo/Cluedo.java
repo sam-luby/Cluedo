@@ -36,6 +36,7 @@ public class Cluedo {
 			}
 		}
 		
+//		TODO Fix
 		System.out.println("Game demo over...");
 		System.exit(0);
 	}
