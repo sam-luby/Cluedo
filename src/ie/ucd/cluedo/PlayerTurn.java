@@ -26,4 +26,8 @@ public class PlayerTurn {
 		moves--;
 	}
 	
+	public void endTurn() {
+		moves = 0;
+	}
+	
 }

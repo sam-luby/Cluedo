@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles player movements around the board
+ * @author Sam & Darren
+ */
 public class Movement {
 	
 	private CluedoBoard cluedoBoard;
@@ -21,13 +25,14 @@ public class Movement {
 		Scanner newScan = new Scanner(System.in);
 
 		while (moves > 0) {
+			System.out.println(p.getName() + " " + playerRoomLocation(p));
+			
 			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
 			System.out.println("Give a direction [W,A,S,D]:");
 			direction = newScan.nextLine().toUpperCase();
+			
 			switch (direction) {
-
-			// TODO Refactor code here for code reusability
 			case "S":
 				if (canMove(p, direction)) {
 					if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == ' ') {
@@ -36,10 +41,17 @@ public class Movement {
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
 					} else if (board[p.getLocation()[0] + 1][p.getLocation()[1]] == 'E') {
-						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-						p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
-						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-						turn.decrememntMoves();
+						if(playerRoomLocation(p)=="Corridor") {
+							executeChoice(getPlayerChoice(p), p, turn,  players);
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						} else {
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0] + 2, p.getLocation()[1]);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+							turn.decrememntMoves();
+						}
 					}
 				}
 				break;
@@ -51,10 +63,17 @@ public class Movement {
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
 					} else if (board[p.getLocation()[0]][p.getLocation()[1] + 1] == 'E') {
-						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-						p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
-						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-						turn.decrememntMoves();
+						if(playerRoomLocation(p)=="Corridor") {
+							executeChoice(getPlayerChoice(p), p, turn,  players);
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						} else {
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0], p.getLocation()[1] + 2);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+							turn.decrememntMoves();
+						}
 					}
 				}
 				break;
@@ -65,11 +84,18 @@ public class Movement {
 						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 1);
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
-					} else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') {
-						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-						p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
-						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-						turn.decrememntMoves();
+					} else if (board[p.getLocation()[0]][p.getLocation()[1] - 1] == 'E') { 
+						if(playerRoomLocation(p)=="Corridor") {
+							executeChoice(getPlayerChoice(p), p, turn,  players);
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						} else {
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0], p.getLocation()[1] - 2);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+							turn.decrememntMoves();
+						}
 					}
 				}
 				break;
@@ -81,37 +107,43 @@ public class Movement {
 						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
 						turn.decrememntMoves();
 					} else if (board[p.getLocation()[0] - 1][p.getLocation()[1]] == 'E') {
-						board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
-						p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
-						board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-						turn.decrememntMoves();
+						if(playerRoomLocation(p)=="Corridor") {
+							executeChoice(getPlayerChoice(p), p, turn,  players);
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+						} else {
+							board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
+							p.setLocation(p.getLocation()[0] - 2, p.getLocation()[1]);
+							board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
+							turn.decrememntMoves();
+						}
 					}
 				}
 				break;
 			default:
 				System.out.println("WARNNG: Enter a valid character [W,A,S,D]:");
 			}
-			
+
 			cluedoBoard.setBoard(board);
 			cluedoBoard.printBoard();
 			
 			System.out.println(playerRoomLocation(p));
 			moves = turn.getMoves();
-			if(!playerRoomLocation(p).equalsIgnoreCase("Corridor")) {
-				moves = 0;
-			}
 		}
-		
-		int choice = getPlayerChoice(p);
+		System.out.println("--------------------------TURN OVER---------------------------\n\n");
+	}
+	
+	public void executeChoice(int choice, Player p, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		if(choice == 1) {
 			Accusation acc = new Accusation(p, players);
 		} else if (choice == 2) {
 			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {
 			useSecretPassage(p);
-		} 
-		System.out.println("--------------------------TURN OVER---------------------------\n\n");
-
+		} else {
+			turn.endTurn();
+		}
 	}
 
 	
@@ -170,6 +202,7 @@ public class Movement {
 		}
 	}
 	
+//	Returns room location of a player based on their 2D array location
 	public String playerRoomLocation(Player p) {
 		int[] loc = p.getLocation();
 		

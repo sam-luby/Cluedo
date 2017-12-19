@@ -19,7 +19,6 @@ public class CluedoBoard {
 	File boardTextFile = new File("board.txt");
 
 	public CluedoBoard(ArrayList<Player> players) throws FileNotFoundException {
-
 		this.players = players;
 		File file = new File("board.txt");
 		Scanner scanner = new Scanner(file);
@@ -33,7 +32,6 @@ public class CluedoBoard {
         // Fixes error in first line by shifting to the left, works but has extra character in the [0][24] position
         System.arraycopy(board[0], 1, board[0], 0, 24);  
         board[0][24] = ' ';
-        
 	}
 
 	public void initialiseBoard() {
