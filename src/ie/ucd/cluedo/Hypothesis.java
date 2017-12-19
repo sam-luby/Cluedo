@@ -56,16 +56,16 @@ public class Hypothesis {
 			suspect = myScanner.nextLine().trim();
 		} 
 		suspectHypothesis = suspect;
-		
 		this.hypothesisCheck = refute(p);
+		
 		if(hypothesisCheck) {
-			// refuted
+		//Refuted
 			System.out.println("Refuted, Notebook updated");
 		} else {
 			System.out.println("Winner!");
+			Cluedo.endGame = true;
 			System.exit(0);
 		}
-		
 	}
 	
 	public boolean refute(Player p) throws IOException {

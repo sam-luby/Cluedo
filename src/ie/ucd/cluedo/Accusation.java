@@ -61,19 +61,22 @@ public class Accusation {
 		
 		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
 		
-		//TODO Update other player's notebooks about Accusation made.
 		if(accusationCheck) {
 			//Winner
 			System.out.println("Winner.");
+			Cluedo.endGame = true;
 			System.exit(0);
 		} else {
 			//Loser
-			PlayerSetup.deletePlayer(player);
+			Cluedo.deletePlayerName = player;
+			Cluedo.deletePlayerFlag = true;
+//			PlayerSetup.deletePlayer(player);
 			System.out.println("Loser, you are removed from the game.");
 		}
 	}
 	
 //	If any part of the accusation is wrong, the whole accusation is wrong so delete the player
+//	TODO Fix kicking player bug.
 	public boolean checkAccusation(String weapon, String suspect, String room) throws IOException {
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);

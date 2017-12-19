@@ -28,7 +28,6 @@ public class Notebook {
 		makeNoteBook(playerCards);
 	}
 	
-	//TODO Change this to a GUI implementation
 	/**
 	 * Creates a new notebook for a player and shows which cards they have 
 	 * @param cards (the randomly assigned cards the player was assigned)
@@ -108,13 +107,4 @@ public class Notebook {
 		writer.close();
 		
 	}
-	
-	
-	//Temporary main method for testing Notebook class
-//	public static void main(String[] args) throws FileNotFoundException {
-//		PlayerSetup setup = new PlayerSetup();
-//		setup.addPlayers();
-//		ArrayList<Player> players = setup.setupPlayers();
-//		Notebook nb = new Notebook(players.get(0));
-//	}
 }

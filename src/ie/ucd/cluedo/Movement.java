@@ -134,11 +134,12 @@ public class Movement {
 		System.out.println("--------------------------TURN OVER---------------------------\n\n");
 	}
 	
+	@SuppressWarnings("unused")
 	public void executeChoice(int choice, Player p, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		if(choice == 1) {
-			Accusation acc = new Accusation(p, players);
+			Accusation accusation = new Accusation(p, players);
 		} else if (choice == 2) {
-			Hypothesis hypo = new Hypothesis(p, players, playerRoomLocation(p));
+			Hypothesis hypothesis = new Hypothesis(p, players, playerRoomLocation(p));
 		} else if (choice == 3) {
 			useSecretPassage(p);
 		} 

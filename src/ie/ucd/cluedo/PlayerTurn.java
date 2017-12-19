@@ -6,8 +6,8 @@ package ie.ucd.cluedo;
  * @author Sam
  */
 public class PlayerTurn {
-	private Player player;
-	private int[] location;
+	Player player;
+	int[] location;
 	private Dice dice;
 	private int moves;
 	
@@ -26,6 +26,7 @@ public class PlayerTurn {
 		moves--;
 	}
 	
+//	Simple way to end their turn is just set the turns to 0 
 	public void endTurn() {
 		moves = 0;
 	}

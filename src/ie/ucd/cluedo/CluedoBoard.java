@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -34,7 +33,7 @@ public class CluedoBoard {
         board[0][24] = ' ';
 	}
 
-	public void initialiseBoard() {
+	public void initialisePlayerLocations() {
 		int x = 0;
 		int numPlayers = players.size();
 		for (int i = 0; i < boardWidth; i++) {
@@ -43,7 +42,6 @@ public class CluedoBoard {
 					//TODO could give players numbers 1, 2, 3, 4, 5, 6 as icons instead of first letter of name 
 					board[i][j] = (char) Character.toUpperCase(players.get(x).getName().charAt(0));
 					players.get(x).setLocation(i, j);
-
 					numPlayers--;
 					x++;
 				} else if (numPlayers == 0
@@ -57,14 +55,12 @@ public class CluedoBoard {
 	public void printBoard() {
 		System.out.println("\n\n--------------------------------------------------------------");
 		for (int i = 0; i < boardWidth; i++) {
-			System.out.print(board[i]);
-			System.out.println();
+			System.out.println(board[i]);
 		}
 		System.out.println();
 	}
 
 	public void playerMove(Player p) throws IOException {
-//		System.out.println(p.getName() + "'s location: [" + p.getLocation()[0] + "," + p.getLocation()[1] + "]");
 		printBoard();
 		Movement move = new Movement(p, this, players);
 	}
@@ -77,17 +73,4 @@ public class CluedoBoard {
 		board = inputboard;
 	}
 	
-	
-	// Temporary code to test CluedoBoard class
-//	public static void main(String[] args) throws IOException {
-//		PlayerSetup setup = new PlayerSetup();
-//		setup.setupPlayers();
-//		ArrayList<Player> players = setup.getPlayers();
-//		CluedoBoard myBoard = new CluedoBoard();
-//		myBoard.initialiseBoard(players);
-//		myBoard.printBoard();
-//		myBoard.playerMove(players.get(0));
-//		myBoard.printBoard();
-//	}
-
 }

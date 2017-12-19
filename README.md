@@ -18,9 +18,8 @@ Accusations,
 Hypothesis,
 Update notebook to include hypothesis etc.
 
-Final sprint before 21 Dec release
-GUI implementation hopefully,
-Code refactor,
+Final sprint before 21 Dec release:
+Code re-factor,
 JUnit tests
 
 
@@ -29,9 +28,8 @@ Skipping player turn after unsuccessful accusation,
 Not checking room for hypothesis,
 Players with same first letter in name need new character, 
 Board scanner - Currently has workaround,
-Related room problem, room should be treeted as one space
- - Fitting 2 players in 1 room,
- - Movement on second turn when player starts there turn inside a room
+Related room problem, room should be treated as one space
+ - Fitting 2 players in 1 room (or one space)
 
 
 
