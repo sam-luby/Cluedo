@@ -33,6 +33,7 @@ public class CluedoBoard {
         board[0][24] = ' ';
 	}
 
+	//Puts the player icons (first letter of their name) on the board
 	public void initialisePlayerLocations() {
 		int x = 0;
 		int numPlayers = players.size();

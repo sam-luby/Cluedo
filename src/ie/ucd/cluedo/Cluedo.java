@@ -28,18 +28,18 @@ public class Cluedo {
 			System.out.println(deck.getAnswerCards());
 		}
 
-		// Board initialisation
+		//Board initialisation
 		CluedoBoard myBoard = new CluedoBoard(players);
 		myBoard.initialisePlayerLocations();
 		char[][] board = myBoard.getBoard();
 
-		//Give each player a turn
+		//Give each player a turn until the game ends
 		players = setup.getPlayers();
 		while (!endGame) {
 			for (int i = 0; i < players.size(); i++) {
 				myBoard.playerMove(players.get(i));
 
-				//If we need to delete a player, remove them from the game
+				//If we need to delete a player after a round of turns, remove them from the game
 				if (i == players.size()-1 && deletePlayerFlag) {
 					PlayerSetup.deletePlayer(deletePlayerName);
 					int[] loc = deletePlayerName.getLocation();

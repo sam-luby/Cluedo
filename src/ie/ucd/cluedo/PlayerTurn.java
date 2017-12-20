@@ -30,6 +30,7 @@ public class PlayerTurn {
 	
 	//Gives player a number of choices based on where they are on the board
 	public static int getPlayerChoice(Player p, String playerLocation) {
+		System.out.println();
 		if (playerLocation.equalsIgnoreCase("Kitchen") || playerLocation.equalsIgnoreCase("Conservatory") || playerLocation.equalsIgnoreCase("Lounge") || playerLocation.equalsIgnoreCase("Study")) {
 			System.out.println("What do you want to do? \n");
 			System.out.println("Do nothing [0]: ");

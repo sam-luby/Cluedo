@@ -11,21 +11,19 @@ import java.util.Scanner;
 public class Movement {
 
 	private CluedoBoard cluedoBoard;
-	char[][] board;
+	private char[][] board;
 
 	public Movement(Player player, CluedoBoard cluedoBoard, ArrayList<Player> players) throws IOException {
 		this.cluedoBoard = cluedoBoard;
 		board = cluedoBoard.getBoard();
-
 		int[] location = player.getLocation();
-
 		PlayerTurn turn = new PlayerTurn(player, location);
 		int moves = turn.getMoves();
 
 		Scanner newScan = new Scanner(System.in);
 
 		while (moves > 0) {
-			System.out.println(player.getName() + " " + playerRoomLocation(player));
+			System.out.println(player.getName() + " is in the " + playerRoomLocation(player));
 
 			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
@@ -259,25 +257,25 @@ public class Movement {
 			board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			p.setLocation(22, 21);
 			board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			System.out.println(p.getName() + " travelled from " + room + " to the Study");
+			System.out.println(p.getName() + " travelled from the " + room + " to the Study");
 			break;
 		case "Conservatory":
 			board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			p.setLocation(22, 2);
 			board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			System.out.println(p.getName() + " travelled from " + room + " to the Lounge");
+			System.out.println(p.getName() + " travelled from the " + room + " to the Lounge");
 			break;
 		case "Lounge":
 			board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			p.setLocation(1, 21);
 			board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			System.out.println(p.getName() + " travelled from " + room + " to the Conservatory");
+			System.out.println(p.getName() + " travelled from the " + room + " to the Conservatory");
 			break;
 		case "Study":
 			board[p.getLocation()[0]][p.getLocation()[1]] = ' ';
 			p.setLocation(1, 2);
 			board[p.getLocation()[0]][p.getLocation()[1]] = Character.toUpperCase(p.getName().charAt(0));
-			System.out.println(p.getName() + " travelled from " + room + " to the Kitchen");
+			System.out.println(p.getName() + " travelled from the " + room + " to the Kitchen");
 			break;
 		}
 	}

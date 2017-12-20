@@ -66,7 +66,7 @@ public class PlayerSetup {
 		
 		System.out.println("Enter all " + numPlayers + " player names here: ");
 		String[] players = new String[numPlayers];
-
+		
 		for(int i = 0; i < numPlayers; i++) {									//Add all player names to an array
 			players[i] = (scanner.next());
 		}
@@ -92,7 +92,6 @@ public class PlayerSetup {
 	public void setupPlayers() throws FileNotFoundException {
 		this.distributeCards(playerNames.length);
 		for(int i = 0; i < playerNames.length; i++ ) {
-			//TODO Maybe change this to a random pawn instead
 			players.add(new Player(playerNames[i], SuspectCards.values()[i].getSuspect(), this.getPlayerCards().get(i))); 
 		}
 	}
