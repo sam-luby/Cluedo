@@ -11,10 +11,10 @@ import java.util.Scanner;
  * @author Sam & Darren
  */
 public class CluedoBoard {
-	private int boardWidth = 24;
-	private int boardHeight = 24;
+	private static int boardWidth = 24;
+	private static int boardHeight = 24;
 	private ArrayList<Player> players;
-	private char[][] board = new char[boardHeight][boardWidth];
+	public static char[][] board = new char[boardHeight][boardWidth];
 	File boardTextFile = new File("board.txt");
 
 	public CluedoBoard(ArrayList<Player> players) throws FileNotFoundException {

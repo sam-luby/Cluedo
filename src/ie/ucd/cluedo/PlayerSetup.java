@@ -22,7 +22,7 @@ public class PlayerSetup {
 	private ArrayList<String> remainingCards = new ArrayList<String>();
 	private ArrayList<ArrayList<String>> playerCards = new ArrayList<ArrayList<String>>();
 	
-//	When we create a new PlayerSetup object, we create a new list of cards and an array list of players.
+	//When we create a new PlayerSetup object, we create a new list of cards and an array list of players.
 	public PlayerSetup(ArrayList<String> remainingCards) {
 		players = new ArrayList<Player>();
 		addPlayers();
@@ -49,7 +49,7 @@ public class PlayerSetup {
 		return playerCards;
 	}
 	
-//	Adds a number of players via user input in the console
+	//Adds a number of players via user input in the console
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
 		Scanner scanner = new Scanner(System.in);
@@ -59,8 +59,8 @@ public class PlayerSetup {
 		}
 		
 		int numPlayers = scanner.nextInt();
-		while(numPlayers < 3) {													//Simple error checking for number of players
-			System.out.println("There must be at least 3 players, enter a number between 3-6: ");
+		while(numPlayers < 3 || numPlayers > 6) {													//Simple error checking for number of players
+			System.out.println("There must be between 3 and 6 players inclusive: ");
 			numPlayers = scanner.nextInt();
 		}
 		

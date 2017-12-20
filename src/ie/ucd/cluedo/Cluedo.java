@@ -31,6 +31,7 @@ public class Cluedo {
 		// Board initialisation
 		CluedoBoard myBoard = new CluedoBoard(players);
 		myBoard.initialisePlayerLocations();
+		char[][] board = myBoard.getBoard();
 
 		//Give each player a turn
 		players = setup.getPlayers();
@@ -41,6 +42,8 @@ public class Cluedo {
 				//If we need to delete a player, remove them from the game
 				if (i == players.size()-1 && deletePlayerFlag) {
 					PlayerSetup.deletePlayer(deletePlayerName);
+					int[] loc = deletePlayerName.getLocation();
+					board[loc[0]][loc[1]] = ' ';
 					Cluedo.deletePlayerFlag = false;
 				}
 			}
