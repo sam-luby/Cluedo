@@ -42,9 +42,31 @@ public class MovementTest {
 
 	    players = new ArrayList<Player>(Arrays.asList(sam, darren, kevin));
 	    
-	    CluedoBoard myBoard = new CluedoBoard(players);
-		myBoard.initialisePlayerLocations();
-		board = myBoard.getBoard();
+	    board[0]  = "+----+ S+------+S +----+".toCharArray();
+		board[1]  = "|@   |  |      |  |   @|".toCharArray();
+		board[2]  = "|    |  | ball |  | con|".toCharArray();
+		board[3]  = "|kit |  |      |  #----+".toCharArray();
+		board[4]  = "|    |  #      #       S".toCharArray();
+		board[5]  = "+---#+  |      |        ".toCharArray();
+		board[6]  = "        +#----#+        ".toCharArray();
+		board[7]  = "                  +----+".toCharArray();
+		board[8]  = "+------+          #    |".toCharArray();
+		board[9]  = "|      |  +---+   |    |".toCharArray();
+		board[10] = "|      |  |   |   |bill|".toCharArray();
+		board[11] = "|      #  |   |   +---#+".toCharArray();
+		board[12] = "|dining|  |   |         ".toCharArray();
+		board[13] = "|      |  |   |  +--#--+".toCharArray();
+		board[14] = "+-----#+  |   |  |     |".toCharArray();
+		board[15] = "          +---+  #     |".toCharArray();
+		board[16] = "S                | Lib |".toCharArray();
+		board[17] = "        +-##-+   +-----+".toCharArray();
+		board[18] = "+----#  |    |         S".toCharArray();
+		board[19] = "|    |  |    #          ".toCharArray();
+		board[20] = "|lou |  |    |   #-----+".toCharArray();
+		board[21] = "|    |  |hall|   |  stu|".toCharArray();
+		board[22] = "|@   |  |    |   |    @|".toCharArray();
+		board[23] = "+----+S +----+   +-----+".toCharArray();
+
 	    
 	}
 	
@@ -52,6 +74,7 @@ public class MovementTest {
 	public void testCanMove() {
 		boolean checkMovement;
 
+		sam.setLocation(0, 7);
 		//Player is at 0,7 initially
 		checkMovement = canMove(sam, players, "D");
 		assertFalse("Player should not be able to move right ", checkMovement);
