@@ -18,7 +18,6 @@ public class Hypothesis {
 	private String roomHypothesis;
 	private String suspectHypothesis;
 	private String weaponHypothesis;
-	private boolean hypothesisCheck;
 	private ArrayList<String> cards;
 	private ArrayList<String> myCards;
 	private ArrayList<String> allCards;
@@ -38,7 +37,7 @@ public class Hypothesis {
 		roomCards = deck.getRoomCards();
 	}
 	
-	//TODO Refactor this
+    //Checks the players hypothesis, updates notebook accordingly
 	public void checkHypothesis() throws IOException {
 		String output = null;
 		Notebook nb = p.getNoteBook();
@@ -79,14 +78,12 @@ public class Hypothesis {
 				return;
 			}
 		}
-		
 		System.out.println("Winner!");
 		Cluedo.endGame = true;
-		System.exit(0);
 	}
-	
+
+	//Gets the players hypothesis input from console
 	public void getHypothesis() {
-		
 		Scanner myScanner = new Scanner(System.in);
 		String weapon;
 		String suspect;
