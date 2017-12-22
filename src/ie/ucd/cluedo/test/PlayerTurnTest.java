@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.After;
-<<<<<<< HEAD
-=======
 import org.junit.Before;
->>>>>>> 56641b86309f01c575cdf77574e19eda429f82bc
 import org.junit.Test;
 
 import ie.ucd.cluedo.Player;
@@ -73,7 +70,6 @@ public class PlayerTurnTest {
 	}
 	
 	@After
-<<<<<<< HEAD
 	public void tearDown() {
 		Player playerInCorridor = null;
 		Player playerInPassageRoom = null;
@@ -82,13 +78,9 @@ public class PlayerTurnTest {
 		Player testPlayer = null;
 		int[] location = null;
 		PlayerTurn testTurn = null;
-	}
-=======
-    public void tearDown() {
 		cards = null;
 		testPlayer = null;
 		testTurn = null;
-    }
->>>>>>> 56641b86309f01c575cdf77574e19eda429f82bc
+	}
 	
 }
