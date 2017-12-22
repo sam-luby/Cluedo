@@ -71,7 +71,7 @@ public class Accusation {
 		
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);
-		if(!weapon.equals(answerCards.get(0)) || !suspect.equals(answerCards.get(1)) || !room.equals(answerCards.get(2))) {
+		if(!weapon.equalsIgnoreCase(answerCards.get(0)) || !suspect.equalsIgnoreCase(answerCards.get(1)) || !room.equalsIgnoreCase(answerCards.get(2))) {
 			for(Player player : players) {
 				Notebook notebook = player.getNoteBook();
 				try {
