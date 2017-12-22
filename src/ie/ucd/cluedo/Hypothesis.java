@@ -52,9 +52,9 @@ public class Hypothesis {
 				for(Player pl : players) {
 					Notebook note = pl.getNoteBook();
 					note.updateNotebookWithHypothesis(weaponHypothesis, suspectHypothesis, roomHypothesis);
-					return;
 				}
 				System.out.println("Refuted, Notebook updated");
+				return;
 			}
 			else if(cards.contains(suspectHypothesis)) {
 				output = suspectHypothesis;
@@ -63,9 +63,9 @@ public class Hypothesis {
 				for(Player pl : players) {
 					Notebook note = pl.getNoteBook();
 					note.updateNotebookWithHypothesis(weaponHypothesis, suspectHypothesis, roomHypothesis);
-					return;
 				}
 				System.out.println("Refuted, Notebook updated");
+				return;
 			}
 			else if(cards.contains(roomHypothesis)) {
 				output = roomHypothesis;
@@ -109,5 +109,12 @@ public class Hypothesis {
 		} 
 		suspectHypothesis = suspect;
 				
+	}
+	
+	// For jUnit testing purposes only
+	public void setHypothesisCards(String r, String w, String s) {
+		weaponHypothesis = w;
+		suspectHypothesis = s;
+		roomHypothesis = r;
 	}
 }

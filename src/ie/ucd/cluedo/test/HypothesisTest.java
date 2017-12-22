@@ -58,6 +58,8 @@ public class HypothesisTest {
 		room = "Hall";
 		
 		hyp = new Hypothesis(sam, players, samPawn);
+		
+		
 	}
 }
 	
