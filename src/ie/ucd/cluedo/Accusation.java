@@ -14,9 +14,9 @@ public class Accusation {
 	private Player player;
 	private static Cards deck = Cards.getInstance();
 	private static ArrayList<String> answerCards = deck.getAnswerCards();
-	private String weaponAccusation;
-	private String suspectAccusation;
-	private String roomAccusation;
+	public static String weaponAccusation;
+	public static String suspectAccusation;
+	public static String roomAccusation;
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
 	private ArrayList<String> roomCards;
