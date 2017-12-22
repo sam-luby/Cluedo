@@ -15,10 +15,10 @@ public class Player {
 	private int[] location;
 	private Notebook nb; 
 	
-	public Player(String name, String pawn, ArrayList<String> arrayList) {
+	public Player(String name, String pawn, ArrayList<String> cards) {
 		this.name = name;
 		this.pawn = pawn;
-		this.cards = arrayList;
+		this.cards = cards;
 		this.location = new int[2];
 		nb = new Notebook(this);
 	}
