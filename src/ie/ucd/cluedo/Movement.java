@@ -45,8 +45,12 @@ public class Movement {
 	public void executeChoice(int choice, Player p, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		if (choice == 1) {
 			Accusation accusation = new Accusation(p, players);
+			accusation.getAccusation();
+			accusation.checkAccusation();
 		} else if (choice == 2) {
 			Hypothesis hypothesis = new Hypothesis(p, players, playerRoomLocation(p));
+			hypothesis.getHypothesis();
+			hypothesis.checkHypothesis();
 		} else if (choice == 3) {
 			useSecretPassage(p);
 		}

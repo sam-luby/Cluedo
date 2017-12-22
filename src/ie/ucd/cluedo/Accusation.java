@@ -17,21 +17,23 @@ public class Accusation {
 	private String weaponAccusation;
 	private String suspectAccusation;
 	private String roomAccusation;
-	private boolean accusationCheck;
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
 	private ArrayList<String> roomCards;
 	private ArrayList<String> myCards;
 	private ArrayList<Player> players;
 	
-	public Accusation(Player player, ArrayList<Player> players) throws IOException {
+	public Accusation(Player player, ArrayList<Player> players) {
 		this.player = player;
 		this.players = players;
 		suspectCards = deck.getSuspectCards();
 		weaponCards = deck.getWeaponCards();
 		roomCards = deck.getRoomCards();
 		myCards = player.getCards();
-		
+	}
+	
+	// Gets the user input for the accusation
+	public void getAccusation() {
 		Scanner myScanner = new Scanner(System.in);
 		String input;
 		
@@ -59,22 +61,14 @@ public class Accusation {
 			input = myScanner.nextLine().trim();
 		} 
 		roomAccusation = input;
-		
-		this.accusationCheck = checkAccusation(weaponAccusation, suspectAccusation, roomAccusation);
-		
-		//If player gets accusation right, they win the game, else they are kicked from the game.
-		if(accusationCheck) {
-			System.out.println("Accusation correct, you win!");
-			Cluedo.endGame = true;
-		} else {
-			Cluedo.deletePlayerName = player;
-			Cluedo.deletePlayerFlag = true;
-			System.out.println("Loser, you are removed from the game.");
-		}
 	}
 	
     //If any part of the accusation is wrong, the whole accusation is wrong so delete the player
-	public boolean checkAccusation(String weapon, String suspect, String room) throws IOException {
+	public void checkAccusation() throws IOException {
+		String weapon = weaponAccusation.toString();
+		String suspect = suspectAccusation.toString();
+		String room = roomAccusation.toString();
+		
 		System.out.println(weapon + " " + suspect + " " + room);
 		System.out.println(answerCards);
 		if(!weapon.equals(answerCards.get(0)) || !suspect.equals(answerCards.get(1)) || !room.equals(answerCards.get(2))) {
@@ -82,10 +76,20 @@ public class Accusation {
 				Notebook notebook = player.getNoteBook();
 				notebook.updateNotebookWithAccusation(weapon, suspect, room);
 			}
-			return false;
+			Cluedo.deletePlayerName = player;
+			Cluedo.deletePlayerFlag = true;
+			System.out.println("Wrong, you are removed from the game.");
 		} else {
-			return true;
+			System.out.println("Accusation correct, you win!");
+			Cluedo.endGame = true;	
 		}
+	}
+	
+	//This method is used purely for testing purposes
+	public void setAccusationCards(String w, String s, String r) {
+		weaponAccusation = w;
+		suspectAccusation = s;
+		roomAccusation = r;
 	}
 	
 }
