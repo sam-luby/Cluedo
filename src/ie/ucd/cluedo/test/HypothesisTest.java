@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import ie.ucd.cluedo.Hypothesis;
@@ -24,7 +25,8 @@ public class HypothesisTest {
 	
 	String room;
 	
-	Hypothesis hyp;
+	Hypothesis hypothesis1;
+	Hypothesis hypothesis2;
 	String samPawn;
 	String darrenPawn;
 	String kevinPawn;
@@ -38,6 +40,7 @@ public class HypothesisTest {
 //	"Reverend Mr. Green"
 //	"Hall"
 	
+	@Before
 	public void setUp() throws IOException {
 		samName = "Sam";
 		samPawn = "Mrs. Scarlet";
@@ -51,16 +54,32 @@ public class HypothesisTest {
 		
 		kevinName = "Kevin";
 		kevinPawn = "Colonel Mustard";
-		kevinCards = new ArrayList<String>(Arrays.asList("Baseball bat", "Hammer", "Mrs. White", "Mrs. Peacock", "Lounge", "Conservatory", "Billiard room"));
+		kevinCards = new ArrayList<String>(Arrays.asList("Baseball bat", "Mrs. White", "Mrs. Peacock", "Lounge", "Conservatory", "Billiard room"));
 		kevin = new Player(samName, kevinPawn, kevinCards);
 		
 		players = new ArrayList<Player>(Arrays.asList(sam,darren,kevin));
-		room = "Hall";
-		
-		hyp = new Hypothesis(sam, players, samPawn);
 		
 		
+		hypothesis1 = new Hypothesis(sam, players, samPawn);
+		hypothesis2 = new Hypothesis(sam, players, samPawn);
+		
+		hypothesis1.setHypothesisCards("Dining room", "Baseball bat", "Mrs. White");
+		hypothesis2.setHypothesisCards("Hall", "Hammer", "Reverend Mr. Green");
 	}
+	
+	@Test
+	public void testNegativeCheckHypothesis() {	
+		// check if the hypothesis is incorrect
+		assertFalse(hypothesis1.checkHypothesisRefactored());
+	}
+	
+	
+	@Test
+	public void testPositiveCheckHypothesis() {
+		// check if the hypothesis is correct
+		assertTrue(hypothesis2.checkHypothesisRefactored());			
+	}
+	
 }
 	
 

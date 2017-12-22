@@ -108,10 +108,29 @@ public class Hypothesis {
 				
 	}
 	
+	
 	// For jUnit testing purposes only
 	public void setHypothesisCards(String r, String w, String s) {
 		weaponHypothesis = w;
 		suspectHypothesis = s;
 		roomHypothesis = r;
+	}
+	
+	// For jUnit testing purposes only
+	public boolean checkHypothesisRefactored(){
+		for(Player player : players) {
+			cards = player.getCards();
+			
+			if(cards.contains(weaponHypothesis)) {
+				return false;
+			}
+			else if(cards.contains(suspectHypothesis)) {
+				return false;
+			}
+			else if(cards.contains(roomHypothesis)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
