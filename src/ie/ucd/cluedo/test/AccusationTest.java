@@ -2,6 +2,7 @@ package ie.ucd.cluedo.test;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,6 +11,7 @@ import org.junit.Test;
 import ie.ucd.cluedo.Accusation;
 import ie.ucd.cluedo.Cluedo;
 import ie.ucd.cluedo.Hypothesis;
+import ie.ucd.cluedo.Notebook;
 import ie.ucd.cluedo.Player;
 
 public class AccusationTest {
@@ -25,6 +27,18 @@ public class AccusationTest {
     ArrayList<Player> players = new ArrayList<Player>(Arrays.asList(sam, darren, kevin));
 
     Accusation accusation = new Accusation(sam, players);
-    accusation.setAccusationCards("Knife", "Mrs. White", "Study");
+    
+    @Test
+    public void testCheckAccusation() {
+        ArrayList<String> answerCards = accusation.getAnswerCards();
+        String answerWeapon = answerCards.get(0);
+        String answerSuspect = answerCards.get(1);
+        String answerRoom = answerCards.get(2);
+        
+        accusation.setAccusationCards(answerWeapon, answerSuspect, answerRoom);
+        
+        
+        
+    }
 
 }

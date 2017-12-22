@@ -64,7 +64,7 @@ public class Accusation {
 	}
 	
     //If any part of the accusation is wrong, the whole accusation is wrong so delete the player
-	public void checkAccusation() throws IOException {
+	public void checkAccusation() {
 		String weapon = weaponAccusation.toString();
 		String suspect = suspectAccusation.toString();
 		String room = roomAccusation.toString();
@@ -74,7 +74,11 @@ public class Accusation {
 		if(!weapon.equals(answerCards.get(0)) || !suspect.equals(answerCards.get(1)) || !room.equals(answerCards.get(2))) {
 			for(Player player : players) {
 				Notebook notebook = player.getNoteBook();
-				notebook.updateNotebookWithAccusation(weapon, suspect, room);
+				try {
+					notebook.updateNotebookWithAccusation(weapon, suspect, room);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			Cluedo.deletePlayerName = player;
 			Cluedo.deletePlayerFlag = true;
@@ -90,6 +94,11 @@ public class Accusation {
 		weaponAccusation = w;
 		suspectAccusation = s;
 		roomAccusation = r;
+	}
+	
+	//This method is used purely for testing purposes
+	public ArrayList<String> getAnswerCards() {
+		return answerCards;
 	}
 	
 }
