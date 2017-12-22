@@ -40,7 +40,7 @@ public class Notebook {
 			e.printStackTrace();
 		}  		
 		
-		//Creates a new notebook text file for each player
+		//Creates a new notebook text file for each player (e.g. Sam's Notebook)
 		playerNotebook.println(player + " " + pawn);								 
 		playerNotebook.println();
 		for(String s : allCards) {
@@ -49,17 +49,18 @@ public class Notebook {
 				if(!c.equalsIgnoreCase(s)) {											
 					i++;
 					if(i == cards.size()) {
-						playerNotebook.println(s);										//If player doesn't have this card, print as normal
+						playerNotebook.println(s);										
 					}
 				} else if(c.equalsIgnoreCase(s)) {
-					playerNotebook.println(s + " ✓");									//If player does have this card, add a checkmark
+					//If player does have this card, add a checkmark
+					playerNotebook.println(s + " ✓");									
 				} 
 			}
 		}
 		playerNotebook.close();
 	}
 	
-	// updates the notebook one string at a time with a tick
+	//Updates the notebook one string at a time with a tick
 	public void updateNotebookWithRefute(String update) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(player + "'s notebook.txt"));
 		

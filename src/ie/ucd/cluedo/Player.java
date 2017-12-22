@@ -35,11 +35,13 @@ public class Player {
 		return name;
 	}
 	
+	//Updates player location
 	public void setLocation(int i, int j) {
 		this.location[0] = i;
 		this.location[1] = j;
 	}
 	
+	//Gets player location
 	public int[] getLocation() {
 		return location;
 	}

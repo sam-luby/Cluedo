@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Test;
 
 import ie.ucd.cluedo.Player;
@@ -57,6 +58,17 @@ public class PlayerTurnTest {
 			numberOfChoices = 2;
 		}
 		return numberOfChoices;
+	}
+	
+	@After
+	public void tearDown() {
+		Player playerInCorridor = null;
+		Player playerInPassageRoom = null;
+		Player playerInNormalRoom = null;
+		ArrayList<String> cards = null;
+		Player testPlayer = null;
+		int[] location = null;
+		PlayerTurn testTurn = null;
 	}
 	
 }

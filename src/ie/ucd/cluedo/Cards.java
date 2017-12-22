@@ -17,7 +17,7 @@ public class Cards {
 	
 	private static Cards uniqueInstance = null;
 	
-	// Constructor calculates the solution cards and the remaining cards 
+	// Constructor randomises the solution cards and the remaining cards 
 	private Cards() {
 		solutionCards.add(WeaponCards.random().getWeapon());
 		solutionCards.add(SuspectCards.random().getSuspect());
@@ -40,6 +40,7 @@ public class Cards {
 		}
 	};
 	
+	//Singleton class
 	public static Cards getInstance() {
 		if (uniqueInstance == null) {
 			uniqueInstance = new Cards();
@@ -86,11 +87,12 @@ public class Cards {
 		return allCards;
 	}
 	
-	// returns the solution cards to be placed in the middle of the board
+	// Returns the solution (answer) cards
 	public ArrayList<String> getAnswerCards() {
 		return solutionCards;
 	}
 	
+	//Returns the remaining cards (all cards minus answer cards)
 	public ArrayList<String> getRemainingCards(){
 		return remainingCards;
 	}

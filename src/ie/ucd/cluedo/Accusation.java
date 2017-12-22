@@ -80,6 +80,7 @@ public class Accusation {
 					e.printStackTrace();
 				}
 			}
+			//Flag is set to remove player from game at the end of the turn
 			Cluedo.deletePlayerName = player;
 			Cluedo.deletePlayerFlag = true;
 			System.out.println("Wrong, you are removed from the game.");
@@ -88,6 +89,7 @@ public class Accusation {
 			Cluedo.endGame = true;	
 		}
 	}
+	
 	
 	//This method is used purely for testing purposes
 	public void setAccusationCards(String w, String s, String r) {

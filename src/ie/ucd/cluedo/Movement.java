@@ -22,6 +22,7 @@ public class Movement {
 
 		Scanner newScan = new Scanner(System.in);
 
+		//While the player has moves left, keep asking for movement directions
 		while (moves > 0) {
 			System.out.println(player.getName() + " is in the " + playerRoomLocation(player));
 			System.out.println(player.getLocation()[0] + " " + player.getLocation()[1]);
@@ -31,6 +32,7 @@ public class Movement {
 			System.out.println("Give a direction [W,A,S,D]:");
 			direction = newScan.nextLine().toUpperCase();
 
+			//Checks if movement direction is valid, moves the player if it is
 			if (canMove(player, players, direction)) {
 				move(player, direction, turn, players);
 			}
@@ -58,7 +60,7 @@ public class Movement {
 		turn.endTurn();
 	}
 
-	// Checks if the desired location to move is valid
+	// Checks if the desired location to move to is valid
 	public boolean canMove(Player player, ArrayList<Player> players, String direction) {
 		int outOfBoundsDir = 0;
 		int outOfBoundsLoc = 0;

@@ -15,8 +15,8 @@ public class CluedoBoard {
 	private static int boardHeight = 24;
 	private ArrayList<Player> players;
 	public static char[][] board = new char[boardHeight][boardWidth];
-//	File boardTextFile = new File("board.txt");
 
+	//Creates a Cluedoboard object by reading in from a text file
 	public CluedoBoard(ArrayList<Player> players) {
 		this.players = players;
 		File file = new File("board.txt");
@@ -45,7 +45,6 @@ public class CluedoBoard {
 		for (int i = 0; i < boardWidth; i++) {
 			for (int j = 0; j < boardHeight; j++) {
 				if (numPlayers != 0 && board[i][j] == 'S') {
-					//TODO could give players numbers 1, 2, 3, 4, 5, 6 as icons instead of first letter of name 
 					board[i][j] = (char) Character.toUpperCase(players.get(x).getName().charAt(0));
 					players.get(x).setLocation(i, j);
 					numPlayers--;
@@ -58,14 +57,15 @@ public class CluedoBoard {
 		}
 	}
 
+	//Outputs the board to the console
 	public void printBoard() {
-		System.out.println("\n\n--------------------------------------------------------------");
 		for (int i = 0; i < boardWidth; i++) {
 			System.out.println(board[i]);
 		}
 		System.out.println();
 	}
 
+	
 	public void playerMove(Player p) throws IOException {
 		printBoard();
 		Movement move = new Movement(p, this, players);
@@ -79,7 +79,4 @@ public class CluedoBoard {
 		board = inputboard;
 	}
 	
-	public void updateSquare(int x, int y, char updateChar) {
-		board[x][y] = updateChar;
-	}
 }

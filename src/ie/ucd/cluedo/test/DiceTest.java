@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ie.ucd.cluedo.Cluedo;
 import ie.ucd.cluedo.Dice;
 
 public class DiceTest{
@@ -19,7 +20,9 @@ public class DiceTest{
 	@Test
 	public void testRoll() {
 		int num = d.roll();
-		assertTrue(num>1 && num<13);
+		if(!Cluedo.demoMode) {
+			assertTrue(num>1 && num<13);
+		} 
 	}
 
 }

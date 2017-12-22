@@ -37,6 +37,7 @@ public class PlayerSetup {
 		return players;
 	}
 	
+	//Removes player from game if they make an incorrect accusation
 	public static void deletePlayer(Player player) {
 		players.remove(player);
 	}
@@ -53,13 +54,17 @@ public class PlayerSetup {
 	public void addPlayers() {
 		System.out.println("How many players are going to play? [3-6]");
 		Scanner scanner = new Scanner(System.in);
-		while(!scanner.hasNextInt()) {        									//Keep asking for a number
+		
+		//Keep asking for a number
+		while(!scanner.hasNextInt()) {        									
 			System.out.println("Please enter a number between 3-6:");
 			scanner.next();
 		}
 		
 		int numPlayers = scanner.nextInt();
-		while(numPlayers < 3 || numPlayers > 6) {													//Simple error checking for number of players
+		
+		//Error checking for number of players
+		while(numPlayers < 3 || numPlayers > 6) {													
 			System.out.println("There must be between 3 and 6 players inclusive: ");
 			numPlayers = scanner.nextInt();
 		}
@@ -67,7 +72,8 @@ public class PlayerSetup {
 		System.out.println("Enter all " + numPlayers + " player names here: ");
 		String[] players = new String[numPlayers];
 		
-		for(int i = 0; i < numPlayers; i++) {									//Add all player names to an array
+		//Add all player names to an array
+		for(int i = 0; i < numPlayers; i++) {									
 			players[i] = (scanner.next());
 		}
 		
