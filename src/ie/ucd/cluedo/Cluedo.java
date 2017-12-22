@@ -5,9 +5,13 @@ import java.util.ArrayList;
 
 public class Cluedo {
 
-	// demoMode is for for dev/QA purposes
-	boolean demoMode = true;
+	//DemoMode is for for dev/QA purposes
+	static boolean demoMode = true;
+	
+	//End game can be set from the accusations/hypothesis classes 
 	static boolean endGame = false;
+	
+	//Signal to delete player from game
 	static boolean deletePlayerFlag = false;
 	static Player deletePlayerName;
 
@@ -18,7 +22,13 @@ public class Cluedo {
 		setup.setupPlayers();
 		ArrayList<Player> players = setup.getPlayers();
 
-        //Print out sensitive information if in demo mode
+		//Board initialisation
+		CluedoBoard myBoard = new CluedoBoard(players);
+		myBoard.initialisePlayerLocations();
+		char[][] board = myBoard.getBoard();
+
+
+		//Print out sensitive information if in demo mode
 		if (demoMode) {
 			for (Player p : players) {
 				System.out.println("\nPlayer: " + p.getName() + ", Pawn: " + p.getPawn());
@@ -28,11 +38,7 @@ public class Cluedo {
 			System.out.println(deck.getAnswerCards());
 		}
 
-		//Board initialisation
-		CluedoBoard myBoard = new CluedoBoard(players);
-		myBoard.initialisePlayerLocations();
-		char[][] board = myBoard.getBoard();
-
+		
 		//Give each player a turn until the game ends
 		players = setup.getPlayers();
 		while (!endGame) {
