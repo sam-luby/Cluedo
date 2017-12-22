@@ -1,34 +1,5 @@
-Release schedule plan *subject to change* 
+Please note:
 
-Release 1 - 7 Nov
-Implementation of card classes,
-Functionality to add players,
-Functionality to assign pawns (suspect) to each player,
-Functionality to randomly pick the answer cards (susepect, room, weapon),
-Functionality to distribute the remaining cards randomly amongst the players,
-Notebook initial implemenatation.
-
-Release 2 - 21 Nov
-Game board initialisation,
-Functionality for player movements around the board.
-
-Release 3 - 5 Dec
-Game turns functionality,
-Accusations, 
-Hypothesis,
-Update notebook to include hypothesis etc.
-
-Final sprint before 21 Dec release:
-Code re-factor,
-JUnit tests
-
-
-KNOWN BUGS/MISSING FEATURES:
-Not checking room for hypothesis,
-Board scanner - Currently has workaround,
-Player icon deleted if two players occupy a single space, then one moves away.
-
-
-
-
-
+For JUnit testing, we duplicated and re-factored a lot of methods from the classes.
+This is because a lot of the methods used Scanners and or File reading/writing (notebooks/console input).
+Although we know this is not good practice, it was necessary for completely testing the functionality.

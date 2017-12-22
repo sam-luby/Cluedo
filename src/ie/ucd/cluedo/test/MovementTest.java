@@ -155,7 +155,6 @@ public class MovementTest {
 		locationAfterMoving = sam.getLocation()[1];
 		assertTrue("Moving up didnt work", locationAfterMoving == locationBeforeMoving + 1);
 		
-		
 		//Test entering a room
 		sam.setLocation(4, 7);
 		locationBeforeMoving = sam.getLocation()[1];

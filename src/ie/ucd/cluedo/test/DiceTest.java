@@ -19,7 +19,7 @@ public class DiceTest{
 	@Test
 	public void testRoll() {
 		int num = d.roll();
-		assertTrue(num>2 && num<12);
+		assertTrue(num>1 && num<13);
 	}
 
 }
