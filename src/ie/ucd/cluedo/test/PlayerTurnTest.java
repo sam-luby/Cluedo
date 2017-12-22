@@ -4,17 +4,27 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import ie.ucd.cluedo.Player;
 import ie.ucd.cluedo.PlayerTurn;
 
 public class PlayerTurnTest {
-	ArrayList<String> cards = new ArrayList<String>(Arrays.asList("Card1", "Card2", "Card3"));
-	Player testPlayer = new Player("Sam", "Reverend Green", cards);
+	ArrayList<String> cards;
+	Player testPlayer;
 	int[] location = {10,10};
-	PlayerTurn testTurn = new PlayerTurn(testPlayer, location);
+	PlayerTurn testTurn;
 		
+	
+	@Before
+	public void setUp() {
+		cards = new ArrayList<String>(Arrays.asList("Card1", "Card2", "Card3"));
+		testPlayer = new Player("Sam", "Reverend Green", cards);
+		testTurn = new PlayerTurn(testPlayer, location);
+	}
+	
 	@Test
 	public void movesTest() {
 		int movesBeforeDecrement = testTurn.getMoves();
@@ -58,5 +68,12 @@ public class PlayerTurnTest {
 		}
 		return numberOfChoices;
 	}
+	
+	@After
+    public void tearDown() {
+		cards = null;
+		testPlayer = null;
+		testTurn = null;
+    }
 	
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -177,6 +178,19 @@ public class MovementTest {
 		assertTrue("Moving in a room decremented moves", movesBeforeMoving == movesAfterMoving);
 		
 	}
+	
+	@After
+    public void tearDown() {
+		samCards = null;
+		sam = null;
+	    darrenCards = null;
+	    darren = null;
+	    kevinCards = null;
+	    kevin = null;
+	    players = null;
+	    
+	    CluedoBoard myBoard = null;
+    }
 	
     //Can't initialise Movement object so re-implemented some methods here
 	public boolean canMove(Player player, ArrayList<Player> players, String direction) {

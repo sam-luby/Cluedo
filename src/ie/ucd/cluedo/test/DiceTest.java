@@ -2,6 +2,7 @@ package ie.ucd.cluedo.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,4 +23,8 @@ public class DiceTest{
 		assertTrue(num>1 && num<13);
 	}
 
+	@After
+    public void tearDown() {
+    	d = null;
+    }
 }

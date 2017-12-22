@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,4 +66,9 @@ public class CardsTest {
 		ArrayList<String> answerCards = cards.getAnswerCards();
 		assertEquals(3, answerCards.size());
 	}
+	
+	@After
+    public void tearDown() {
+    	cards = null;
+    }
 }
