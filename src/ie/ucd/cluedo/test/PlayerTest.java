@@ -5,9 +5,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ie.ucd.cluedo.CluedoBoard;
 import ie.ucd.cluedo.Player;
 
 public class PlayerTest {
@@ -42,5 +44,13 @@ public class PlayerTest {
 		assertEquals(loc[1], sam.getLocation()[1]);
 	}
 	
+	@After
+    public void tearDown() {
+		samName = null;
+		samPawn = null;
+		samCards = null;
+		
+		sam = null;
+    }
 	
 }

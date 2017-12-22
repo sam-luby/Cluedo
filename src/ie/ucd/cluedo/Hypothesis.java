@@ -20,8 +20,6 @@ public class Hypothesis {
 	private String weaponHypothesis;
 	private ArrayList<String> cards;
 	private ArrayList<String> myCards;
-	private ArrayList<String> allCards;
-	private ArrayList<String> roomCards;
 	private ArrayList<String> suspectCards;
 	private ArrayList<String> weaponCards;
 	
@@ -31,10 +29,8 @@ public class Hypothesis {
 		this.roomHypothesis = room;
 		myCards = p.getCards();
 		Cards deck = Cards.getInstance();
-		allCards = deck.getAllCards();
 		suspectCards = deck.getSuspectCards();
 		weaponCards = deck.getWeaponCards();
-		roomCards = deck.getRoomCards();
 	}
 	
     //Checks the players hypothesis, updates notebook accordingly
@@ -46,7 +42,6 @@ public class Hypothesis {
 			
 			if(cards.contains(weaponHypothesis)) {
 				output = weaponHypothesis;
-				System.out.println("\nRefuted weapon: " + output);
 				nb.updateNotebookWithRefute(output);
 				for(Player pl : players) {
 					Notebook note = pl.getNoteBook();
@@ -57,7 +52,6 @@ public class Hypothesis {
 			}
 			else if(cards.contains(suspectHypothesis)) {
 				output = suspectHypothesis;
-				System.out.println("\nRefuted suspect: " + output);
 				nb.updateNotebookWithRefute(output);
 				for(Player pl : players) {
 					Notebook note = pl.getNoteBook();
@@ -68,7 +62,6 @@ public class Hypothesis {
 			}
 			else if(cards.contains(roomHypothesis)) {
 				output = roomHypothesis;
-				System.out.println("\nRefuted room: " + output);
 				nb.updateNotebookWithRefute(output);
 				for(Player pl : players) {
 					Notebook note = pl.getNoteBook();
@@ -109,14 +102,14 @@ public class Hypothesis {
 	}
 	
 	
-	// For jUnit testing purposes only
+	// For jUnit testing purposes only (Testing could not be inplemented on the original method due to scanners and file read errors)
 	public void setHypothesisCards(String r, String w, String s) {
 		weaponHypothesis = w;
 		suspectHypothesis = s;
 		roomHypothesis = r;
 	}
 	
-	// For jUnit testing purposes only
+	// For jUnit testing purposes only (Testing could not be inplemented on the original method due to scanners and file read errors)
 	public boolean checkHypothesisRefactored(){
 		for(Player player : players) {
 			cards = player.getCards();

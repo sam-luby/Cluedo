@@ -73,7 +73,7 @@ public class Notebook {
 		reader.close();
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter(player + "'s notebook.txt"));
-		String replaceText = oldText.replaceAll(update, update + " ✓");
+		String replaceText = oldText.replaceAll(update, update + " ✓ (Refuted)");
 		writer.write(replaceText);
 		writer.close();
 	}

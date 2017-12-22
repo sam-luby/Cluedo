@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -80,6 +81,30 @@ public class HypothesisTest {
 		assertTrue(hypothesis2.checkHypothesisRefactored());			
 	}
 	
+	
+	@After
+    public void tearDown() {
+		samName = null;
+		samPawn = null;
+		samCards = null;
+		sam = null;
+		
+		darrenName = null;
+		darrenPawn = null;
+		darrenCards = null;
+		darren = null;
+		
+		kevinName = null;
+		kevinPawn = null;
+		kevinCards = null;
+		kevin = null;
+		
+		players = null;
+		
+		
+		hypothesis1 = null;
+		hypothesis2 = null;
+    }
 }
 	
 
