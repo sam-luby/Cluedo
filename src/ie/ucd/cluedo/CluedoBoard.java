@@ -15,12 +15,17 @@ public class CluedoBoard {
 	private static int boardHeight = 24;
 	private ArrayList<Player> players;
 	public static char[][] board = new char[boardHeight][boardWidth];
-	File boardTextFile = new File("board.txt");
+//	File boardTextFile = new File("board.txt");
 
-	public CluedoBoard(ArrayList<Player> players) throws FileNotFoundException {
+	public CluedoBoard(ArrayList<Player> players) {
 		this.players = players;
 		File file = new File("board.txt");
-		Scanner scanner = new Scanner(file);
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		int i = 0;
 		while(scanner.hasNextLine()) {
 			board[i] = scanner.nextLine().toCharArray();

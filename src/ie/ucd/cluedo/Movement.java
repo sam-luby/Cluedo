@@ -24,6 +24,7 @@ public class Movement {
 
 		while (moves > 0) {
 			System.out.println(player.getName() + " is in the " + playerRoomLocation(player));
+			System.out.println(player.getLocation()[0] + " " + player.getLocation()[1]);
 
 			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
@@ -59,64 +60,55 @@ public class Movement {
 
 	// Checks if the desired location to move is valid
 	public boolean canMove(Player player, ArrayList<Player> players, String direction) {
-		switch (direction) {
+		int outOfBoundsDir = 0;
+		int outOfBoundsLoc = 0;
+		
+		int vertMove = 0;
+		int horizMove = 0;
+		
+		switch(direction) {
 		case "S":
-			if (player.getLocation()[0] == 23) {
-				System.out.println("Cant move off the board");
-				return false;
-			} else if (board[player.getLocation()[0] + 1][player.getLocation()[1]] == ' '
-					|| board[player.getLocation()[0] + 1][player.getLocation()[1]] == '#') {
-				return true;
-			} else if (isPlayerAtLocation(player, players, direction)) {
-				return true;
-			} else {
-				System.out.println("Cant move through walls");
-				return false;
-			}
-		case "D":
-			if (player.getLocation()[1] == 23) {
-				System.out.println("Cant move off the board");
-				return false;
-			} else if (board[player.getLocation()[0]][player.getLocation()[1] + 1] == ' '
-					|| board[player.getLocation()[0]][player.getLocation()[1] + 1] == '#') {
-				return true;
-			} else if (isPlayerAtLocation(player, players, direction)) {
-				return true;
-			} else {
-				System.out.println("Cant move through walls");
-				return false;
-			}
-		case "A":
-			if (player.getLocation()[1] == 0) {
-				System.out.println("Cant move off the board");
-				return false;
-			} else if (board[player.getLocation()[0]][player.getLocation()[1] - 1] == ' '
-					|| board[player.getLocation()[0]][player.getLocation()[1] - 1] == '#') {
-				return true;
-			} else if (isPlayerAtLocation(player, players, direction)) {
-				return true;
-			} else {
-				System.out.println("Cant move through walls");
-				return false;
-			}
+			outOfBoundsLoc = 23;
+			outOfBoundsDir = 0;
+			vertMove = 1;
+			horizMove = 0;
+			break;
 		case "W":
-			if (player.getLocation()[0] == 0) {
-				System.out.println("Cant move off the board");
-				return false;
-			}
-			if (board[player.getLocation()[0] - 1][player.getLocation()[1]] == ' '
-					|| board[player.getLocation()[0] - 1][player.getLocation()[1]] == '#') {
-				return true;
-			} else if (isPlayerAtLocation(player, players, direction)) {
-				return true;
-			} else {
-				System.out.println("Cant move through walls");
-				return false;
-			}
+			outOfBoundsLoc = 0;
+			outOfBoundsDir = 0;
+			vertMove = -1;
+			horizMove = 0;
+			break;
+		case "A":
+			outOfBoundsLoc = 0;
+			outOfBoundsDir = 1;
+			vertMove = 0;
+			horizMove = -1;
+			break;
+		case "D":
+			outOfBoundsLoc = 23;
+			outOfBoundsDir = 1;
+			vertMove = 0;
+			horizMove = 1;
+			break;
 		default:
+			break;
+		}
+		
+		if (player.getLocation()[outOfBoundsDir] == outOfBoundsLoc) {
+			System.out.println("Cant move off the board");
+			return false;
+		} else if (board[player.getLocation()[0] + vertMove][player.getLocation()[1] + horizMove] == ' '
+				|| board[player.getLocation()[0] + vertMove][player.getLocation()[1] + horizMove] == '#') {
+			return true;
+		} else if (isPlayerAtLocation(player, players, direction)) {
+			return true;
+		} else {
+			System.out.println("Cant move through walls");
 			return false;
 		}
 	}
+		
 
 	//Check if there is already a player in your desired location
 	boolean isPlayerAtLocation(Player player, ArrayList<Player> players, String direction) {
@@ -153,7 +145,7 @@ public class Movement {
 	}
 
 	//Handles the normal player movement around the board
-	void move(Player player, String direction, PlayerTurn turn, ArrayList<Player> players) throws IOException {
+	void move(Player player, String direction, PlayerTurn turn, ArrayList<Player> players) {
 		int vertPos = player.getLocation()[0];
 		int horizPos = player.getLocation()[1];
 		int vertMove = vertPos;
@@ -193,7 +185,9 @@ public class Movement {
 				vertPos = player.getLocation()[0];
 				horizPos = player.getLocation()[1];
 				board[vertMove][horizMove] = '2';
-				turn.decrememntMoves();
+				if(playerRoomLocation(player) == "Corridor") {
+					turn.decrememntMoves();	
+				}
 			}
 		}
 		
@@ -204,7 +198,9 @@ public class Movement {
 			vertPos = player.getLocation()[0];
 			horizPos = player.getLocation()[1];
 			board[vertMove][horizMove] = Character.toUpperCase(player.getName().charAt(0));
-			turn.decrememntMoves();
+			if(playerRoomLocation(player) == "Corridor") {
+				turn.decrememntMoves();	
+			}
 		} else if (board[vertMove][horizMove] == '#') {
 			//Checks if player is coming INTO or OUT OF the room [if coming into room, player must make a choice]
 			if (playerRoomLocation(player) == "Corridor") {
@@ -213,14 +209,21 @@ public class Movement {
 				vertPos = player.getLocation()[0];
 				horizPos = player.getLocation()[1];
 				board[vertPos][horizPos] = Character.toUpperCase(player.getName().charAt(0));
-				executeChoice(PlayerTurn.getPlayerChoice(player, playerRoomLocation(player)), player, turn, players);
+				try {
+					executeChoice(PlayerTurn.getPlayerChoice(player, playerRoomLocation(player)), player, turn, players);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			} else {
 				board[vertPos][horizPos] = ' ';
 				player.setLocation(vertPos + vertStep, horizPos + horizStep);
 				vertPos = player.getLocation()[0];
 				horizPos = player.getLocation()[1];
 				board[vertPos][horizPos] = Character.toUpperCase(player.getName().charAt(0));
-				turn.decrememntMoves();
+				if(playerRoomLocation(player) == "Corridor") {
+					turn.decrememntMoves();	
+				}
+
 			}
 		}
 	}
