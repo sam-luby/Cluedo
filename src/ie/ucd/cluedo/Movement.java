@@ -25,7 +25,6 @@ public class Movement {
 		//While the player has moves left, keep asking for movement directions
 		while (moves > 0) {
 			System.out.println(player.getName() + " is in the " + playerRoomLocation(player));
-			System.out.println(player.getLocation()[0] + " " + player.getLocation()[1]);
 
 			String direction = null;
 			System.out.println(moves + " move(s) remaining...");
