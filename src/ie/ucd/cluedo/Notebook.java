@@ -20,7 +20,7 @@ public class Notebook {
 	private ArrayList<String> allCards;
 	Cards cards = Cards.getInstance();
 	
-	public Notebook(Player p) throws FileNotFoundException {
+	public Notebook(Player p) {
 		this.playerCards = p.getCards();
 		this.player = p.getName();
 		this.pawn  = p.getPawn();
@@ -32,8 +32,15 @@ public class Notebook {
 	 * Creates a new notebook for a player and shows which cards they have 
 	 * @param cards (the randomly assigned cards the player was assigned)
 	 */
-	public void makeNoteBook(ArrayList<String> cards) throws FileNotFoundException {
-		PrintWriter playerNotebook = new PrintWriter(player + "'s notebook.txt");  		//Creates a new notebook text file for each player
+	public void makeNoteBook(ArrayList<String> cards) {
+		PrintWriter playerNotebook = null;
+		try {
+			playerNotebook = new PrintWriter(player + "'s notebook.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}  		
+		
+		//Creates a new notebook text file for each player
 		playerNotebook.println(player + " " + pawn);								 
 		playerNotebook.println();
 		for(String s : allCards) {

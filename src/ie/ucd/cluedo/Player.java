@@ -15,7 +15,7 @@ public class Player {
 	private int[] location;
 	private Notebook nb; 
 	
-	public Player(String name, String pawn, ArrayList<String> arrayList) throws FileNotFoundException {
+	public Player(String name, String pawn, ArrayList<String> arrayList) {
 		this.name = name;
 		this.pawn = pawn;
 		this.cards = arrayList;
