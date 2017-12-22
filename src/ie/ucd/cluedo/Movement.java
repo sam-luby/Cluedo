@@ -41,7 +41,7 @@ public class Movement {
 		System.out.println("--------------------------TURN OVER---------------------------\n\n");
 	}
 
-	@SuppressWarnings("unused")
+	//Executes player choice
 	public void executeChoice(int choice, Player p, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		if (choice == 1) {
 			Accusation accusation = new Accusation(p, players);
@@ -57,7 +57,7 @@ public class Movement {
 		turn.endTurn();
 	}
 
-// 	Checks if the desired location to move is valid
+	// Checks if the desired location to move is valid
 	public boolean canMove(Player player, ArrayList<Player> players, String direction) {
 		switch (direction) {
 		case "S":
@@ -116,10 +116,9 @@ public class Movement {
 		default:
 			return false;
 		}
-
 	}
 
-//	Check if there is already a player in your desired location
+	//Check if there is already a player in your desired location
 	boolean isPlayerAtLocation(Player player, ArrayList<Player> players, String direction) {
 		int vertPos = player.getLocation()[0];
 		int horizPos = player.getLocation()[1];
@@ -153,7 +152,7 @@ public class Movement {
 		return false;
 	}
 
-// 	Handles the normal player movement around the board
+	//Handles the normal player movement around the board
 	void move(Player player, String direction, PlayerTurn turn, ArrayList<Player> players) throws IOException {
 		int vertPos = player.getLocation()[0];
 		int horizPos = player.getLocation()[1];
@@ -253,7 +252,7 @@ public class Movement {
 		}
 	}
 
-//	Method to handle usage of the secret passages
+	//Method to handle usage of the secret passages
 	public void useSecretPassage(Player p) {
 		String room = playerRoomLocation(p);
 		switch (room) {
