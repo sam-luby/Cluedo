@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Cluedo {
 
 	//DemoMode is for for dev/QA purposes
-	public static boolean demoMode = true;
+	public static boolean demoMode = false;
 	
 	//End game can be set from the accusations/hypothesis classes 
 	static boolean endGame = false;
