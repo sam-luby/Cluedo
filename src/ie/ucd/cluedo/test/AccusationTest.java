@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -66,6 +67,20 @@ public class AccusationTest {
     	accusation.setAccusationCards(accusationWeapon, "Mrs. White", "Study");
     	boolean check = checkAccusationRefactored();
     	assertFalse(check);
+    }
+    
+    @After
+    public void tearDown() {
+    	samCards = null;
+		sam = null;
+	    darrenCards = null;
+	    darren = null;
+	    kevinCards = null;
+	    kevin = null;
+
+	    players = null;
+	    accusation = null;
+	    answerCards = null;
     }
     
     //Refactored "checkAccusation" method from Accusation class to avoid FileNotFound etc errors
