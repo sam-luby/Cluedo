@@ -1,5 +1,6 @@
-Please note:
+project to create the Cluedo boardgame as part of my masters degree.
 
-For JUnit testing, we duplicated and re-factored a lot of methods from the classes.
-This is because a lot of the methods used Scanners and or File reading/writing (notebooks/console input).
-Although we know this is not good practice, it was necessary for completely testing the functionality.
+board is created in ascii chars in the terminal and is played used WASD controls. 
+
+supports 3-6 named players who each have their own '<name>'s notebook.txt' file to keep track of their decisions/outcomes/etc.
+  
